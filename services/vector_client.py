@@ -50,14 +50,14 @@ class VectorClient:
         
         payload = {
             "vector": query_vector,
-            "top_k": top_k,
+            "k": top_k,
             "filters": filters
         }
         
         async with httpx.AsyncClient(timeout=self.timeout) as client:
             try:
                 response = await client.post(
-                    f"{self.base_url}/search",
+                    f"{self.base_url}/vector/text/search",
                     headers=headers,
                     json=payload
                 )
@@ -103,16 +103,14 @@ class VectorClient:
             headers["Authorization"] = f"Bearer {self.api_key}"
 
         payload = {
-            "product_id": product_id,
-            "vector": vector,
-            "metadata": {**metadata, "tenant_id": tenant_id},
-            "tenant_id": tenant_id,
+            "vectors": [vector],
+            "metadata": [{**metadata, "product_id": product_id, "tenant_id": tenant_id}],
         }
 
         async with httpx.AsyncClient(timeout=self.timeout) as client:
             try:
                 response = await client.post(
-                    f"{self.base_url}/upsert",
+                    f"{self.base_url}/vector/text/add",
                     headers=headers,
                     json=payload
                 )

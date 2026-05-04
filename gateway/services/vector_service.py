@@ -42,17 +42,39 @@ class VectorService:
                 self.current_id += 1
         return {"status": "success", "count": len(vectors)}
 
-    def search(self, query_vector: list[float], k: int):
+    def search(self, query_vector: list[float], k: int, filters: dict | None = None):
         self._validate_dim([query_vector])
+        # Over-fetch to account for post-filter dropout
+        fetch_k = k * 10 if filters else k
         with self.lock:
             np_query = np.array([query_vector]).astype('float32')
-            distances, indices = self.index.search(np_query, k)
+            distances, indices = self.index.search(np_query, min(fetch_k, self.index.ntotal or fetch_k))
 
         results = []
         for dist, idx in zip(distances[0], indices[0]):
-            if idx != -1 and idx in self.metadata_store:
-                results.append({
-                    "score": float(dist),
-                    "metadata": self.metadata_store[idx],
-                })
+            if idx == -1 or idx not in self.metadata_store:
+                continue
+            meta = self.metadata_store[idx]
+            if filters and not self._matches_filters(meta, filters):
+                continue
+            results.append({"score": float(dist), "metadata": meta})
+            if len(results) >= k:
+                break
         return results
+
+    def _matches_filters(self, meta: dict, filters: dict) -> bool:
+        """Return True if metadata satisfies all filter conditions."""
+        for key, value in filters.items():
+            if value is None:
+                continue
+            meta_val = meta.get(key)
+            if isinstance(value, dict):
+                # Range filter: {"min": x, "max": y}
+                if "min" in value and meta_val is not None and meta_val < value["min"]:
+                    return False
+                if "max" in value and meta_val is not None and meta_val > value["max"]:
+                    return False
+            else:
+                if meta_val != value:
+                    return False
+        return True

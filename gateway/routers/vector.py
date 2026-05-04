@@ -16,7 +16,7 @@ async def add_text_vector(request: VectorAddRequest, service=Depends(get_text_ve
 
 @router.post("/text/search", response_model=SearchResponse)
 async def search_text_vector(request: VectorSearchRequest, service=Depends(get_text_vec_service)):
-    results = service.search(request.vector, request.k)
+    results = service.search(request.vector, request.k, filters=request.filters)
     return {"results": results}
 
 # --- Image index (512-dim) ---

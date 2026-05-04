@@ -38,21 +38,20 @@ class EmbeddingClient:
             headers["Authorization"] = f"Bearer {self.api_key}"
             
         payload = {
-            "input": text,
-            "model": "bge-base"  # Adjust to actual model name
+            "text": text,
         }
         
         async with httpx.AsyncClient(timeout=self.timeout) as client:
             try:
                 response = await client.post(
-                    f"{self.base_url}/embed",
+                    f"{self.base_url}/embed/text",
                     headers=headers,
                     json=payload
                 )
                 response.raise_for_status()
                 
                 data = response.json()
-                embedding = data["embedding"]
+                embedding = data["vector"]
                 
                 logger.info(f"Text embedding generated. Dimension: {len(embedding)}")
                 return embedding
@@ -88,20 +87,19 @@ class EmbeddingClient:
             
         payload = {
             "image": image_b64,
-            "model": "openclip"  # Adjust to actual model name
         }
         
         async with httpx.AsyncClient(timeout=self.timeout) as client:
             try:
                 response = await client.post(
-                    f"{self.base_url}/embed",
+                    f"{self.base_url}/embed/image",
                     headers=headers,
                     json=payload
                 )
                 response.raise_for_status()
                 
                 data = response.json()
-                embedding = data["embedding"]
+                embedding = data["vector"]
                 
                 logger.info(f"Image embedding generated. Dimension: {len(embedding)}")
                 return embedding

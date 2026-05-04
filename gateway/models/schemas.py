@@ -4,6 +4,7 @@ from typing import List, Optional, Any, Dict
 class LLMRequest(BaseModel):
     messages: List[Dict[str, str]]
     temperature: Optional[float] = Field(default=0.7, ge=0.0, le=2.0)
+    max_tokens: Optional[int] = Field(default=512, ge=1)
 
 class LLMResponse(BaseModel):
     text: str
@@ -31,6 +32,7 @@ class VectorAddRequest(BaseModel):
 class VectorSearchRequest(BaseModel):
     vector: List[float] = Field(..., min_length=1)
     k: int = Field(default=4, ge=1, le=1000)
+    filters: Optional[Dict[str, Any]] = None
 
 class SearchResult(BaseModel):
     score: float

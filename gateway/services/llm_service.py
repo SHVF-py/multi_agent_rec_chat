@@ -7,7 +7,8 @@ class LLMService:
         vllm_payload = {
             "model": Config.MODEL_NAME,
             "messages": payload.messages,
-            "temperature": payload.temperature
+            "temperature": payload.temperature,
+            "max_tokens": payload.max_tokens,
         }
         
         async with httpx.AsyncClient(timeout=60.0) as client:

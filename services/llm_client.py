@@ -52,33 +52,29 @@ class LLMClient:
             headers["Authorization"] = f"Bearer {self.api_key}"
             
         payload = {
-            "model": "phi-3",  # Adjust to actual model name on host
             "messages": messages,
             "temperature": temperature,
-            "max_tokens": max_tokens
+            "max_tokens": max_tokens,
         }
-        
-        if response_format:
-            payload["response_format"] = response_format
             
         async with httpx.AsyncClient(timeout=self.timeout) as client:
             try:
                 response = await client.post(
-                    f"{self.base_url}/v1/chat/completions",
+                    f"{self.base_url}/llm/chat",
                     headers=headers,
                     json=payload
                 )
                 response.raise_for_status()
                 
                 data = response.json()
-                content = data["choices"][0]["message"]["content"]
+                content = data["text"]
                 
                 logger.info(f"LLM call successful. Tokens: {data.get('usage', {})}")
                 
                 return {
                     "content": content,
                     "usage": data.get("usage", {}),
-                    "finish_reason": data["choices"][0].get("finish_reason")
+                    "finish_reason": None
                 }
                 
             except httpx.TimeoutException as e:
