@@ -1,7 +1,7 @@
 from models.schemas import (
     QueryInput, QueryUnderstanding, ExecutionPlan, OrchestratorOutput,
     RetrievalInput, RankingInput, ComparisonInput, ExplainabilityInput, MBAInput,
-    IntentType
+    RankedProduct, ScoringBreakdown, IntentType
 )
 from agents.query_understanding import query_understanding_agent
 from agents.retrieval import retrieval_agent
@@ -10,6 +10,7 @@ from agents.comparison import comparison_agent
 from agents.explainability import explainability_agent
 from agents.mba import mba_agent
 from services.llm_client import llm_client
+from services.session_store import session_store
 from config.settings import settings
 import logging
 import time
@@ -86,7 +87,11 @@ class Orchestrator:
             # It either introduces the products found or handles the query conversationally.
             chat_reply = await self._chat_reply(query_input.query_text, products=ranked[:3])
 
-            # STEP 6: Aggregate Output
+            # STEP 6: Update session with results from this turn
+            if ranked and query_input.session_id:
+                session_store.update_after_response(query_input.session_id, ranked)
+
+            # STEP 7: Aggregate Output
             execution_time = (time.time() - start_time) * 1000
 
             return OrchestratorOutput(
@@ -230,7 +235,11 @@ class Orchestrator:
         Execute agents sequentially according to plan.
         """
         results = {}
-        
+
+        # Load accumulated session features for this request
+        user_features = session_store.get_user_features(query_input.session_id)
+        user_history = session_store.get_viewed_product_ids(query_input.session_id)
+
         for step in plan.steps:
             try:
                 if step == "retrieval":
@@ -246,14 +255,34 @@ class Orchestrator:
                     if "retrieval" not in results or not results["retrieval"].results:
                         logger.warning("Skipping ranking - no retrieval results")
                         continue
-                    results["ranking"] = self._run_ranking(results["retrieval"], understanding, query_input)
+                    results["ranking"] = self._run_ranking(
+                        results["retrieval"], understanding, query_input, user_features
+                    )
                     results["ranked_products"] = results["ranking"].ranked_products
                     
                 elif step == "comparison":
-                    if "ranked_products" not in results or len(results["ranked_products"]) < 2:
+                    products_for_comparison = results.get("ranked_products", [])
+                    if len(products_for_comparison) < 2:
+                        # Fallback: use the top products from the previous turn
+                        stored_dicts = session_store.get_last_ranked_products(query_input.session_id)
+                        if len(stored_dicts) >= 2:
+                            products_for_comparison = [
+                                RankedProduct(
+                                    product_id=d["product_id"],
+                                    rank=d["rank"],
+                                    metadata=d["metadata"],
+                                    scoring=ScoringBreakdown(**d["scoring"]),
+                                )
+                                for d in stored_dicts
+                            ]
+                            logger.info(
+                                f"Comparison fallback: using {len(products_for_comparison)} "
+                                "products from session history"
+                            )
+                    if len(products_for_comparison) < 2:
                         logger.warning("Skipping comparison - need at least 2 products")
                         continue
-                    results["comparison"] = await self._run_comparison(results["ranked_products"][:5], understanding)
+                    results["comparison"] = await self._run_comparison(products_for_comparison[:5], understanding)
                     
                 elif step == "explainability":
                     if "ranked_products" not in results:
@@ -269,7 +298,9 @@ class Orchestrator:
                         logger.warning("Skipping MBA - no products")
                         continue
                     top_product = results["ranked_products"][0]
-                    results["cross_sell"] = self._run_mba(top_product.product_id, query_input)
+                    results["cross_sell"] = self._run_mba(
+                        top_product.product_id, query_input, user_history
+                    )
                     
             except Exception as e:
                 logger.error(f"Agent {step} failed: {e}")
@@ -292,11 +323,17 @@ class Orchestrator:
         )
         return await retrieval_agent.retrieve(retrieval_input)
         
-    def _run_ranking(self, retrieval_output, understanding: QueryUnderstanding, query_input: QueryInput):
-        """Execute ranking agent."""
+    def _run_ranking(
+        self,
+        retrieval_output,
+        understanding: QueryUnderstanding,
+        query_input: QueryInput,
+        user_features: Optional[Dict[str, Any]] = None,
+    ):
+        """Execute ranking agent with accumulated session preferences."""
         ranking_input = RankingInput(
             retrieval_results=retrieval_output.results,
-            user_features=None,  # TODO: Load from user service
+            user_features=user_features,
             constraints=understanding.constraints
         )
         return ranking_agent.rank(ranking_input)
@@ -384,11 +421,16 @@ class Orchestrator:
         )
         return await explainability_agent.explain(explainability_input)
         
-    def _run_mba(self, product_id: str, query_input: QueryInput):
-        """Execute MBA agent."""
+    def _run_mba(
+        self,
+        product_id: str,
+        query_input: QueryInput,
+        user_history: Optional[List[str]] = None,
+    ):
+        """Execute MBA agent, excluding products already seen by this user."""
         mba_input = MBAInput(
             current_product_id=product_id,
-            user_history=None,  # TODO: Load from user service
+            user_history=user_history or [],
             max_recommendations=5
         )
         return mba_agent.recommend(mba_input)
