@@ -77,8 +77,11 @@ class Orchestrator:
             # STEP 2: Pure-conversation shortcut
             # If confidence is low AND no product entities were found, the user
             # is just chatting — let the LLM reply freely without any search.
+            # Phi-3's confidence guide: 0.8-1.0 = clear product query,
+            # 0.5-0.7 = needs inference, 0.2-0.4 = ambiguous/non-product.
+            # Treat anything below 0.5 with no concrete entities as chat.
             is_pure_chat = (
-                understanding.confidence < self.confidence_threshold
+                understanding.confidence < 0.5
                 and not understanding.entities.get("features")
                 and not understanding.constraints.get("category")
                 and not understanding.constraints.get("brand")
@@ -153,25 +156,30 @@ class Orchestrator:
         Catches greetings and non-product messages before wasting a query-understanding call.
         """
         t = text.lower().strip().rstrip("!?.,:")
-        # Exact matches
+        # Exact single-word / short-phrase matches
         EXACT = {
             "hi", "hello", "hey", "hiya", "howdy", "sup", "yo", "helo", "hii", "hiii",
             "good morning", "good afternoon", "good evening", "good night",
             "how are you", "how r u", "hows it going", "how's it going",
             "what's up", "whats up", "who are you", "what are you",
             "what can you do", "help", "thanks", "thank you", "bye", "goodbye",
-            "ok", "okay", "cool", "nice", "great", "awesome",
+            "ok", "okay", "cool", "nice", "great", "awesome", "perfect", "sure",
+            "sounds good", "that's great", "that's nice", "that's cool", "that's perfect",
+            "i see", "got it", "makes sense", "i like it", "i love it", "love it",
+            "not bad", "looks good", "looks great", "looks nice", "that works",
+            "never mind", "no thanks", "that's all", "i'm good", "im good",
         }
         if t in EXACT:
             return True
-        # Short single-word inputs with no product keywords are chat
+        # Short inputs with no product keywords are chat
         words = t.split()
         PRODUCT_HINTS = {
             "buy", "show", "find", "search", "recommend", "compare", "best",
             "cheap", "price", "under", "top", "rated", "product", "item",
-            "jacket", "shirt", "phone", "laptop", "watch",
+            "jacket", "shirt", "phone", "laptop", "watch", "bag", "shoes",
+            "dress", "ring", "necklace", "headphone", "earphone", "charger",
         }
-        if len(words) <= 2 and not any(w in PRODUCT_HINTS for w in words):
+        if len(words) <= 3 and not any(w in PRODUCT_HINTS for w in words):
             return True
         return False
 
@@ -417,33 +425,9 @@ class Orchestrator:
         understanding: QueryUnderstanding,
         query_input: QueryInput
     ):
-        """Execute retrieval agent.
-
-        Products are indexed as: "{title}. Category: {category}. {description}"
-        To maximise cosine similarity we build a query string in the same style,
-        injecting whatever structured data QueryUnderstanding extracted.
-        """
-        parts: List[str] = []
-
-        # 1. Named product entities / features  ("laptop", "waterproof jacket", ...)
-        features = understanding.entities.get("features", [])
-        product_names = understanding.entities.get("product_names", [])
-        named = (product_names or []) + (features or [])
-        if named:
-            parts.append(", ".join(named))
-
-        # 2. Category  ("electronics", "men's clothing", ...)
-        category = understanding.constraints.get("category", "")
-        if category:
-            parts.append(f"Category: {category}")
-
-        # 3. Raw query always at the end as a safety net
-        parts.append(understanding.raw_query)
-
-        enriched_query = ". ".join(p for p in parts if p)
-
+        """Execute retrieval agent."""
         retrieval_input = RetrievalInput(
-            query_text=enriched_query,
+            query_text=understanding.raw_query,
             filters=understanding.constraints,
             top_k=settings.DEFAULT_TOP_K,
             tenant_id=query_input.tenant_id

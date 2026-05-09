@@ -32,12 +32,6 @@ def display_products(products):
             stars = '⭐' * round(rating) if rating else ''
             st.caption(f"{stars} {rating}/5  ·  Category: {meta.get('category', 'N/A')}")
 
-            with st.expander("Scoring details"):
-                breakdown = product['scoring']
-                st.write(f"- Relevance: {breakdown['relevance_score']:.2f}")
-                st.write(f"- Constraints: {breakdown['constraint_match_score']:.2f}")
-                st.write(f"- Rating: {breakdown['rating_score']:.2f}")
-
         with col3:
             price = meta.get('price', 'N/A')
             st.metric("Price", f"${price}")
