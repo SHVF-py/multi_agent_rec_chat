@@ -156,7 +156,20 @@ class Orchestrator:
         Catches greetings and non-product messages before wasting a query-understanding call.
         """
         t = text.lower().strip().rstrip("!?.,:")
-        # Exact single-word / short-phrase matches
+
+        # Strip punctuation from each word for reliable matching
+        clean_words = [w.strip("!?.,:'\"") for w in t.split()]
+
+        PRODUCT_HINTS = {
+            "buy", "show", "find", "search", "recommend", "compare", "best",
+            "cheap", "price", "under", "top", "rated", "product", "item",
+            "jacket", "shirt", "phone", "laptop", "watch", "bag", "shoes",
+            "dress", "ring", "necklace", "headphone", "earphone", "charger",
+            "suit", "coat", "jeans", "pants", "skirt", "blouse", "hoodie",
+        }
+        has_product_hint = any(w in PRODUCT_HINTS for w in clean_words)
+
+        # Rule 1: Exact full-phrase matches (any length)
         EXACT = {
             "hi", "hello", "hey", "hiya", "howdy", "sup", "yo", "helo", "hii", "hiii",
             "good morning", "good afternoon", "good evening", "good night",
@@ -171,16 +184,17 @@ class Orchestrator:
         }
         if t in EXACT:
             return True
-        # Short inputs with no product keywords are chat
-        words = t.split()
-        PRODUCT_HINTS = {
-            "buy", "show", "find", "search", "recommend", "compare", "best",
-            "cheap", "price", "under", "top", "rated", "product", "item",
-            "jacket", "shirt", "phone", "laptop", "watch", "bag", "shoes",
-            "dress", "ring", "necklace", "headphone", "earphone", "charger",
-        }
-        if len(words) <= 3 and not any(w in PRODUCT_HINTS for w in words):
+
+        # Rule 2: Message STARTS with a greeting word and has NO product hints anywhere.
+        # Catches "Hi, how are you? Can we start?", "Hello! Tell me more.", etc.
+        GREETING_STARTS = {"hi", "hello", "hey", "hiya", "howdy", "yo", "sup", "helo"}
+        if clean_words and clean_words[0] in GREETING_STARTS and not has_product_hint:
             return True
+
+        # Rule 3: Short messages (≤ 3 words) with no product hints
+        if len(clean_words) <= 3 and not has_product_hint:
+            return True
+
         return False
 
     def _count_prior_followups(self, chat_history: list) -> int:
