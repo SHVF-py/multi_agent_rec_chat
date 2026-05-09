@@ -175,46 +175,46 @@ if prompt := st.chat_input("Ask me anything about products..."):
 
         assistant_message = {"role": "assistant"}
 
-            if response.get("errors") and not response.get("ranked_products"):
-                st.warning(response["errors"][0])
-                assistant_message["text"] = response["errors"][0]
-            else:
-                # Always show the natural language reply first (ChatGPT-style)
-                chat_reply = response.get("conversational_reply", "")
-                if chat_reply:
-                    st.write(chat_reply)
-                    assistant_message["text"] = chat_reply
+        if response.get("errors") and not response.get("ranked_products"):
+            st.warning(response["errors"][0])
+            assistant_message["text"] = response["errors"][0]
+        else:
+            # Always show the natural language reply first (ChatGPT-style)
+            chat_reply = response.get("conversational_reply", "")
+            if chat_reply:
+                st.write(chat_reply)
+                assistant_message["text"] = chat_reply
 
-                # Then show products if any
-                if response.get("ranked_products"):
-                    products = response["ranked_products"]
-                    display_products(products)
-                    assistant_message["products"] = products
+            # Then show products if any
+            if response.get("ranked_products"):
+                products = response["ranked_products"]
+                display_products(products)
+                assistant_message["products"] = products
 
-                # Comparison table
-                if response.get("comparison"):
-                    with st.expander("📊 Product Comparison"):
-                        display_comparison(response["comparison"])
-                    assistant_message["comparison"] = response["comparison"]
+            # Comparison table
+            if response.get("comparison"):
+                with st.expander("📊 Product Comparison"):
+                    display_comparison(response["comparison"])
+                assistant_message["comparison"] = response["comparison"]
 
-                # Cross-sell
-                if response.get("cross_sell") and response["cross_sell"]["cross_sell_items"]:
-                    st.divider()
-                    st.subheader("🔗 Frequently Bought Together")
-                    display_cross_sell(response["cross_sell"]["cross_sell_items"])
-                    assistant_message["cross_sell"] = response["cross_sell"]["cross_sell_items"]
+            # Cross-sell
+            if response.get("cross_sell") and response["cross_sell"]["cross_sell_items"]:
+                st.divider()
+                st.subheader("🔗 Frequently Bought Together")
+                display_cross_sell(response["cross_sell"]["cross_sell_items"])
+                assistant_message["cross_sell"] = response["cross_sell"]["cross_sell_items"]
 
-                # If truly nothing came back
-                if not chat_reply and not response.get("ranked_products"):
-                    msg = "I couldn't find anything for that. Try rephrasing or ask for a specific product!"
-                    st.write(msg)
-                    assistant_message["text"] = msg
+            # If truly nothing came back
+            if not chat_reply and not response.get("ranked_products"):
+                msg = "I couldn't find anything for that. Try rephrasing or ask for a specific product!"
+                st.write(msg)
+                assistant_message["text"] = msg
 
-            if debug_mode:
-                with st.expander("🐛 Debug Info"):
-                    st.json(response)
+        if debug_mode:
+            with st.expander("🐛 Debug Info"):
+                st.json(response)
 
-            st.session_state.messages.append(assistant_message)
+        st.session_state.messages.append(assistant_message)
 
 if __name__ == "__main__":
     pass

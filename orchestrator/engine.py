@@ -98,22 +98,6 @@ class Orchestrator:
                     errors=[]
                 )
 
-            # STEP 2.5: Vague product query — ask a clarifying question instead of searching blindly
-            if self._is_vague_product_query(understanding):
-                reply = await self._ask_clarifying_question(
-                    query_input.query_text, understanding,
-                    chat_history=query_input.chat_history,
-                    session_id=query_input.session_id,
-                )
-                return OrchestratorOutput(
-                    request_id=request_id,
-                    intent=understanding.intent,
-                    ranked_products=[],
-                    conversational_reply=reply,
-                    execution_time_ms=(time.time() - start_time) * 1000,
-                    errors=[]
-                )
-
             # STEP 3: Build Execution Plan
             plan = self._build_plan(understanding)
             logger.info(f"Execution plan: {plan.steps}")
@@ -125,10 +109,13 @@ class Orchestrator:
 
             # STEP 5: Always generate a natural language reply from the LLM
             # It either introduces the products found or handles the query conversationally.
+            # Pass is_vague so the reply can append ONE follow-up question after products.
+            is_vague = self._is_vague_product_query(understanding)
             chat_reply = await self._chat_reply(
                 query_input.query_text, products=ranked[:3],
                 chat_history=query_input.chat_history,
                 session_id=query_input.session_id,
+                is_vague=is_vague,
             )
 
             # STEP 6: Update session with results from this turn
@@ -188,21 +175,35 @@ class Orchestrator:
             return True
         return False
 
+    def _count_prior_followups(self, chat_history: list) -> int:
+        """Count how many times Quiribot has already asked a follow-up question."""
+        count = 0
+        for msg in (chat_history or []):
+            if msg.get("role") == "assistant" and "?" in msg.get("content", ""):
+                count += 1
+        return count
+
     async def _chat_reply(
         self,
         query: str,
         products: list,
         chat_history: list = None,
         session_id: str = "",
+        is_vague: bool = False,
     ) -> str:
         """
         Generate a warm, conversational Quiribot reply using the consistent persona.
         Includes full chat history and live session context so each turn is coherent.
+        When is_vague=True and products are shown, appends ONE follow-up question
+        (capped at 2 total across the whole conversation).
         """
         session_ctx = self._build_session_context(session_id)
         system_content = QUIRIBOT_PERSONA
         if session_ctx:
             system_content += f"\n\nCustomer context this session:\n{session_ctx}"
+
+        prior_followups = self._count_prior_followups(chat_history)
+        add_followup = is_vague and prior_followups < 2
 
         if products:
             product_lines = []
@@ -213,56 +214,31 @@ class Orchestrator:
                 rating = meta.get("rating", "?")
                 product_lines.append(f"- {name} (${price}, rated {rating}/5)")
             product_summary = "\n".join(product_lines)
-            user_content = (
-                f"The customer asked: \"{query}\"\n"
-                f"You found these products:\n{product_summary}\n"
-                f"Introduce these results in 1\u20132 warm, conversational sentences."
-            )
+            if add_followup:
+                user_content = (
+                    f"The customer asked: \"{query}\"\n"
+                    f"You found these products:\n{product_summary}\n"
+                    f"Introduce these results in 1\u20132 warm sentences, then end with ONE short "
+                    f"follow-up question to help narrow down exactly what they need "
+                    f"(e.g. a budget, occasion, or preference). Keep it natural."
+                )
+            else:
+                user_content = (
+                    f"The customer asked: \"{query}\"\n"
+                    f"You found these products:\n{product_summary}\n"
+                    f"Introduce these results in 1\u20132 warm, conversational sentences."
+                )
         else:
             user_content = query
 
         messages = self._build_llm_messages(system_content, user_content, chat_history or [])
         try:
-            result = await llm_client.chat_completion(messages, temperature=0.8, max_tokens=150)
+            result = await llm_client.chat_completion(messages, temperature=0.8, max_tokens=180)
             return result["content"].strip()
         except Exception:
             if products:
                 return f"Here are the top results I found for \"{query}\"!"
             return "I'm here to help! Ask me to find products, compare options, or just chat."
-
-    async def _ask_clarifying_question(
-        self,
-        query: str,
-        understanding: QueryUnderstanding,
-        chat_history: list = None,
-        session_id: str = "",
-    ) -> str:
-        """
-        Ask the customer ONE focused follow-up question when their request is too
-        vague to search meaningfully (e.g. "I need a gift" with no further detail).
-        """
-        session_ctx = self._build_session_context(session_id)
-        system_content = QUIRIBOT_PERSONA
-        if session_ctx:
-            system_content += f"\n\nCustomer context this session:\n{session_ctx}"
-
-        intent_hint = understanding.intent.value if understanding.intent else "search"
-        user_content = (
-            f"The customer said: \"{query}\"\n"
-            f"Detected intent: {intent_hint}. Constraints found: {understanding.constraints or 'none'}.\n"
-            f"Their request is too vague to search meaningfully. "
-            f"Ask ONE short, specific follow-up question to understand what they need. "
-            f"Be warm and natural \u2014 like a helpful sales assistant."
-        )
-        messages = self._build_llm_messages(system_content, user_content, chat_history or [])
-        try:
-            result = await llm_client.chat_completion(messages, temperature=0.75, max_tokens=100)
-            return result["content"].strip()
-        except Exception:
-            return (
-                "Could you tell me a bit more about what you're looking for? "
-                "A category, budget, or use-case would help me find the right thing!"
-            )
 
     def _build_llm_messages(
         self,
