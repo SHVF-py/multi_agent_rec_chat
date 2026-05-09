@@ -417,9 +417,33 @@ class Orchestrator:
         understanding: QueryUnderstanding,
         query_input: QueryInput
     ):
-        """Execute retrieval agent."""
+        """Execute retrieval agent.
+
+        Products are indexed as: "{title}. Category: {category}. {description}"
+        To maximise cosine similarity we build a query string in the same style,
+        injecting whatever structured data QueryUnderstanding extracted.
+        """
+        parts: List[str] = []
+
+        # 1. Named product entities / features  ("laptop", "waterproof jacket", ...)
+        features = understanding.entities.get("features", [])
+        product_names = understanding.entities.get("product_names", [])
+        named = (product_names or []) + (features or [])
+        if named:
+            parts.append(", ".join(named))
+
+        # 2. Category  ("electronics", "men's clothing", ...)
+        category = understanding.constraints.get("category", "")
+        if category:
+            parts.append(f"Category: {category}")
+
+        # 3. Raw query always at the end as a safety net
+        parts.append(understanding.raw_query)
+
+        enriched_query = ". ".join(p for p in parts if p)
+
         retrieval_input = RetrievalInput(
-            query_text=understanding.raw_query,
+            query_text=enriched_query,
             filters=understanding.constraints,
             top_k=settings.DEFAULT_TOP_K,
             tenant_id=query_input.tenant_id
