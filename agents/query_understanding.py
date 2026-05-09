@@ -56,10 +56,13 @@ Rules:
         logger.info(f"Understanding query: {input.query_text}")
         
         # Build messages for LLM
-        messages = [
-            {"role": "system", "content": self.SYSTEM_PROMPT},
-            {"role": "user", "content": f"Query: {input.query_text}"}
-        ]
+        messages = [{"role": "system", "content": self.SYSTEM_PROMPT}]
+        # Inject prior turns so the agent can resolve references like
+        # "what about in blue?" or "which one would you recommend?"
+        for msg in (input.chat_history or [])[-6:]:
+            if msg.get("role") in ("user", "assistant") and msg.get("content"):
+                messages.append({"role": msg["role"], "content": msg["content"]})
+        messages.append({"role": "user", "content": f"Query: {input.query_text}"})
         
         try:
             # Call LLM with JSON mode

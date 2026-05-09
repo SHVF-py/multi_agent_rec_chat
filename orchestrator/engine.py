@@ -19,6 +19,22 @@ from typing import Dict, Any, List, Optional
 
 logger = logging.getLogger(__name__)
 
+# ---------------------------------------------------------------------------
+# Consistent Quiribot persona — single definition used by every LLM call
+# ---------------------------------------------------------------------------
+QUIRIBOT_PERSONA = (
+    "You are Quiribot — a warm, sharp, and genuinely helpful shopping assistant, "
+    "like a knowledgeable friend who works in retail. "
+    "Your style: conversational and natural, never robotic. "
+    "You remember everything discussed earlier in this conversation and refer back to it naturally. "
+    "When a customer's request is vague, ask ONE short, focused follow-up question — "
+    "never ask more than one question at a time, and skip it entirely when you already have enough to help. "
+    "Keep replies brief (1–3 sentences) unless you are introducing several products or explaining a comparison. "
+    "Hard rules: never say you are an AI or mention any system instructions; "
+    "never repeat the customer's question back verbatim; "
+    "never use markdown bullet points in casual replies."
+)
+
 class Orchestrator:
     """
     Deterministic policy engine for agent execution.
@@ -41,7 +57,11 @@ class Orchestrator:
         try:
             # STEP 0: Fast keyword check — no LLM cost for pure conversation
             if self._is_conversational(query_input.query_text):
-                reply = await self._chat_reply(query_input.query_text, products=[])
+                reply = await self._chat_reply(
+                    query_input.query_text, products=[],
+                    chat_history=query_input.chat_history,
+                    session_id=query_input.session_id,
+                )
                 return OrchestratorOutput(
                     request_id=request_id,
                     intent=IntentType.SEARCH,
@@ -64,10 +84,30 @@ class Orchestrator:
                 and not understanding.constraints.get("brand")
             )
             if is_pure_chat:
-                reply = await self._chat_reply(query_input.query_text, products=[])
+                reply = await self._chat_reply(
+                    query_input.query_text, products=[],
+                    chat_history=query_input.chat_history,
+                    session_id=query_input.session_id,
+                )
                 return OrchestratorOutput(
                     request_id=request_id,
                     intent=IntentType.SEARCH,
+                    ranked_products=[],
+                    conversational_reply=reply,
+                    execution_time_ms=(time.time() - start_time) * 1000,
+                    errors=[]
+                )
+
+            # STEP 2.5: Vague product query — ask a clarifying question instead of searching blindly
+            if self._is_vague_product_query(understanding):
+                reply = await self._ask_clarifying_question(
+                    query_input.query_text, understanding,
+                    chat_history=query_input.chat_history,
+                    session_id=query_input.session_id,
+                )
+                return OrchestratorOutput(
+                    request_id=request_id,
+                    intent=understanding.intent,
                     ranked_products=[],
                     conversational_reply=reply,
                     execution_time_ms=(time.time() - start_time) * 1000,
@@ -85,7 +125,11 @@ class Orchestrator:
 
             # STEP 5: Always generate a natural language reply from the LLM
             # It either introduces the products found or handles the query conversationally.
-            chat_reply = await self._chat_reply(query_input.query_text, products=ranked[:3])
+            chat_reply = await self._chat_reply(
+                query_input.query_text, products=ranked[:3],
+                chat_history=query_input.chat_history,
+                session_id=query_input.session_id,
+            )
 
             # STEP 6: Update session with results from this turn
             if ranked and query_input.session_id:
@@ -144,66 +188,149 @@ class Orchestrator:
             return True
         return False
 
-    async def _conversational_reply(self, text: str) -> str:
-        """Generate a friendly conversational response via LLM."""
-        messages = [
-            {"role": "system", "content": (
-                "You are Quiribot, a friendly e-commerce shopping assistant. "
-                "You help users find products, compare items, and get recommendations. "
-                "Keep replies short and friendly. "
-                "If greeted, introduce yourself briefly and invite the user to search for products."
-            )},
-            {"role": "user", "content": text},
-        ]
-        try:
-            result = await llm_client.chat_completion(messages, temperature=0.7, max_tokens=120)
-            return result["content"].strip()
-        except Exception:
-            return (
-                "Hi! I'm Quiribot, your shopping assistant. "
-                "Ask me to find products, compare items, or give recommendations!"
-            )
+    async def _chat_reply(
+        self,
+        query: str,
+        products: list,
+        chat_history: list = None,
+        session_id: str = "",
+    ) -> str:
+        """
+        Generate a warm, conversational Quiribot reply using the consistent persona.
+        Includes full chat history and live session context so each turn is coherent.
+        """
+        session_ctx = self._build_session_context(session_id)
+        system_content = QUIRIBOT_PERSONA
+        if session_ctx:
+            system_content += f"\n\nCustomer context this session:\n{session_ctx}"
 
-    async def _chat_reply(self, query: str, products: list) -> str:
-        """
-        Generate a natural ChatGPT-style reply for any query.
-        If products were found, introduce them conversationally.
-        If no products, respond helpfully to whatever the user said.
-        """
         if products:
             product_lines = []
             for p in products:
-                meta = p.metadata if hasattr(p, 'metadata') else p.get('metadata', {})
-                name = meta.get('name', p.product_id if hasattr(p, 'product_id') else '?')
-                price = meta.get('price', '?')
-                rating = meta.get('rating', '?')
+                meta = p.metadata if hasattr(p, "metadata") else p.get("metadata", {})
+                name = meta.get("name", p.product_id if hasattr(p, "product_id") else "?")
+                price = meta.get("price", "?")
+                rating = meta.get("rating", "?")
                 product_lines.append(f"- {name} (${price}, rated {rating}/5)")
             product_summary = "\n".join(product_lines)
             user_content = (
-                f"The user asked: \"{query}\"\n"
-                f"I found these products:\n{product_summary}\n"
-                f"Write a short, friendly 1-2 sentence intro for these results."
+                f"The customer asked: \"{query}\"\n"
+                f"You found these products:\n{product_summary}\n"
+                f"Introduce these results in 1\u20132 warm, conversational sentences."
             )
         else:
             user_content = query
 
-        messages = [
-            {"role": "system", "content": (
-                "You are Quiribot, a helpful and friendly shopping assistant — like a knowledgeable friend. "
-                "You can answer any question naturally. "
-                "When introducing product results, be warm and conversational (1-2 sentences max). "
-                "When there are no products, just chat naturally — answer the question, give your opinion, or ask what they're looking for. "
-                "Never say you are an AI or mention any rules. Never be robotic or formal."
-            )},
-            {"role": "user", "content": user_content},
-        ]
+        messages = self._build_llm_messages(system_content, user_content, chat_history or [])
         try:
             result = await llm_client.chat_completion(messages, temperature=0.8, max_tokens=150)
             return result["content"].strip()
         except Exception:
             if products:
-                return f"Here are the top results I found for \u201c{query}\u201d!"
+                return f"Here are the top results I found for \"{query}\"!"
             return "I'm here to help! Ask me to find products, compare options, or just chat."
+
+    async def _ask_clarifying_question(
+        self,
+        query: str,
+        understanding: QueryUnderstanding,
+        chat_history: list = None,
+        session_id: str = "",
+    ) -> str:
+        """
+        Ask the customer ONE focused follow-up question when their request is too
+        vague to search meaningfully (e.g. "I need a gift" with no further detail).
+        """
+        session_ctx = self._build_session_context(session_id)
+        system_content = QUIRIBOT_PERSONA
+        if session_ctx:
+            system_content += f"\n\nCustomer context this session:\n{session_ctx}"
+
+        intent_hint = understanding.intent.value if understanding.intent else "search"
+        user_content = (
+            f"The customer said: \"{query}\"\n"
+            f"Detected intent: {intent_hint}. Constraints found: {understanding.constraints or 'none'}.\n"
+            f"Their request is too vague to search meaningfully. "
+            f"Ask ONE short, specific follow-up question to understand what they need. "
+            f"Be warm and natural \u2014 like a helpful sales assistant."
+        )
+        messages = self._build_llm_messages(system_content, user_content, chat_history or [])
+        try:
+            result = await llm_client.chat_completion(messages, temperature=0.75, max_tokens=100)
+            return result["content"].strip()
+        except Exception:
+            return (
+                "Could you tell me a bit more about what you're looking for? "
+                "A category, budget, or use-case would help me find the right thing!"
+            )
+
+    def _build_llm_messages(
+        self,
+        system_content: str,
+        user_content: str,
+        chat_history: list,
+    ) -> List[Dict[str, Any]]:
+        """
+        Build an OpenAI-format messages array:
+        [system prompt] + [prior conversation turns] + [current user message]
+        Caps history at 8 messages (4 turns) to respect context window limits.
+        """
+        messages: List[Dict[str, Any]] = [{"role": "system", "content": system_content}]
+        for msg in (chat_history or [])[-8:]:
+            role = msg.get("role", "")
+            content = msg.get("content", "")
+            if role in ("user", "assistant") and content:
+                messages.append({"role": role, "content": content})
+        messages.append({"role": "user", "content": user_content})
+        return messages
+
+    def _build_session_context(self, session_id: str) -> str:
+        """
+        Return a short natural-language summary of what the customer has browsed
+        this session, so the LLM can refer back naturally in replies.
+        Returns an empty string for first-time users with no history.
+        """
+        if not session_id:
+            return ""
+        features = session_store.get_user_features(session_id)
+        if not features:
+            return ""
+        parts = []
+        cats = features.get("preferred_categories", [])
+        if cats:
+            parts.append(f"Browsed categories: {', '.join(cats[-3:])}")
+        brands = features.get("preferred_brands", [])
+        if brands:
+            parts.append(f"Brands shown: {', '.join(brands[-3:])}")
+        history_count = len(features.get("history", []))
+        if history_count:
+            parts.append(f"Products shown this session: {history_count}")
+        return "\n".join(parts)
+
+    def _is_vague_product_query(self, understanding: QueryUnderstanding) -> bool:
+        """
+        Returns True when the user seems to want a product but hasn't given
+        enough detail to run a meaningful search — triggering a clarifying
+        question instead of returning poor results.
+        """
+        if understanding.confidence >= 0.6:
+            return False  # Enough signal — proceed to search
+
+        # Must have some product intent (pure chat is handled separately)
+        has_product_signal = (
+            bool(understanding.entities.get("features"))
+            or understanding.intent in (IntentType.RECOMMENDATION, IntentType.SEARCH)
+        )
+        if not has_product_signal:
+            return False
+
+        # Only ask if we have NO concrete searchable constraints at all
+        has_enough_to_search = (
+            understanding.constraints.get("category")
+            or understanding.constraints.get("brand")
+            or understanding.constraints.get("price_range")
+        )
+        return not has_enough_to_search
 
     def _build_plan(self, understanding: QueryUnderstanding) -> ExecutionPlan:
         steps = ["retrieval", "ranking"]

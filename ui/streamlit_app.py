@@ -63,7 +63,22 @@ def display_cross_sell(items):
             st.caption(f"Confidence: {item['confidence']:.0%}")
 
 
-def query_api(query_text: str) -> Dict[str, Any]:
+def _extract_text_history(messages: list) -> list:
+    """
+    Convert Streamlit message history into the text-only format expected by the API.
+    Extracts role + content for user messages and role + text for assistant messages.
+    Returns the last 10 entries (5 turns) to keep token usage reasonable.
+    """
+    history = []
+    for msg in messages:
+        if msg["role"] == "user":
+            history.append({"role": "user", "content": msg.get("content", "")})
+        elif msg["role"] == "assistant" and msg.get("text"):
+            history.append({"role": "assistant", "content": msg["text"]})
+    return history[-10:]
+
+
+def query_api(query_text: str, chat_history: list = None) -> Dict[str, Any]:
     """
     Call Quiribot API synchronously.
     Uses httpx.Client (synchronous) to avoid asyncio conflicts with Streamlit.
@@ -81,6 +96,7 @@ def query_api(query_text: str) -> Dict[str, Any]:
                     "query_text": query_text,
                     "session_id": st.session_state.session_id,
                     "tenant_id": TENANT_ID,
+                    "chat_history": chat_history or [],
                 }
             )
             response.raise_for_status()
@@ -118,6 +134,12 @@ with st.sidebar:
     st.title("⚙️ Settings")
     debug_mode = st.toggle("Debug Mode", value=False)
     st.markdown("---")
+    if st.button("🗑️ New Chat"):
+        st.session_state.messages = []
+        import uuid as _uuid
+        st.session_state.session_id = str(_uuid.uuid4())
+        st.rerun()
+    st.markdown("---")
     st.caption(f"Session: {st.session_state.session_id[:8]}")
 
 # Main UI
@@ -147,9 +169,11 @@ if prompt := st.chat_input("Ask me anything about products..."):
 
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            response = query_api(prompt)
+            # Build text-only history from all turns BEFORE the current prompt
+            prior_history = _extract_text_history(st.session_state.messages[:-1])
+            response = query_api(prompt, prior_history)
 
-            assistant_message = {"role": "assistant"}
+        assistant_message = {"role": "assistant"}
 
             if response.get("errors") and not response.get("ranked_products"):
                 st.warning(response["errors"][0])

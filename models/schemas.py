@@ -41,6 +41,8 @@ class QueryInput(BaseModel):
     session_id: str
     tenant_id: str = "default"
     preprocessing: Optional["PreprocessingResult"] = None
+    # Text-only prior turns sent by the UI each request; session-scoped (cleared on new chat)
+    chat_history: List[Dict[str, str]] = []
 
 class QueryUnderstanding(BaseModel):
     intent: IntentType
