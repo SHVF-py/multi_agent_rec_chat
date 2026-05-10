@@ -166,6 +166,66 @@
     #send-btn:active { transform: scale(.92); }
     #send-btn:disabled { opacity: .5; cursor: default; }
 
+    /* ---- First-time setup screen ---- */
+    #qb-setup-screen {
+      position: absolute;
+      inset: 56px 0 0 0;          /* below header */
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 24px;
+      text-align: center;
+      z-index: 10;
+      transition: opacity .4s;
+    }
+    .qb-setup-emoji { font-size: 44px; margin-bottom: 14px; }
+    .qb-setup-title { font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+    .qb-setup-sub   { font-size: 13px; color: #6b7280; margin-bottom: 26px; }
+
+    .qb-steps { width: 100%; max-width: 280px; margin-bottom: 20px; }
+    .qb-step  {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px; border-radius: 10px; margin-bottom: 8px;
+      font-size: 13px; color: #9ca3af; background: #f9f9fc; text-align: left;
+      transition: background .3s, color .3s;
+    }
+    .qb-step.done   { color: #166534; background: #f0fdf4; }
+    .qb-step.active { color: #1e40af; background: #eff6ff; }
+    .qb-step-icon {
+      width: 22px; height: 22px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .qb-bar-track {
+      width: 100%; max-width: 280px; height: 6px;
+      background: #e5e7eb; border-radius: 9999px;
+      overflow: hidden; margin-bottom: 18px;
+    }
+    .qb-bar-fill {
+      height: 100%; border-radius: 9999px;
+      background: linear-gradient(90deg, var(--primary), #8b5cf6);
+      width: 0%; transition: width .7s ease;
+    }
+    .qb-setup-hint { font-size: 12px; color: #9ca3af; max-width: 240px; line-height: 1.55; }
+
+    @keyframes qb-spin-ring { to { transform: rotate(360deg); } }
+    .qb-spin-ring {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 2px solid #bfdbfe; border-top-color: #3b82f6;
+      animation: qb-spin-ring .8s linear infinite;
+    }
+    @keyframes qb-pop-in {
+      from { opacity: 0; transform: scale(.8); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .qb-done-icon { animation: qb-pop-in .35s ease; }
+
+    /* disabled input state */
+    #user-input:disabled   { background: #f3f4f6; color: #9ca3af; cursor: not-allowed; }
+    #send-btn:disabled svg { opacity: .4; }
+
     /* New chat button */
     #new-chat-btn {
       font-size: 11px; color: var(--text-muted); background: none;
@@ -186,12 +246,45 @@
   <div id="header-avatar">🛍</div>
   <div>
     <div id="header-name">Quiribot</div>
-    <div id="header-status">● Online</div>
+    <div id="header-status" id="header-status">● Online</div>
   </div>
   <button id="close-btn" title="Close chat">✕</button>
 </div>
 
-<div id="messages" role="log" aria-live="polite" aria-label="Chat messages"></div>
+<!-- wrapper gives the setup overlay something to position against -->
+<div style="flex:1;display:flex;flex-direction:column;position:relative;overflow:hidden;">
+
+  <!-- First-time setup overlay — hidden by default, shown by chat.js when ready=0 -->
+  <div id="qb-setup-screen" style="display:none;">
+    <div class="qb-setup-emoji" id="setup-emoji">⚡</div>
+    <div class="qb-setup-title" id="setup-title">Setting up your store</div>
+    <div class="qb-setup-sub"   id="setup-sub">We're learning about your products</div>
+
+    <div class="qb-steps" id="qb-steps">
+      <div class="qb-step" id="step-0">
+        <div class="qb-step-icon" id="step-icon-0">○</div>
+        <span>Connecting to your store</span>
+      </div>
+      <div class="qb-step" id="step-1">
+        <div class="qb-step-icon" id="step-icon-1">○</div>
+        <span>Discovering products</span>
+      </div>
+      <div class="qb-step" id="step-2">
+        <div class="qb-step-icon" id="step-icon-2">○</div>
+        <span>Building search index</span>
+      </div>
+    </div>
+
+    <div class="qb-bar-track">
+      <div class="qb-bar-fill" id="qb-bar"></div>
+    </div>
+    <div class="qb-setup-hint" id="setup-hint">
+      This usually takes 1–2 minutes.<br>You can close this and come back — we'll keep working.
+    </div>
+  </div>
+
+  <div id="messages" role="log" aria-live="polite" aria-label="Chat messages"></div>
+</div>
 
 <div id="input-area">
   <textarea id="user-input" rows="1" placeholder="Ask me anything…" aria-label="Type your message"></textarea>

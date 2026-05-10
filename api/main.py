@@ -163,6 +163,40 @@ async def widget_proactive(
     return {"triggered": False, "product_name": None, "message": None}
 
 
+@app.get("/widget/sync-status")
+async def widget_sync_status(siteKey: str = Query(...)):
+    """
+    Returns whether the tenant's product catalog has been indexed.
+    Polled every 5 seconds by the widget's first-time setup screen.
+    """
+    row = pdb.resolve_site_key(siteKey)
+    if not row:
+        raise HTTPException(status_code=404, detail="Unknown site key")
+
+    product_count = row.get("product_count") or 0
+    if product_count > 0:
+        return {
+            "is_ready":      True,
+            "product_count": product_count,
+            "sync_status":   "done",
+            "message":       f"{product_count} products ready",
+        }
+
+    sync_job = pdb.get_latest_sync(row["id"])
+    if sync_job:
+        job    = dict(sync_job)
+        status = job.get("status", "idle")
+        if status == "running":
+            return {"is_ready": False, "product_count": 0, "sync_status": "syncing",
+                    "message": "Scanning your store for products…"}
+        if status == "error":
+            return {"is_ready": False, "product_count": 0, "sync_status": "error",
+                    "message": job.get("error") or "Sync failed. Retry from your dashboard."}
+
+    return {"is_ready": False, "product_count": 0, "sync_status": "idle",
+            "message": "Products not yet synced. Start sync from your dashboard."}
+
+
 @app.get("/")
 async def root():
     """Root endpoint."""

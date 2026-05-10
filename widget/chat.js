@@ -1,7 +1,9 @@
 /**
- * Quiribot Widget Shell — chat.js
- * Runs inside the sandboxed iframe.
- * Talks to the Quiribot API (port 8080) and the parent page via postMessage.
+ * Quiribot Widget Shell — chat.js  v2
+ * Runs inside the sandboxed iframe (chat.html).
+ *
+ * URL params (set by loader.js):
+ *   siteKey, api, color, botName, greeting, tone, ready (1|0)
  */
 (function () {
   "use strict";
@@ -15,9 +17,10 @@
   var BOT_NAME = params.get("botName")  || "Quiribot";
   var GREETING = params.get("greeting") || "Hi! How can I help you find the perfect product today?";
   var COLOR    = params.get("color")    || "#6366f1";
+  var IS_READY = params.get("ready")    !== "0";    // default: ready
 
-  // Apply primary color from config
-  document.documentElement.style.setProperty("--primary", COLOR);
+  // Apply colors
+  document.documentElement.style.setProperty("--primary",      COLOR);
   document.documentElement.style.setProperty("--primary-dark", shadeColor(COLOR, -15));
   document.getElementById("header-name").textContent = BOT_NAME;
 
@@ -25,22 +28,28 @@
   // State
   // -------------------------------------------------------------------------
   var sessionId   = generateId();
-  var chatHistory = [];   // [{role, content}] for the API
-  var pendingText = "";   // pre-filled from proactive message
+  var chatHistory = [];
+  var setupDone   = IS_READY;
+  var _pollTimer  = null;
 
   // -------------------------------------------------------------------------
   // DOM refs
   // -------------------------------------------------------------------------
-  var messagesEl = document.getElementById("messages");
-  var inputEl    = document.getElementById("user-input");
-  var sendBtn    = document.getElementById("send-btn");
-  var closeBtn   = document.getElementById("close-btn");
-  var newChatBtn = document.getElementById("new-chat-btn");
+  var messagesEl  = document.getElementById("messages");
+  var inputEl     = document.getElementById("user-input");
+  var sendBtn     = document.getElementById("send-btn");
+  var closeBtn    = document.getElementById("close-btn");
+  var newChatBtn  = document.getElementById("new-chat-btn");
+  var setupScreen = document.getElementById("qb-setup-screen");
 
   // -------------------------------------------------------------------------
-  // Boot: show greeting
+  // Boot
   // -------------------------------------------------------------------------
-  appendBotMessage(GREETING);
+  if (IS_READY) {
+    appendBotMessage(GREETING);
+  } else {
+    showSetupScreen();
+  }
 
   // -------------------------------------------------------------------------
   // Event listeners
@@ -59,6 +68,7 @@
   });
 
   newChatBtn.addEventListener("click", function () {
+    if (!setupDone) return;
     sessionId   = generateId();
     chatHistory = [];
     messagesEl.innerHTML = "";
@@ -66,18 +76,146 @@
     inputEl.focus();
   });
 
-  // Listen for messages from loader.js (parent)
   window.addEventListener("message", function (e) {
     var msg = e.data || {};
-    if (msg.type === "QB_FOCUS") { inputEl.focus(); }
-    if (msg.type === "QB_PROACTIVE" && msg.message) {
-      // Pre-fill input with product context
-      inputEl.value = "Tell me more about this product";
-      autoResize();
-      appendBotMessage(msg.message);
-      inputEl.focus();
-    }
+    if (msg.type === "QB_FOCUS")    { inputEl.focus(); }
+    if (msg.type === "QB_PROACTIVE" && msg.message) { appendBotMessage(msg.message); }
   });
+
+  // -------------------------------------------------------------------------
+  // First-time setup screen
+  // -------------------------------------------------------------------------
+  var CHECK_SVG = '<svg class="qb-done-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">'
+    + '<circle cx="9" cy="9" r="9" fill="#22c55e"/>'
+    + '<path d="M5 9l3 3 5-6" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'
+    + '</svg>';
+  var SPIN_HTML = '<div class="qb-spin-ring"></div>';
+
+  function showSetupScreen() {
+    disableInput("Setting up\u2026");
+    setupScreen.style.display = "flex";
+
+    // Step 0 done instantly (visual progress feels good)
+    setTimeout(function () { setStep(0, "done"); setBar(18); }, 800);
+    // Step 1 goes active
+    setTimeout(function () { setStep(1, "active"); }, 1600);
+    // Start polling
+    _pollTimer = setTimeout(pollReady, 5000);
+  }
+
+  function setStep(index, state) {
+    var stepEl = document.getElementById("step-" + index);
+    var iconEl = document.getElementById("step-icon-" + index);
+    if (!stepEl || !iconEl) return;
+    stepEl.className = "qb-step " + state;
+    if (state === "done")        { iconEl.innerHTML  = CHECK_SVG; }
+    else if (state === "active") { iconEl.innerHTML  = SPIN_HTML; }
+    else                         { iconEl.textContent = "\u25cb"; }
+  }
+
+  function setBar(pct) {
+    var bar = document.getElementById("qb-bar");
+    if (bar) bar.style.width = Math.min(pct, 100) + "%";
+  }
+
+  function pollReady() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", API_URL + "/widget/sync-status?siteKey=" + encodeURIComponent(SITE_KEY), true);
+    xhr.timeout = 8000;
+
+    xhr.onload = function () {
+      try {
+        var data = JSON.parse(xhr.responseText);
+        if (data.is_ready) {
+          completeSetup(data.product_count || 0);
+        } else if (data.sync_status === "error") {
+          showSetupError(data.message || "Sync failed. Retry from your dashboard.");
+        } else {
+          // Still syncing — nudge progress bar, keep polling
+          var bar = document.getElementById("qb-bar");
+          var cur = bar ? parseFloat(bar.style.width) || 20 : 20;
+          setBar(Math.min(cur + 8 + Math.random() * 10, 85));
+          _pollTimer = setTimeout(pollReady, 5000);
+        }
+      } catch (e) {
+        _pollTimer = setTimeout(pollReady, 5000);
+      }
+    };
+    xhr.onerror = xhr.ontimeout = function () {
+      _pollTimer = setTimeout(pollReady, 8000);
+    };
+    xhr.send();
+  }
+
+  function completeSetup(productCount) {
+    clearTimeout(_pollTimer);
+    setupDone = true;
+
+    setStep(1, "done");  setBar(80);
+    setTimeout(function () { setStep(2, "active"); setBar(95); }, 400);
+    setTimeout(function () { setStep(2, "done");   setBar(100); }, 1100);
+
+    setTimeout(function () {
+      var emoji   = document.getElementById("setup-emoji");
+      var title   = document.getElementById("setup-title");
+      var sub     = document.getElementById("setup-sub");
+      var hint    = document.getElementById("setup-hint");
+      var stepsEl = document.getElementById("qb-steps");
+      var barEl   = document.querySelector(".qb-bar-track");
+
+      if (emoji)   emoji.textContent = "\u2705";
+      if (title)   title.textContent = "Your store is ready!";
+      if (sub)     sub.textContent   = (productCount > 0 ? productCount + " products" : "Products") + " indexed and searchable";
+      if (hint)    hint.textContent  = "Starting chat\u2026";
+      if (stepsEl) stepsEl.style.display = "none";
+      if (barEl)   barEl.style.display   = "none";
+
+      // Tell parent loader — it updates the button to ready state
+      parent.postMessage({ type: "QB_READY" }, "*");
+    }, 1700);
+
+    // Fade out setup → show chat
+    setTimeout(function () {
+      setupScreen.style.opacity = "0";
+      setTimeout(function () {
+        setupScreen.style.display  = "none";
+        setupScreen.style.opacity  = "1";
+        appendBotMessage(GREETING);
+        enableInput();
+        inputEl.focus();
+      }, 420);
+    }, 2800);
+  }
+
+  function showSetupError(msg) {
+    clearTimeout(_pollTimer);
+    var emoji  = document.getElementById("setup-emoji");
+    var title  = document.getElementById("setup-title");
+    var sub    = document.getElementById("setup-sub");
+    var hint   = document.getElementById("setup-hint");
+    var stepsEl = document.getElementById("qb-steps");
+    var barEl  = document.querySelector(".qb-bar-track");
+
+    if (emoji)   emoji.textContent = "\u26a0\ufe0f";
+    if (title)   { title.textContent = "Setup failed"; title.style.color = "#b91c1c"; }
+    if (sub)     sub.textContent  = msg;
+    if (hint)    hint.innerHTML   = 'Retry sync from your <a href="/business/dashboard" target="_blank" style="color:var(--primary);">dashboard</a>.';
+    if (stepsEl) stepsEl.style.display = "none";
+    if (barEl)   barEl.style.display   = "none";
+    disableInput("Unavailable");
+  }
+
+  function enableInput() {
+    inputEl.disabled    = false;
+    sendBtn.disabled    = false;
+    inputEl.placeholder = "Ask me anything\u2026";
+  }
+
+  function disableInput(placeholder) {
+    inputEl.disabled    = true;
+    sendBtn.disabled    = true;
+    inputEl.placeholder = placeholder || "Setting up\u2026";
+  }
 
   // -------------------------------------------------------------------------
   // Core send logic
