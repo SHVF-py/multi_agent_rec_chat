@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiribot Chat</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --bg: #ffffff;
+      --surface: #f8f8fc;
+      --border: #e8e8f0;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --user-bubble: var(--primary);
+      --bot-bubble: #f1f1f8;
+      --radius: 18px;
+    }
+
+    html, body { height: 100%; overflow: hidden; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 14px;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    #header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--primary);
+      color: white;
+      flex-shrink: 0;
+    }
+    #header-avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    #header-name { font-weight: 600; font-size: 15px; }
+    #header-status { font-size: 11px; opacity: 0.8; }
+    #close-btn {
+      margin-left: auto;
+      background: none; border: none; color: white;
+      font-size: 20px; cursor: pointer; opacity: 0.8; padding: 4px;
+    }
+    #close-btn:hover { opacity: 1; }
+
+    /* Messages area */
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      scroll-behavior: smooth;
+    }
+    #messages::-webkit-scrollbar { width: 4px; }
+    #messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    /* Bubbles */
+    .msg { display: flex; gap: 8px; align-items: flex-end; max-width: 100%; }
+    .msg.user { flex-direction: row-reverse; }
+
+    .bubble {
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      line-height: 1.5;
+      max-width: 78%;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+    .msg.bot  .bubble { background: var(--bot-bubble); border-bottom-left-radius: 4px; }
+    .msg.user .bubble {
+      background: var(--primary);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    /* Typing indicator */
+    .typing-dots { display: flex; gap: 4px; align-items: center; padding: 8px 4px; }
+    .typing-dots span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--text-muted);
+      animation: bounce 1.2s infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: .2s; }
+    .typing-dots span:nth-child(3) { animation-delay: .4s; }
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-6px); }
+    }
+
+    /* Product cards */
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      cursor: pointer;
+      transition: box-shadow .15s;
+    }
+    .product-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,.1); }
+    .product-card img {
+      width: 64px; height: 64px;
+      object-fit: contain; border-radius: 8px;
+      background: white; flex-shrink: 0;
+    }
+    .product-info { flex: 1; min-width: 0; }
+    .product-name { font-weight: 600; font-size: 13px; margin-bottom: 2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .product-meta { font-size: 12px; color: var(--text-muted); }
+    .product-price { font-weight: 700; color: var(--primary); font-size: 14px; margin-top: 4px; }
+
+    /* Input area */
+    #input-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+      background: var(--bg);
+    }
+    #user-input {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 24px;
+      padding: 9px 16px;
+      font-size: 14px;
+      outline: none;
+      resize: none;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--surface);
+      transition: border-color .15s;
+      max-height: 96px;
+      overflow-y: auto;
+    }
+    #user-input:focus { border-color: var(--primary); background: white; }
+    #user-input::placeholder { color: var(--text-muted); }
+
+    #send-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--primary); border: none;
+      color: white; cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s, transform .1s;
+    }
+    #send-btn:hover  { background: var(--primary-dark); }
+    #send-btn:active { transform: scale(.92); }
+    #send-btn:disabled { opacity: .5; cursor: default; }
+
+    /* New chat button */
+    #new-chat-btn {
+      font-size: 11px; color: var(--text-muted); background: none;
+      border: none; cursor: pointer; padding: 0 4px; text-decoration: underline;
+    }
+    #new-chat-btn:hover { color: var(--primary); }
+
+    .powered-by {
+      text-align: center; font-size: 10px; color: var(--text-muted);
+      padding: 4px 0 2px;
+    }
+    .powered-by a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div id="header">
+  <div id="header-avatar">🛍</div>
+  <div>
+    <div id="header-name">Quiribot</div>
+    <div id="header-status">● Online</div>
+  </div>
+  <button id="close-btn" title="Close chat">✕</button>
+</div>
+
+<div id="messages" role="log" aria-live="polite" aria-label="Chat messages"></div>
+
+<div id="input-area">
+  <textarea id="user-input" rows="1" placeholder="Ask me anything…" aria-label="Type your message"></textarea>
+  <button id="send-btn" aria-label="Send message" title="Send">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="22" y1="2" x2="11" y2="13"></line>
+      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+    </svg>
+  </button>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:0 14px 8px;">
+  <button id="new-chat-btn">New chat</button>
+  <span class="powered-by">Powered by <a href="https://quiribot.com" target="_blank">Quiribot</a></span>
+</div>
+
+<script src="chat.js"></script>
+</body>
+</html>

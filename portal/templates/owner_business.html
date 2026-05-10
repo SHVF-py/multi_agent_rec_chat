@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ business.name }} — Owner View</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5fa; color: #111827; }
+    nav { background: white; border-bottom: 1px solid #e5e7eb; padding: 0 32px; height: 56px; display: flex; align-items: center; gap: 16px; }
+    .nav-brand { font-weight: 700; color: #6366f1; font-size: 18px; }
+    .back { color: #6b7280; font-size: 13px; text-decoration: none; }
+    .back:hover { color: #6366f1; }
+    main { max-width: 860px; margin: 32px auto; padding: 0 24px; }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 24px; }
+    .badge-pending   { background: #fef9c3; color: #a16207; }
+    .badge-active    { background: #dcfce7; color: #166534; }
+    .badge-rejected  { background: #fee2e2; color: #991b1b; }
+    .badge-suspended { background: #f3f4f6; color: #374151; }
+    .section { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 8px rgba(0,0,0,.05); margin-bottom: 20px; }
+    .section h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #374151; }
+    .field { display: flex; gap: 12px; margin-bottom: 12px; font-size: 14px; }
+    .field-label { width: 160px; color: #6b7280; flex-shrink: 0; }
+    .field-value { color: #111827; word-break: break-all; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    button { padding: 9px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; }
+    .btn-approve  { background: #dcfce7; color: #166534; }
+    .btn-reject   { background: #fee2e2; color: #991b1b; }
+    .btn-suspend  { background: #f3f4f6; color: #374151; }
+    .btn-reinstate { background: #dcfce7; color: #166534; }
+  </style>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">Quiribot ⚙</span>
+  <a href="/owner/dashboard" class="back">← Dashboard</a>
+</nav>
+<main>
+  <h1>{{ business.name }}</h1>
+  <span class="badge badge-{{ business.status }}">{{ business.status }}</span>
+
+  <div class="section">
+    <h2>Account Details</h2>
+    <div class="field"><span class="field-label">ID</span><span class="field-value">{{ business.id }}</span></div>
+    <div class="field"><span class="field-label">Email</span><span class="field-value">{{ business.email }}</span></div>
+    <div class="field"><span class="field-label">Website</span><span class="field-value"><a href="{{ business.website_url }}" target="_blank">{{ business.website_url }}</a></span></div>
+    <div class="field"><span class="field-label">Platform</span><span class="field-value">{{ business.platform or 'Not set' }}</span></div>
+    <div class="field"><span class="field-label">Site Key</span><span class="field-value">{{ business.site_key }}</span></div>
+    <div class="field"><span class="field-label">Registered</span><span class="field-value">{{ business.created_at }}</span></div>
+    <div class="field"><span class="field-label">Product Count</span><span class="field-value">{{ business.product_count or 0 }}</span></div>
+    <div class="field"><span class="field-label">Total Conversations</span><span class="field-value">{{ business.total_conversations or 0 }}</span></div>
+    {% if business.rejection_reason %}
+    <div class="field"><span class="field-label">Rejection Reason</span><span class="field-value" style="color:#b91c1c;">{{ business.rejection_reason }}</span></div>
+    {% endif %}
+  </div>
+
+  <div class="section">
+    <h2>Actions</h2>
+    <div class="actions">
+      {% if business.status == 'pending' %}
+        <form method="POST" action="/owner/business/{{ business.id }}/approve"><button type="submit" class="btn-approve">✓ Approve</button></form>
+        <form method="POST" action="/owner/business/{{ business.id }}/reject"><button type="submit" class="btn-reject">✗ Reject</button></form>
+      {% elif business.status == 'active' %}
+        <form method="POST" action="/owner/business/{{ business.id }}/suspend"><button type="submit" class="btn-suspend">Suspend Account</button></form>
+      {% elif business.status == 'suspended' %}
+        <form method="POST" action="/owner/business/{{ business.id }}/approve"><button type="submit" class="btn-reinstate">Reinstate Account</button></form>
+      {% endif %}
+    </div>
+  </div>
+</main>
+</body>
+</html>

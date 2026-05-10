@@ -10,8 +10,9 @@ class Settings(BaseSettings):
     HOST_EMBEDDING_URL: str = "http://localhost:9000"
     HOST_VECTOR_URL: str = "http://localhost:9000"
 
-    # External product catalog APIs
-    FAKESTORE_API_URL: str = "https://fakestoreapi.com"
+    # Portal
+    PORTAL_DB_PATH: str = "data/portal.db"
+    PORTAL_SECRET_KEY: str = "change-me-in-production"
 
     # Ngrok tunnel URL — kept for when the host PC setup is used again.
     NGROK_API_URL: str = _NGROK_BASE

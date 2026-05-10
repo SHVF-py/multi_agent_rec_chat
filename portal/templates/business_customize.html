@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customize Widget — Quiribot</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5fa; color: #111827; }
+    nav { background: white; border-bottom: 1px solid #e5e7eb; padding: 0 32px; height: 56px;
+          display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-weight: 700; color: #6366f1; font-size: 18px; }
+    .nav-links { display: flex; gap: 20px; font-size: 13px; }
+    .nav-links a { color: #6b7280; text-decoration: none; }
+    .nav-links a:hover { color: #6366f1; }
+    main { max-width: 860px; margin: 32px auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    h1 { font-size: 20px; font-weight: 700; margin-bottom: 24px; grid-column: 1 / -1; }
+    .form-card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 1px 8px rgba(0,0,0,.06); }
+    .form-card h2 { font-size: 15px; font-weight: 600; color: #374151; margin-bottom: 18px; }
+    label { display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 4px; }
+    input[type="text"], input[type="color"], select, textarea {
+      width: 100%; padding: 9px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px;
+      font-size: 14px; outline: none; margin-bottom: 16px; font-family: inherit; }
+    input:focus, select:focus, textarea:focus { border-color: #6366f1; }
+    input[type="color"] { height: 42px; padding: 4px 6px; cursor: pointer; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .toggle-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .toggle-row label { margin: 0; }
+    button[type="submit"] { padding: 10px 24px; background: #6366f1; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; width: 100%; }
+    button[type="submit"]:hover { background: #4f46e5; }
+    .preview-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 1px 8px rgba(0,0,0,.06); }
+    .preview-card h2 { font-size: 15px; font-weight: 600; color: #374151; margin-bottom: 16px; }
+    .preview-widget { border-radius: 14px; overflow: hidden; border: 1px solid #e5e7eb; }
+    .preview-header { padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+    .preview-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.25); display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .preview-name { font-weight: 600; color: white; font-size: 14px; }
+    .preview-body { background: #f8f8fc; padding: 14px; }
+    .preview-bubble { background: #ededf8; border-radius: 14px 14px 14px 4px; padding: 10px 14px; font-size: 13px; color: #374151; display: inline-block; max-width: 90%; }
+    .preview-btn { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 12px; }
+    .success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">Quiribot 🛍</span>
+  <div class="nav-links">
+    <a href="/business/dashboard">Dashboard</a>
+    <a href="/business/onboarding">Setup</a>
+    <a href="/business/customize" style="color:#6366f1;font-weight:600;">Customize</a>
+    <a href="/business/snippet">Get Snippet</a>
+    <a href="/business/logout">Sign out</a>
+  </div>
+</nav>
+<main>
+  <h1>Customize Your Widget</h1>
+
+  <div>
+    {% if success %}<div class="success">✓ Widget settings saved!</div>{% endif %}
+    <form method="POST" action="/business/customize" id="cust-form">
+      <div class="form-card" style="margin-bottom:20px;">
+        <h2>Appearance</h2>
+        <label>Bot Name</label>
+        <input type="text" name="bot_name" value="{{ cfg.bot_name or 'Quiribot' }}" maxlength="32" id="inp-name" oninput="liveUpdate()" />
+        <div class="row">
+          <div>
+            <label>Primary Color</label>
+            <input type="color" name="primary_color" value="{{ cfg.primary_color or '#6366f1' }}" id="inp-color" oninput="liveUpdate()" />
+          </div>
+          <div>
+            <label>Button Color</label>
+            <input type="color" name="button_color" value="{{ cfg.button_color or '#6366f1' }}" id="inp-btn-color" oninput="liveUpdate()" />
+          </div>
+        </div>
+        <label>Widget Position</label>
+        <select name="position" id="inp-pos" onchange="liveUpdate()">
+          <option value="bottom-right" {% if cfg.position == 'bottom-right' %}selected{% endif %}>Bottom Right</option>
+          <option value="bottom-left"  {% if cfg.position == 'bottom-left' %}selected{% endif %}>Bottom Left</option>
+        </select>
+        <div class="toggle-row">
+          <input type="checkbox" name="avatar_visible" id="inp-avatar" {% if cfg.avatar_visible %}checked{% endif %} onchange="liveUpdate()" />
+          <label for="inp-avatar">Show avatar icon</label>
+        </div>
+      </div>
+
+      <div class="form-card" style="margin-bottom:20px;">
+        <h2>Behavior</h2>
+        <label>Greeting Message</label>
+        <textarea name="greeting" rows="3" id="inp-greeting" oninput="liveUpdate()">{{ cfg.greeting or 'Hi! How can I help you find the perfect product?' }}</textarea>
+        <label>Tone</label>
+        <select name="tone" id="inp-tone">
+          <option value="friendly"     {% if cfg.tone == 'friendly' %}selected{% endif %}>Friendly</option>
+          <option value="professional" {% if cfg.tone == 'professional' %}selected{% endif %}>Professional</option>
+          <option value="casual"       {% if cfg.tone == 'casual' %}selected{% endif %}>Casual</option>
+        </select>
+        <label>Blocked Topics (comma-separated)</label>
+        <input type="text" name="blocked_topics" value="{{ cfg.blocked_topics or '' }}" placeholder="e.g. politics, returns, competitors" />
+      </div>
+
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+
+  <div>
+    <div class="preview-card">
+      <h2>Live Preview</h2>
+      <div class="preview-widget">
+        <div class="preview-header" id="prev-header" style="background: {{ cfg.primary_color or '#6366f1' }};">
+          <div class="preview-avatar">🛍</div>
+          <span class="preview-name" id="prev-name">{{ cfg.bot_name or 'Quiribot' }}</span>
+        </div>
+        <div class="preview-body">
+          <div class="preview-bubble" id="prev-greeting">{{ cfg.greeting or 'Hi! How can I help you find the perfect product?' }}</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;text-align:right;">
+        <div class="preview-btn" id="prev-btn" style="background:{{ cfg.button_color or '#6366f1' }};margin-left:auto;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+function liveUpdate() {
+  var color    = document.getElementById('inp-color').value;
+  var btnColor = document.getElementById('inp-btn-color').value;
+  var name     = document.getElementById('inp-name').value || 'Quiribot';
+  var greeting = document.getElementById('inp-greeting').value;
+  document.getElementById('prev-header').style.background  = color;
+  document.getElementById('prev-btn').style.background     = btnColor;
+  document.getElementById('prev-name').textContent         = name;
+  document.getElementById('prev-greeting').textContent     = greeting;
+}
+</script>
+</body>
+</html>
