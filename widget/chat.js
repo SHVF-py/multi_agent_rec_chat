@@ -17,7 +17,8 @@
   var BOT_NAME = params.get("botName")  || "Quiribot";
   var GREETING = params.get("greeting") || "Hi! How can I help you find the perfect product today?";
   var COLOR    = params.get("color")    || "#6366f1";
-  var IS_READY = params.get("ready")    !== "0";    // default: ready
+  var IS_READY  = params.get("ready")    !== "0";    // default: ready
+  var TENANT_ID = params.get("tenantId") || SITE_KEY; // real business UUID for queries
 
   // Apply colors
   document.documentElement.style.setProperty("--primary",      COLOR);
@@ -272,7 +273,7 @@
     var payload = JSON.stringify({
       query_text:   queryText,
       session_id:   sessionId,
-      tenant_id:    SITE_KEY,
+      tenant_id:    TENANT_ID,
       chat_history: chatHistory.slice(-10),
     });
 
@@ -364,7 +365,7 @@
 
       var price = document.createElement("div");
       price.className = "product-price";
-      price.textContent = meta.price != null ? "$" + meta.price : "";
+      price.textContent = meta.price != null ? "Rs. " + Number(meta.price).toLocaleString() : "";
 
       info.appendChild(name);
       info.appendChild(metaLine);

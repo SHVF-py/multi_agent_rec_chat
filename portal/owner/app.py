@@ -37,7 +37,7 @@ def _require_owner(request: Request) -> bool:
 
 @router.get("/login", response_class=HTMLResponse)
 async def owner_login_page(request: Request):
-    return templates.TemplateResponse("owner_login.html", {"request": request, "error": None})
+    return templates.TemplateResponse(request=request, name="owner_login.html", context={"error": None})
 
 
 @router.post("/login")
@@ -49,8 +49,9 @@ async def owner_login(
 ):
     if not verify_owner(username, password):
         return templates.TemplateResponse(
-            "owner_login.html",
-            {"request": request, "error": "Invalid credentials."},
+            request=request,
+            name="owner_login.html",
+            context={"error": "Invalid credentials."},
             status_code=401,
         )
     token = create_access_token("owner", extra={"role": "owner"})
@@ -78,19 +79,19 @@ async def owner_dashboard(
 ):
     all_businesses = pdb.list_businesses()
     if status != "all":
-        filtered = [b for b in all_businesses if b["status"] == status]
+        filtered = [b for b in all_businesses if b.status == status]
     else:
         filtered = all_businesses
 
     return templates.TemplateResponse(
-        "owner_dashboard.html",
-        {
-            "request":       request,
+        request=request,
+        name="owner_dashboard.html",
+        context={
             "businesses":    filtered,
             "status":        status,
             "total":         len(all_businesses),
-            "pending_count": sum(1 for b in all_businesses if b["status"] == "pending"),
-            "active_count":  sum(1 for b in all_businesses if b["status"] == "active"),
+            "pending_count": sum(1 for b in all_businesses if b.status == "pending"),
+            "active_count":  sum(1 for b in all_businesses if b.status == "active"),
         },
     )
 
@@ -109,8 +110,9 @@ async def owner_business_detail(
     if not biz:
         raise HTTPException(status_code=404, detail="Business not found")
     return templates.TemplateResponse(
-        "owner_business.html",
-        {"request": request, "business": biz},
+        request=request,
+        name="owner_business.html",
+        context={"business": biz},
     )
 
 
@@ -133,7 +135,7 @@ async def owner_reject(
     reason: str = Form(default="Application did not meet requirements."),
     _auth: bool = Depends(_require_owner),
 ):
-    pdb.update_business_status(business_id, "rejected", rejection_reason=reason)
+    pdb.update_business_status(business_id, "rejected", reason=reason)
     return RedirectResponse(f"/owner/business/{business_id}", status_code=303)
 
 

@@ -163,6 +163,9 @@ async def run_ingestion(
             shop_domain      = site_url,
             storefront_token = creds.get("storefront_token", ""),
         )
+    elif platform in ("json_upload", "csv_upload"):
+        from data.connectors.csv_json import CsvJsonConnector
+        connector = CsvJsonConnector(creds.get("upload_path", ""))
     else:
         connector = ScraperConnector(site_url)
 

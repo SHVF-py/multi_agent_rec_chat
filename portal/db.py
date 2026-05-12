@@ -158,7 +158,7 @@ def resolve_site_key(site_key: str) -> Optional[BusinessAccount]:
     """Used by the API to look up tenant_id and widget config from the widget siteKey."""
     with get_db() as conn:
         row = conn.execute(
-            "SELECT * FROM businesses WHERE site_key = ? AND status = 'approved'",
+            "SELECT * FROM businesses WHERE site_key = ? AND status = 'active'",
             (site_key,)
         ).fetchone()
         if not row:

@@ -5,29 +5,30 @@
   <title>{{ business.name }} — Owner View</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: #f5f5fa; color: #111827; }
-    nav { background: white; border-bottom: 1px solid #e5e7eb; padding: 0 32px; height: 56px; display: flex; align-items: center; gap: 16px; }
-    .nav-brand { font-weight: 700; color: #6366f1; font-size: 18px; }
+    body { font-family: system-ui, sans-serif; background: #0a0a0f; color: #e0e7ff; }
+    nav { background: #13131a; border-bottom: 1px solid #2a2a3d; padding: 0 32px; height: 56px; display: flex; align-items: center; gap: 16px; }
+    .nav-brand { font-weight: 700; color: #818cf8; font-size: 18px; }
     .back { color: #6b7280; font-size: 13px; text-decoration: none; }
-    .back:hover { color: #6366f1; }
+    .back:hover { color: #a5b4fc; }
     main { max-width: 860px; margin: 32px auto; padding: 0 24px; }
-    h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; color: #e0e7ff; }
     .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 24px; }
-    .badge-pending   { background: #fef9c3; color: #a16207; }
-    .badge-active    { background: #dcfce7; color: #166534; }
-    .badge-rejected  { background: #fee2e2; color: #991b1b; }
-    .badge-suspended { background: #f3f4f6; color: #374151; }
-    .section { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 8px rgba(0,0,0,.05); margin-bottom: 20px; }
-    .section h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #374151; }
+    .badge-pending   { background: #2d2500; color: #fbbf24; }
+    .badge-active    { background: #052e16; color: #4ade80; }
+    .badge-rejected  { background: #2d0f0f; color: #f87171; }
+    .badge-suspended { background: #1e1e2d; color: #9ca3af; }
+    .section { background: #13131a; border: 1px solid #2a2a3d; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .section h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #a5b4fc; }
     .field { display: flex; gap: 12px; margin-bottom: 12px; font-size: 14px; }
     .field-label { width: 160px; color: #6b7280; flex-shrink: 0; }
-    .field-value { color: #111827; word-break: break-all; }
+    .field-value { color: #c7d2fe; word-break: break-all; }
+    .field-value a { color: #818cf8; }
     .actions { display: flex; gap: 10px; flex-wrap: wrap; }
     button { padding: 9px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; }
-    .btn-approve  { background: #dcfce7; color: #166534; }
-    .btn-reject   { background: #fee2e2; color: #991b1b; }
-    .btn-suspend  { background: #f3f4f6; color: #374151; }
-    .btn-reinstate { background: #dcfce7; color: #166534; }
+    .btn-approve   { background: #052e16; color: #4ade80; }
+    .btn-reject    { background: #2d0f0f; color: #f87171; }
+    .btn-suspend   { background: #1e1e2d; color: #9ca3af; }
+    .btn-reinstate { background: #052e16; color: #4ade80; }
   </style>
 </head>
 <body>

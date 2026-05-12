@@ -26,7 +26,7 @@
     h1 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
     .desc { color: #6b7280; font-size: 14px; margin-bottom: 28px; }
 
-    .platform-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 24px; }
+    .platform-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 24px; }
     .platform-card { border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; text-align: center;
                      cursor: pointer; transition: border-color .15s, background .15s; }
     .platform-card:hover { border-color: #6366f1; background: #f5f4ff; }
@@ -81,6 +81,10 @@
           <div class="platform-icon">🔍</div>
           <div class="platform-name">Auto-detect</div>
         </div>
+        <div class="platform-card {% if current_platform in ('json_upload','csv_upload') %}selected{% endif %}" onclick="selectPlatform('json_upload', this)">
+          <div class="platform-icon">📂</div>
+          <div class="platform-name">Upload File</div>
+        </div>
       </div>
 
       <!-- WooCommerce credentials -->
@@ -99,6 +103,16 @@
         <p class="hint">Shopify Admin → Apps → Develop apps → Create a Storefront API token</p>
       </div>
 
+      <!-- File upload credentials -->
+      <div class="creds-section {% if current_platform in ('json_upload','csv_upload') %}visible{% endif %}" id="upload-creds">
+        <p style="font-size:13px;color:#6b7280;margin-bottom:12px;">
+          Upload a <strong>.json</strong> or <strong>.csv</strong> file with your product catalogue.<br>
+          JSON: array of objects with fields like <code>name</code>, <code>price</code>, <code>description</code>, etc.<br>
+          CSV: first row must be column headers.
+        </p>
+        <p style="font-size:12px;color:#9ca3af;">Upload is done from your Dashboard after saving this selection.</p>
+      </div>
+
       <div class="btn-row">
         <a href="/business/dashboard" class="btn-skip" style="display:flex;align-items:center;padding:10px 20px;text-decoration:none;border-radius:8px;background:#f3f4f6;color:#374151;">Skip for now</a>
         <button type="submit" class="btn-primary">Save &amp; Continue →</button>
@@ -113,6 +127,7 @@ function selectPlatform(name, el) {
   document.getElementById('platform-input').value = name;
   document.getElementById('woo-creds').classList.toggle('visible', name === 'woocommerce');
   document.getElementById('shopify-creds').classList.toggle('visible', name === 'shopify');
+  document.getElementById('upload-creds').classList.toggle('visible', name === 'json_upload' || name === 'csv_upload');
 }
 </script>
 </body>

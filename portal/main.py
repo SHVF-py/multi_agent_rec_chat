@@ -43,16 +43,13 @@ app.include_router(business_router)
 # ---------------------------------------------------------------------------
 _WIDGET_DIR = Path(__file__).resolve().parent.parent / "widget"
 
-app.mount("/widget", StaticFiles(directory=str(_WIDGET_DIR)), name="widget")
-
-# ---------------------------------------------------------------------------
-# /widget/shell — serves chat.html as the sandboxed iframe shell
-# Query params are passed through by loader.js.
-# ---------------------------------------------------------------------------
-
+# /widget/shell must be registered BEFORE the StaticFiles mount so it is
+# matched first (Starlette checks routes in registration order).
 @app.get("/widget/shell")
 async def widget_shell():
     return FileResponse(str(_WIDGET_DIR / "chat.html"), media_type="text/html")
+
+app.mount("/widget", StaticFiles(directory=str(_WIDGET_DIR)), name="widget")
 
 # ---------------------------------------------------------------------------
 # Root redirect

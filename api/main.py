@@ -100,25 +100,20 @@ async def widget_config(siteKey: str = Query(..., description="Widget site key")
     Return the widget configuration for a given site key.
     Called by loader.js before injecting the chat button.
     """
-    row = pdb.resolve_site_key(siteKey)
-    if not row:
+    biz = pdb.resolve_site_key(siteKey)
+    if not biz:
         raise HTTPException(status_code=404, detail="Unknown site key")
 
-    cfg: dict = {}
-    try:
-        cfg = json.loads(row.get("widget_config") or "{}")
-    except Exception:
-        pass
-
+    cfg = biz.widget_config
     return {
-        "tenant_id":     row["id"],
-        "bot_name":      cfg.get("bot_name", "Quiribot"),
-        "greeting":      cfg.get("greeting", "Hi! How can I help you find the perfect product?"),
-        "primary_color": cfg.get("primary_color", "#6366f1"),
-        "button_color":  cfg.get("button_color", "#6366f1"),
-        "position":      cfg.get("position", "bottom-right"),
-        "tone":          cfg.get("tone", "friendly"),
-        "avatar_visible":cfg.get("avatar_visible", True),
+        "tenant_id":     biz.id,
+        "bot_name":      cfg.bot_name,
+        "greeting":      cfg.greeting,
+        "primary_color": cfg.primary_color,
+        "button_color":  cfg.button_color,
+        "position":      cfg.position,
+        "tone":          cfg.tone,
+        "avatar_visible": cfg.avatar_visible,
     }
 
 
@@ -135,7 +130,7 @@ async def widget_proactive(
     if not row:
         return {"triggered": False, "product_name": None, "message": None}
 
-    tenant_id = row["id"]
+    tenant_id = row.id
 
     # Read FAISS metadata file directly — no extra service call needed
     import json as _json
@@ -173,7 +168,7 @@ async def widget_sync_status(siteKey: str = Query(...)):
     if not row:
         raise HTTPException(status_code=404, detail="Unknown site key")
 
-    product_count = row.get("product_count") or 0
+    product_count = row.product_count or 0
     if product_count > 0:
         return {
             "is_ready":      True,
@@ -182,19 +177,41 @@ async def widget_sync_status(siteKey: str = Query(...)):
             "message":       f"{product_count} products ready",
         }
 
-    sync_job = pdb.get_latest_sync(row["id"])
+    sync_job = pdb.get_latest_sync(row.id)
     if sync_job:
-        job    = dict(sync_job)
-        status = job.get("status", "idle")
+        status = sync_job.status or "idle"
         if status == "running":
             return {"is_ready": False, "product_count": 0, "sync_status": "syncing",
                     "message": "Scanning your store for products…"}
-        if status == "error":
+        if status in ("error", "failed"):
             return {"is_ready": False, "product_count": 0, "sync_status": "error",
-                    "message": job.get("error") or "Sync failed. Retry from your dashboard."}
+                    "message": sync_job.error or "Sync failed. Retry from your dashboard."}
 
-    return {"is_ready": False, "product_count": 0, "sync_status": "idle",
-            "message": "Products not yet synced. Start sync from your dashboard."}
+    # No sync ever started — auto-trigger a scrape now so the setup screen is real
+    import asyncio, json as _json
+    from data.ingest import run_ingestion
+
+    async def _auto_scrape(biz):
+        import sys, os; sys.path.insert(0, os.path.dirname(__file__) + "/..")
+        job_id = pdb.create_sync_job(biz.id).id
+        creds = {}
+        try: creds = _json.loads(biz.platform_credentials or "{}")
+        except Exception: pass
+        try:
+            count = await run_ingestion(
+                site_url=biz.website_url,
+                tenant_id=biz.id,
+                platform=biz.platform or "auto",
+                credentials=creds,
+            )
+            pdb.finish_sync_job(job_id, products_found=count)
+            pdb.update_sync_result(biz.id, count)
+        except Exception as exc:
+            pdb.finish_sync_job(job_id, products_found=0, error=str(exc))
+
+    asyncio.create_task(_auto_scrape(row))
+    return {"is_ready": False, "product_count": 0, "sync_status": "syncing",
+            "message": "Scanning your store for products…"}
 
 
 @app.get("/")

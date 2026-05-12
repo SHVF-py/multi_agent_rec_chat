@@ -6,9 +6,10 @@ from __future__ import annotations
 
 import asyncio
 import json
+from pathlib import Path
 from typing import Optional
 
-from fastapi import APIRouter, Depends, Form, HTTPException, Request
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
@@ -42,7 +43,7 @@ def _require_business(request: Request) -> dict:
     biz = pdb.get_business_by_id(business_id)
     if not biz:
         raise HTTPException(status_code=307, headers={"Location": "/business/login"})
-    return dict(biz)
+    return biz.model_dump()
 
 
 # ---------------------------------------------------------------------------
@@ -52,8 +53,9 @@ def _require_business(request: Request) -> dict:
 @router.get("/signup", response_class=HTMLResponse)
 async def business_signup_page(request: Request):
     return templates.TemplateResponse(
-        "business_signup.html",
-        {"request": request, "error": None},
+        request=request,
+        name="business_signup.html",
+        context={"error": None},
     )
 
 
@@ -67,30 +69,29 @@ async def business_signup(
 ):
     if len(password) < _MIN_PASSWORD_LEN:
         return templates.TemplateResponse(
-            "business_signup.html",
-            {"request": request, "error": "Password must be at least 8 characters.",
+            request=request,
+            name="business_signup.html",
+            context={"error": "Password must be at least 8 characters.",
              "name": name, "website_url": website_url, "email": email},
             status_code=400,
         )
 
     if pdb.get_business_by_email(email):
         return templates.TemplateResponse(
-            "business_signup.html",
-            {"request": request, "error": "An account with that email already exists.",
+            request=request,
+            name="business_signup.html",
+            context={"error": "An account with that email already exists.",
              "name": name, "website_url": website_url},
             status_code=400,
         )
 
     pw_hash = hash_password(password)
-    biz     = pdb.create_business(
+    pdb.create_business(
         name=name, website_url=website_url,
         email=email, password_hash=pw_hash,
     )
-
-    token = create_access_token(biz["id"])
-    resp  = RedirectResponse("/business/dashboard", status_code=303)
-    resp.set_cookie(_SESSION_COOKIE, token, httponly=True, samesite="lax", max_age=86400)
-    return resp
+    # No auto-login — business must wait for owner approval
+    return RedirectResponse("/business/login?registered=1", status_code=303)
 
 
 # ---------------------------------------------------------------------------
@@ -98,10 +99,15 @@ async def business_signup(
 # ---------------------------------------------------------------------------
 
 @router.get("/login", response_class=HTMLResponse)
-async def business_login_page(request: Request):
+async def business_login_page(request: Request, registered: str = ""):
+    success = (
+        "Account created! Your application is under review. You\'ll be notified once approved."
+        if registered else None
+    )
     return templates.TemplateResponse(
-        "business_login.html",
-        {"request": request, "error": None},
+        request=request,
+        name="business_login.html",
+        context={"error": None, "success": success},
     )
 
 
@@ -114,20 +120,22 @@ async def business_login(
     biz = pdb.get_business_by_email(email)
     if not biz:
         return templates.TemplateResponse(
-            "business_login.html",
-            {"request": request, "error": "No account found with that email."},
+            request=request,
+            name="business_login.html",
+            context={"error": "No account found with that email.", "success": None},
             status_code=401,
         )
 
-    pw_hash = pdb.get_password_hash(biz["id"])
-    if not verify_password(password, pw_hash):
+    pw_hash = pdb.get_password_hash(email)
+    if not pw_hash or not verify_password(password, pw_hash):
         return templates.TemplateResponse(
-            "business_login.html",
-            {"request": request, "error": "Incorrect password."},
+            request=request,
+            name="business_login.html",
+            context={"error": "Incorrect password.", "success": None},
             status_code=401,
         )
 
-    token = create_access_token(biz["id"])
+    token = create_access_token(biz.id)
     resp  = RedirectResponse("/business/dashboard", status_code=303)
     resp.set_cookie(_SESSION_COOKIE, token, httponly=True, samesite="lax", max_age=86400)
     return resp
@@ -156,9 +164,9 @@ async def business_dashboard(
         sync_status = biz["last_sync"][:10]
 
     return templates.TemplateResponse(
-        "business_dashboard.html",
-        {
-            "request":     request,
+        request=request,
+        name="business_dashboard.html",
+        context={
             "business":    biz,
             "sync_job":    dict(sync_job) if sync_job else None,
             "sync_status": sync_status,
@@ -182,9 +190,9 @@ async def business_onboarding_page(
         pass
 
     return templates.TemplateResponse(
-        "business_onboarding.html",
-        {
-            "request":          request,
+        request=request,
+        name="business_onboarding.html",
+        context={
             "current_platform": biz.get("platform", ""),
             "creds":            creds,
             "error":            None,
@@ -223,8 +231,8 @@ async def business_sync(
     if biz["status"] != "active":
         return RedirectResponse("/business/dashboard?error=not_approved", status_code=303)
 
-    # Record job start
-    job_id = pdb.create_sync_job(biz["id"])
+    # Record job start — returns SyncJob object, extract id string
+    job_id = pdb.create_sync_job(biz["id"]).id
 
     # Run ingestion in background (non-blocking for the web response)
     asyncio.create_task(_run_sync(biz, job_id))
@@ -251,10 +259,44 @@ async def _run_sync(biz: dict, job_id: str) -> None:
             platform   = biz.get("platform") or "auto",
             credentials= creds,
         )
-        pdb.finish_sync_job(job_id, status="done", products_found=count)
+        pdb.finish_sync_job(job_id, products_found=count)
         pdb.update_sync_result(biz["id"], count)
     except Exception as exc:
-        pdb.finish_sync_job(job_id, status="error", error=str(exc))
+        pdb.finish_sync_job(job_id, products_found=0, error=str(exc))
+
+
+# ---------------------------------------------------------------------------
+# Product file upload (JSON or CSV)
+# ---------------------------------------------------------------------------
+
+@router.post("/upload-products")
+async def business_upload_products(
+    request: Request,
+    biz: dict = Depends(_require_business),
+    file: UploadFile = File(...),
+):
+    if biz["status"] != "active":
+        return RedirectResponse("/business/dashboard?error=not_approved", status_code=303)
+
+    suffix = Path(file.filename or "").suffix.lower()
+    if suffix not in (".json", ".csv"):
+        return RedirectResponse("/business/onboarding?error=Invalid+file+type+%28.json+or+.csv+only%29", status_code=303)
+
+    upload_dir = Path("data/uploads") / biz["id"]
+    upload_dir.mkdir(parents=True, exist_ok=True)
+    dest = upload_dir / f"products{suffix}"
+    dest.write_bytes(await file.read())
+
+    platform = "json_upload" if suffix == ".json" else "csv_upload"
+    pdb.update_platform(biz["id"], platform, {"upload_path": str(dest)})
+
+    # Auto-trigger sync from the uploaded file
+    job_id = pdb.create_sync_job(biz["id"]).id
+    # Re-fetch biz so _run_sync sees updated platform/credentials
+    updated_biz = pdb.get_business_by_id(biz["id"]).model_dump()
+    asyncio.create_task(_run_sync(updated_biz, job_id))
+
+    return RedirectResponse("/business/dashboard?uploaded=1", status_code=303)
 
 
 # ---------------------------------------------------------------------------
@@ -273,8 +315,9 @@ async def business_customize_page(
         pass
 
     return templates.TemplateResponse(
-        "business_customize.html",
-        {"request": request, "business": biz, "cfg": cfg, "success": False},
+        request=request,
+        name="business_customize.html",
+        context={"business": biz, "cfg": cfg, "success": False},
     )
 
 
@@ -306,8 +349,9 @@ async def business_customize_submit(
     # Re-fetch biz and cfg to render updated preview
     updated_biz = dict(pdb.get_business_by_id(biz["id"]))
     return templates.TemplateResponse(
-        "business_customize.html",
-        {"request": request, "business": updated_biz, "cfg": cfg, "success": True},
+        request=request,
+        name="business_customize.html",
+        context={"business": updated_biz, "cfg": cfg, "success": True},
     )
 
 
@@ -321,6 +365,7 @@ async def business_snippet(
     biz: dict = Depends(_require_business),
 ):
     return templates.TemplateResponse(
-        "business_snippet.html",
-        {"request": request, "business": biz},
+        request=request,
+        name="business_snippet.html",
+        context={"business": biz},
     )

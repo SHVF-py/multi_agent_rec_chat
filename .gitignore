@@ -29,6 +29,11 @@ Thumbs.db
 # Jupyter
 .ipynb_checkpoints/
 
+# Runtime data — not committed
+data/portal.db
+data/uploads/
+data/faiss_index.bin
+
 # Logs
 *.log
 

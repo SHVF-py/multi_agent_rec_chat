@@ -1,0 +1,134 @@
+[
+  {
+    "product_id": "lz-001",
+    "name": "HP EliteBook X360 1030 G7",
+    "price": 123000,
+    "description": "13.3\" 1080p 2-in-1 display, Intel Core i7-10610U 10th Gen, 32GB RAM, 512GB SSD. Pre-owned, tested.",
+    "category": "Laptops",
+    "brand": "HP",
+    "rating": 4.7,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/HP_EliteBook_840_G8.png",
+    "sku": "LZ-001"
+  },
+  {
+    "product_id": "lz-002",
+    "name": "HP ProBook 450 G9",
+    "price": 115000,
+    "description": "15\" 1080p display, Intel Core i5-1245U 12th Gen, 16GB RAM, 256GB SSD. Pre-owned, tested.",
+    "category": "Laptops",
+    "brand": "HP",
+    "rating": 4.3,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/db/HP_EliteBook_850_G5.png",
+    "sku": "LZ-002"
+  },
+  {
+    "product_id": "lz-003",
+    "name": "HP ProBook 640 G9",
+    "price": 90000,
+    "description": "14\" 1080p display, Intel Core i5-1245U 12th Gen, 16GB RAM, 256GB SSD. Pre-owned, tested.",
+    "category": "Laptops",
+    "brand": "HP",
+    "rating": 4.2,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d7/HP_EliteBook_840_G4.png",
+    "sku": "LZ-003"
+  },
+  {
+    "product_id": "lz-004",
+    "name": "HP EliteBook 830 G7",
+    "price": 73000,
+    "description": "13\" 1080p display, Intel Core i5-10310U 10th Gen, 8GB RAM, 256GB SSD. Pre-owned, tested.",
+    "category": "Laptops",
+    "brand": "HP",
+    "rating": 4.5,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c5/HP_Elitebook_840_G1.png",
+    "sku": "LZ-004"
+  },
+  {
+    "product_id": "lz-005",
+    "name": "HP EliteBook x360 1030 G2",
+    "price": 68000,
+    "description": "13.3\" 1080p 2-in-1, Intel Core i5-7300U 7th Gen, 8GB RAM, 512GB SSD. Pre-owned, tested.",
+    "category": "Laptops",
+    "brand": "HP",
+    "rating": 4.4,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/48/HP_EliteBook_x360_1020_G2.png",
+    "sku": "LZ-005"
+  },
+  {
+    "product_id": "lz-006",
+    "name": "HP ZBook Firefly 14 G8",
+    "price": 93000,
+    "description": "14\" 1080p, Intel Core i5-1145G7 11th Gen, 16GB RAM, 256GB SSD. Mobile workstation, pre-owned.",
+    "category": "Workstations",
+    "brand": "HP",
+    "rating": 4.6,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/HP_EliteBook_840_G8.png",
+    "sku": "LZ-006"
+  },
+  {
+    "product_id": "lz-007",
+    "name": "HP ProBook 650 G8",
+    "price": 97000,
+    "description": "15\" 1080p display, Intel Core i5 11th Gen, 16GB RAM, 256GB SSD. Pre-owned, tested.",
+    "category": "Laptops",
+    "brand": "HP",
+    "rating": 4.3,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/db/HP_EliteBook_850_G5.png",
+    "sku": "LZ-007"
+  },
+  {
+    "product_id": "lz-008",
+    "name": "HP EliteBook 650 G9",
+    "price": 123000,
+    "description": "15\" 1080p display, Intel Core i5 12th Gen, 16GB RAM, 256GB SSD. Pre-owned, tested.",
+    "category": "Laptops",
+    "brand": "HP",
+    "rating": 4.5,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d7/HP_EliteBook_840_G4.png",
+    "sku": "LZ-008"
+  },
+  {
+    "product_id": "lz-009",
+    "name": "HP Spectre X360 16",
+    "price": 317000,
+    "description": "16\" 2K 2-in-1 display, Intel Ultra Core 7 155H, 16GB DDR5, 1TB Gen4 SSD. Brand new.",
+    "category": "Laptops",
+    "brand": "HP",
+    "rating": 4.8,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/1b/HP_Spectre_x360_2016_%2832003550180%29.jpg",
+    "sku": "LZ-009"
+  },
+  {
+    "product_id": "lz-010",
+    "name": "HP ZBook Power 15 G8",
+    "price": 175000,
+    "description": "15\" display, Intel Core i7-11850H 11th Gen, 16GB RAM, 512GB SSD, 4GB NVIDIA Quadro T1200. Pre-owned.",
+    "category": "Workstations",
+    "brand": "HP",
+    "rating": 4.7,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/96/HP_Elitebook_8770w.png",
+    "sku": "LZ-010"
+  },
+  {
+    "product_id": "lz-011",
+    "name": "HP ZBook 15 G5",
+    "price": 113000,
+    "description": "15\" 1080p, Intel Core i7-8850H 8th Gen, 16GB RAM, 256GB SSD, 4GB NVIDIA Quadro P1000. Pre-owned.",
+    "category": "Workstations",
+    "brand": "HP",
+    "rating": 4.2,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/HP_EliteBook_8760w_%281%29.jpg",
+    "sku": "LZ-011"
+  },
+  {
+    "product_id": "lz-012",
+    "name": "HP Elite x360 Dragonfly G2",
+    "price": 150000,
+    "description": "13\" 1080p 2-in-1, Intel Core i7-1185G7 11th Gen, 32GB RAM, 256GB SSD. Pre-owned, premium ultra-thin.",
+    "category": "Laptops",
+    "brand": "HP",
+    "rating": 4.6,
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/5a/HP_Spectre_x360_2016_%2831538364704%29.jpg",
+    "sku": "LZ-012"
+  }
+]

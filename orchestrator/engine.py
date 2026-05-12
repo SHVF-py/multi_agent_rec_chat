@@ -224,8 +224,10 @@ class Orchestrator:
         if session_ctx:
             system_content += f"\n\nCustomer context this session:\n{session_ctx}"
 
-        prior_followups = self._count_prior_followups(chat_history)
-        add_followup = is_vague and prior_followups < 2
+        prior_followups   = self._count_prior_followups(chat_history)
+        user_messages     = sum(1 for m in (chat_history or []) if m.get("role") == "user")
+        allowed_followups = (user_messages // 4) + 1
+        add_followup      = is_vague and prior_followups < allowed_followups
 
         if products:
             product_lines = []
@@ -248,7 +250,8 @@ class Orchestrator:
                 user_content = (
                     f"The customer asked: \"{query}\"\n"
                     f"You found these products:\n{product_summary}\n"
-                    f"Introduce these results in 1\u20132 warm, conversational sentences."
+                    f"Introduce these results in 1\u20132 warm, conversational sentences. "
+                    f"Do NOT end with a question."
                 )
         else:
             user_content = query
