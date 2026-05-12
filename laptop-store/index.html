@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LaptopZone – HP Laptops</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ─── TOP BAR ─── -->
+  <div class="top-bar">
+    <span><i class="fa fa-phone"></i> 0306-0024442</span>
+    <span><i class="fa fa-envelope"></i> info@laptopzone.pk</span>
+    <span><i class="fa fa-clock"></i> Mon–Sat: 12 PM – 9 PM</span>
+  </div>
+
+  <!-- ─── HEADER ─── -->
+  <header class="header">
+    <div class="header-inner container">
+      <div class="logo">
+        <span class="logo-icon"><i class="fa fa-laptop"></i></span>
+        <span class="logo-text">Laptop<span class="accent">Zone</span></span>
+      </div>
+
+      <nav class="nav">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#" class="active">Laptops</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon" title="Search"><i class="fa fa-search"></i></button>
+        <button class="btn-icon cart-btn" title="Cart">
+          <i class="fa fa-shopping-cart"></i>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+        <button class="btn-login"><i class="fa fa-user"></i> Login</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── BREADCRUMB ─── -->
+  <div class="breadcrumb container">
+    <a href="#">Home</a> <i class="fa fa-chevron-right"></i>
+    <a href="#">Laptops</a> <i class="fa fa-chevron-right"></i>
+    <span>HP</span>
+  </div>
+
+  <!-- ─── CATEGORY BANNER ─── -->
+  <section class="category-banner container">
+    <div class="banner-text">
+      <p class="banner-tag">Pre-Owned &amp; New</p>
+      <h1>HP Laptops</h1>
+      <p>Premium business &amp; consumer laptops at the best prices. EliteBook, ProBook, Spectre, ZBook &amp; more.</p>
+    </div>
+    <div class="banner-stats">
+      <div class="stat"><strong>28+</strong><span>Products</span></div>
+      <div class="stat"><strong>100%</strong><span>Tested</span></div>
+      <div class="stat"><strong>1 Year</strong><span>Warranty</span></div>
+    </div>
+  </section>
+
+  <!-- ─── MAIN CONTENT ─── -->
+  <main class="container main-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <h3>Categories</h3>
+        <ul class="cat-list">
+          <li><a href="#"><i class="fa fa-chevron-right"></i> HP <span class="count">28</span></a></li>
+          <li><a href="#"><i class="fa fa-chevron-right"></i> Dell <span class="count">22</span></a></li>
+          <li><a href="#"><i class="fa fa-chevron-right"></i> Lenovo <span class="count">18</span></a></li>
+          <li><a href="#"><i class="fa fa-chevron-right"></i> Apple MacBook <span class="count">10</span></a></li>
+          <li><a href="#"><i class="fa fa-chevron-right"></i> Asus <span class="count">14</span></a></li>
+          <li><a href="#"><i class="fa fa-chevron-right"></i> Acer <span class="count">12</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Filter by Price</h3>
+        <div class="price-range">
+          <input type="range" id="priceSlider" min="50000" max="350000" value="350000" step="5000" oninput="updatePrice(this.value)"/>
+          <div class="price-labels">
+            <span>₨50,000</span>
+            <span id="priceVal">₨350,000</span>
+          </div>
+          <button class="btn-filter" onclick="filterPrice()">Apply Filter</button>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Processor</h3>
+        <label class="check-label"><input type="checkbox" checked /> Intel Core i5</label>
+        <label class="check-label"><input type="checkbox" checked /> Intel Core i7</label>
+        <label class="check-label"><input type="checkbox" /> Intel Core i3</label>
+        <label class="check-label"><input type="checkbox" /> Intel Ultra 7</label>
+        <label class="check-label"><input type="checkbox" /> AMD Ryzen 5</label>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Generation</h3>
+        <label class="check-label"><input type="checkbox" /> 7th Gen</label>
+        <label class="check-label"><input type="checkbox" checked /> 10th Gen</label>
+        <label class="check-label"><input type="checkbox" checked /> 11th Gen</label>
+        <label class="check-label"><input type="checkbox" checked /> 12th Gen</label>
+        <label class="check-label"><input type="checkbox" /> 13th Gen</label>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>RAM</h3>
+        <label class="check-label"><input type="checkbox" checked /> 8 GB</label>
+        <label class="check-label"><input type="checkbox" checked /> 16 GB</label>
+        <label class="check-label"><input type="checkbox" /> 32 GB</label>
+        <label class="check-label"><input type="checkbox" /> 64 GB</label>
+      </div>
+    </aside>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section">
+
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <p class="results-info">Showing <strong>1–12</strong> of <strong>28</strong> results</p>
+        <div class="toolbar-right">
+          <label>Sort by:</label>
+          <select id="sortSelect" onchange="sortProducts()">
+            <option value="latest">Latest</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name">Name A–Z</option>
+          </select>
+          <button class="view-btn active" onclick="setView('grid')" title="Grid"><i class="fa fa-th"></i></button>
+          <button class="view-btn" onclick="setView('list')" title="List"><i class="fa fa-list"></i></button>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="product-grid" id="productGrid">
+
+        <!-- Products are injected by JS -->
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">→</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo">
+          <span class="logo-icon"><i class="fa fa-laptop"></i></span>
+          <span class="logo-text">Laptop<span class="accent">Zone</span></span>
+        </div>
+        <p style="margin-top:12px;color:#bbb;font-size:0.9rem;">Premium quality pre-owned &amp; new laptops with 360° protection commitment.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Refund &amp; Returns Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#">HP Laptops</a></li>
+          <li><a href="#">Dell Laptops</a></li>
+          <li><a href="#">Lenovo Laptops</a></li>
+          <li><a href="#">Apple MacBooks</a></li>
+          <li><a href="#">Gaming Laptops</a></li>
+          <li><a href="#">Workstation Laptops</a></li>
+          <li><a href="#">Tablets</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p><i class="fa fa-phone"></i> Laptops: 0306-0024442</p>
+        <p><i class="fa fa-phone"></i> Accessories: 0302-0024442</p>
+        <p><i class="fa fa-envelope"></i> info@laptopzone.pk</p>
+        <p><i class="fa fa-clock"></i> Mon–Sat: 12 PM – 9 PM</p>
+        <p><i class="fa fa-map-marker-alt"></i> 1st Floor, Model Town, Lahore</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 LaptopZone. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ─── CART TOAST ─── -->
+  <div class="toast" id="toast">
+    <i class="fa fa-check-circle"></i> Item added to cart!
+  </div>
+
+  <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+
+  <script src="app.js"></script>
+
+  <!-- Quiribot AI Shopping Assistant -->
+  <script
+    src="http://localhost:7000/widget/loader.js"
+    data-site-key="3d88284e658b4520b2c58d9f4c497f0f"
+    data-api="http://localhost:8080">
+  </script>
+</body>
+</html>
