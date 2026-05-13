@@ -62,7 +62,18 @@ class ScraperConnector(BaseConnector):
         async with httpx.AsyncClient(
             timeout=20.0, headers=_HEADERS, follow_redirects=True
         ) as client:
-            # Step 1: Discover product URLs from the entry page
+            # ── Tier 0: JS data-file scrape (single-page / headless storefronts) ──
+            # Tries to fetch app.js / main.js and parse an inline `const products`
+            # or `const laptops` array. Works for pure-JS storefronts with no HTML
+            # product pages (e.g. the LaptopZone demo site).
+            js_products = await self._from_js_datafile(client)
+            if js_products:
+                logger.info(
+                    f"Scraper Tier 0 (JS datafile): extracted {len(js_products)} products"
+                )
+                return js_products
+
+            # ── Tier 1-3: Standard HTML crawl ────────────────────────────────────
             await self._discover_urls(client, self.site_url, product_urls)
 
             # If entry page yielded nothing useful, also try /shop and /products
@@ -80,6 +91,127 @@ class ScraperConnector(BaseConnector):
                     products.append(p)
 
         logger.info(f"Scraper: extracted {len(products)} products from {self.site_url}")
+        return products
+
+    # ------------------------------------------------------------------
+    # Tier 0: JS datafile parser
+    # ------------------------------------------------------------------
+
+    # Candidate JS bundle filenames to probe, in priority order
+    _JS_CANDIDATES = ["app.js", "main.js", "products.js", "data.js", "store.js"]
+
+    # Variable names that typically hold the product array
+    _ARRAY_VAR_PATTERNS = [
+        r"const\s+laptops\s*=\s*(\[[\s\S]*?\n\])",
+        r"const\s+products\s*=\s*(\[[\s\S]*?\n\])",
+        r"var\s+products\s*=\s*(\[[\s\S]*?\n\])",
+        r"let\s+products\s*=\s*(\[[\s\S]*?\n\])",
+        r"const\s+items\s*=\s*(\[[\s\S]*?\n\])",
+        r"window\.products\s*=\s*(\[[\s\S]*?\n\])",
+    ]
+
+    async def _from_js_datafile(self, client: httpx.AsyncClient) -> List[ProductMetadata]:
+        """
+        Probe known JS bundle filenames for an inline product array and parse it.
+        Handles trailing commas and other JS-specific syntax that JSON won't parse.
+        """
+        for filename in self._JS_CANDIDATES:
+            url = f"{self.site_url}/{filename}"
+            try:
+                resp = await client.get(url)
+                if resp.status_code != 200:
+                    continue
+            except Exception:
+                continue
+
+            js_text = resp.text
+            for pattern in self._ARRAY_VAR_PATTERNS:
+                m = re.search(pattern, js_text, re.DOTALL)
+                if not m:
+                    continue
+
+                raw_array = m.group(1)
+                products  = self._parse_js_object_array(raw_array, filename)
+                if products:
+                    return products
+
+        return []
+
+    def _parse_js_object_array(self, raw: str, source: str) -> List[ProductMetadata]:
+        """
+        Convert a raw JS array literal into ProductMetadata objects.
+        Uses regex field extraction so trailing commas / unquoted keys are fine.
+        """
+        products: List[ProductMetadata] = []
+
+        # Split into individual object literals  {  ...  }
+        obj_pattern = re.compile(r"\{([^{}]+)\}", re.DOTALL)
+
+        for idx, match in enumerate(obj_pattern.finditer(raw)):
+            body = match.group(1)
+
+            def field(key: str, default: str = "") -> str:
+                m = re.search(
+                    rf'["\']?{key}["\']?\s*:\s*["\']([^"\']*)["\']', body
+                )
+                return m.group(1).strip() if m else default
+
+            def num_field(key: str, default: float = 0.0) -> float:
+                m = re.search(rf'["\']?{key}["\']?\s*:\s*([\d.]+)', body)
+                try:
+                    return float(m.group(1)) if m else default
+                except ValueError:
+                    return default
+
+            def bool_field(key: str, default: bool = False) -> bool:
+                m = re.search(rf'["\']?{key}["\']?\s*:\s*(true|false)', body)
+                if m:
+                    return m.group(1) == "true"
+                return default
+
+            name = field("name")
+            if not name or len(name) < 3:
+                continue  # skip non-product objects
+
+            price   = num_field("price")
+            img     = field("img")
+            rating  = num_field("rating", 4.0)
+            badge   = field("badge", "")
+            pid_raw = num_field("id", idx + 1)
+            pid     = f"{source}-{int(pid_raw)}"
+
+            # Derive category from name keywords
+            name_lower = name.lower()
+            if any(k in name_lower for k in ("zbook", "quadro", "workstation")):
+                category = "workstation"
+            elif "spectre" in name_lower or "dragonfly" in name_lower:
+                category = "premium"
+            elif "probook" in name_lower:
+                category = "business"
+            else:
+                category = "laptop"
+
+            # Brand always HP for this store
+            brand = "HP" if "hp" in name_lower or "hp" in self.site_url.lower() else "Unknown"
+
+            # Build a clean description from the name segments
+            desc = name.replace(" | ", " — ")
+
+            products.append(ProductMetadata(
+                product_id   = pid,
+                name         = name,
+                price        = price,
+                description  = desc,
+                category     = category,
+                brand        = brand,
+                image        = img,
+                in_stock     = True,
+                stock_quantity = 10,
+                rating       = rating,
+                sku          = pid,
+                url          = self.site_url,
+            ))
+
         return products
 
     # ------------------------------------------------------------------
