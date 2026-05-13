@@ -64,7 +64,7 @@ const laptops = [
     id: 6,
     name: "ZBook Firefly 14 G8 | 14\" 1080p | i5 11th Gen 1145G7 | 16GB RAM 256GB SSD",
     price: 93000,
-    priceRange: "₨93,000 – ₨99,000",
+    priceRange: "₨93,000",
     oldPrice: null,
     badge: "Pre-Owned",
     badgeClass: "",
@@ -241,7 +241,6 @@ function renderProducts(data) {
     return `
       <div class="product-card" onclick="viewProduct(${p.id})">
         <div class="product-img-wrap">
-          <span class="badge ${p.badgeClass}">${p.badge}</span>
           <img src="${p.img}" alt="${p.name}" loading="lazy" />
         </div>
         <div class="product-body">
