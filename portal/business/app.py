@@ -18,6 +18,7 @@ from portal.auth import (
     create_access_token, decode_access_token,
 )
 from portal import db as pdb
+from models.tenant import WidgetConfig
 
 router    = APIRouter(prefix="/business")
 templates = Jinja2Templates(directory="portal/templates")
@@ -334,6 +335,7 @@ async def business_customize_submit(
     blocked_topics: str  = Form(default=""),
     avatar_visible: Optional[str] = Form(default=None),
 ):
+    topics_list = [t.strip() for t in blocked_topics.split(",") if t.strip()]
     cfg = {
         "bot_name":       bot_name,
         "greeting":       greeting,
@@ -341,10 +343,10 @@ async def business_customize_submit(
         "button_color":   button_color,
         "position":       position,
         "tone":           tone,
-        "blocked_topics": blocked_topics,
+        "blocked_topics": topics_list,
         "avatar_visible": avatar_visible == "on",
     }
-    pdb.update_widget_config(biz["id"], cfg)
+    pdb.update_widget_config(biz["id"], WidgetConfig(**cfg))
 
     # Re-fetch biz and cfg to render updated preview
     updated_biz = dict(pdb.get_business_by_id(biz["id"]))
