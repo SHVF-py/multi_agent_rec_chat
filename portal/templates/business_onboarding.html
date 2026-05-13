@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect Your Store — Quiribot</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f5f5fa; color: #111827; }
+    nav { background: white; border-bottom: 1px solid #e5e7eb; padding: 0 32px; height: 56px;
+          display: flex; align-items: center; gap: 16px; }
+    .nav-brand { font-weight: 700; color: #6366f1; font-size: 18px; }
+    main { max-width: 680px; margin: 40px auto; padding: 0 24px; }
+    .steps { display: flex; gap: 0; margin-bottom: 32px; }
+    .step { flex: 1; text-align: center; font-size: 12px; color: #6b7280; position: relative; }
+    .step::after { content: ''; position: absolute; top: 16px; right: 0; width: 50%; height: 2px; background: #e5e7eb; }
+    .step:last-child::after { display: none; }
+    .step::before { content: ''; position: absolute; top: 16px; left: 0; width: 50%; height: 2px; background: #e5e7eb; }
+    .step:first-child::before { display: none; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: #e5e7eb; color: #6b7280;
+                font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center;
+                margin: 0 auto 6px; position: relative; z-index: 1; }
+    .step.active .step-num { background: #6366f1; color: white; }
+    .step.done .step-num { background: #22c55e; color: white; }
+
+    .card { background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,.07); }
+    h1 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .desc { color: #6b7280; font-size: 14px; margin-bottom: 28px; }
+
+    .platform-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 24px; }
+    .platform-card { border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; text-align: center;
+                     cursor: pointer; transition: border-color .15s, background .15s; }
+    .platform-card:hover { border-color: #6366f1; background: #f5f4ff; }
+    .platform-card.selected { border-color: #6366f1; background: #ede9fe; }
+    .platform-icon { font-size: 28px; margin-bottom: 8px; }
+    .platform-name { font-size: 13px; font-weight: 600; color: #374151; }
+
+    .creds-section { display: none; margin-bottom: 20px; }
+    .creds-section.visible { display: block; }
+    label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; color: #374151; }
+    input { width: 100%; padding: 10px 14px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 14px; outline: none; margin-bottom: 12px; }
+    input:focus { border-color: #6366f1; }
+    .hint { font-size: 12px; color: #6b7280; margin-top: -8px; margin-bottom: 12px; }
+    .btn-row { display: flex; gap: 10px; justify-content: flex-end; }
+    button { padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; }
+    .btn-primary { background: #6366f1; color: white; }
+    .btn-primary:hover { background: #4f46e5; }
+    .btn-skip { background: #f3f4f6; color: #374151; }
+    input[type="hidden"] { display: none; }
+    .error { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+<nav><span class="nav-brand">Quiribot 🛍 Setup</span></nav>
+<main>
+  <div class="steps">
+    <div class="step active"><div class="step-num">1</div>Connect</div>
+    <div class="step"><div class="step-num">2</div>Sync</div>
+    <div class="step"><div class="step-num">3</div>Customize</div>
+    <div class="step"><div class="step-num">4</div>Embed</div>
+  </div>
+
+  <div class="card">
+    <h1>Connect your store</h1>
+    <p class="desc">Choose your platform so we can pull in your products automatically.</p>
+
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+    <form method="POST" action="/business/onboarding" id="onboard-form">
+      <input type="hidden" name="platform" id="platform-input" value="{{ current_platform or '' }}" />
+
+      <div class="platform-grid">
+        <div class="platform-card {% if current_platform == 'woocommerce' %}selected{% endif %}" onclick="selectPlatform('woocommerce', this)">
+          <div class="platform-icon">🛒</div>
+          <div class="platform-name">WooCommerce</div>
+        </div>
+        <div class="platform-card {% if current_platform == 'shopify' %}selected{% endif %}" onclick="selectPlatform('shopify', this)">
+          <div class="platform-icon">🏪</div>
+          <div class="platform-name">Shopify</div>
+        </div>
+        <div class="platform-card {% if current_platform == 'scraper' %}selected{% endif %}" onclick="selectPlatform('scraper', this)">
+          <div class="platform-icon">🔍</div>
+          <div class="platform-name">Auto-detect</div>
+        </div>
+        <div class="platform-card {% if current_platform in ('json_upload','csv_upload') %}selected{% endif %}" onclick="selectPlatform('json_upload', this)">
+          <div class="platform-icon">📂</div>
+          <div class="platform-name">Upload File</div>
+        </div>
+      </div>
+
+      <!-- WooCommerce credentials -->
+      <div class="creds-section {% if current_platform == 'woocommerce' %}visible{% endif %}" id="woo-creds">
+        <label>Consumer Key</label>
+        <input type="text" name="consumer_key" placeholder="ck_xxxxxxxx" value="{{ creds.consumer_key or '' }}" />
+        <label>Consumer Secret</label>
+        <input type="password" name="consumer_secret" placeholder="cs_xxxxxxxx" value="{{ creds.consumer_secret or '' }}" />
+        <p class="hint">WooCommerce → Settings → Advanced → REST API → Add key (Read access)</p>
+      </div>
+
+      <!-- Shopify credentials -->
+      <div class="creds-section {% if current_platform == 'shopify' %}visible{% endif %}" id="shopify-creds">
+        <label>Storefront Access Token</label>
+        <input type="text" name="storefront_token" placeholder="shpat_xxxxxxxx" value="{{ creds.storefront_token or '' }}" />
+        <p class="hint">Shopify Admin → Apps → Develop apps → Create a Storefront API token</p>
+      </div>
+
+      <!-- File upload credentials -->
+      <div class="creds-section {% if current_platform in ('json_upload','csv_upload') %}visible{% endif %}" id="upload-creds">
+        <p style="font-size:13px;color:#6b7280;margin-bottom:12px;">
+          Upload a <strong>.json</strong> or <strong>.csv</strong> file with your product catalogue.<br>
+          JSON: array of objects with fields like <code>name</code>, <code>price</code>, <code>description</code>, etc.<br>
+          CSV: first row must be column headers.
+        </p>
+        <p style="font-size:12px;color:#9ca3af;">Upload is done from your Dashboard after saving this selection.</p>
+      </div>
+
+      <div class="btn-row">
+        <a href="/business/dashboard" class="btn-skip" style="display:flex;align-items:center;padding:10px 20px;text-decoration:none;border-radius:8px;background:#f3f4f6;color:#374151;">Skip for now</a>
+        <button type="submit" class="btn-primary">Save &amp; Continue →</button>
+      </div>
+    </form>
+  </div>
+</main>
+<script>
+function selectPlatform(name, el) {
+  document.querySelectorAll('.platform-card').forEach(function(c) { c.classList.remove('selected'); });
+  el.classList.add('selected');
+  document.getElementById('platform-input').value = name;
+  document.getElementById('woo-creds').classList.toggle('visible', name === 'woocommerce');
+  document.getElementById('shopify-creds').classList.toggle('visible', name === 'shopify');
+  document.getElementById('upload-creds').classList.toggle('visible', name === 'json_upload' || name === 'csv_upload');
+}
+</script>
+</body>
+</html>

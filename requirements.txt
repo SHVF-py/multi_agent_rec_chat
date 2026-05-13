@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+httpx
+numpy
+faiss-cpu
+streamlit
+bcrypt
+python-jose[cryptography]
+beautifulsoup4
+jinja2
+python-multipart

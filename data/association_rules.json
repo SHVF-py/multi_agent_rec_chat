@@ -1,0 +1,218 @@
+{
+  "app.js-1": [
+    {
+      "product_id": "app.js-4",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-5",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-8",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-13",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-4": [
+    {
+      "product_id": "app.js-1",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-5",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-8",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-13",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-5": [
+    {
+      "product_id": "app.js-1",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-4",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-8",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-13",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-8": [
+    {
+      "product_id": "app.js-1",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-4",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-5",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-13",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-13": [
+    {
+      "product_id": "app.js-1",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-4",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-5",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-8",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-14": [
+    {
+      "product_id": "app.js-1",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-4",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-5",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-8",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-15": [
+    {
+      "product_id": "app.js-1",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-4",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-5",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-8",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-16": [
+    {
+      "product_id": "app.js-1",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-4",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-5",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-8",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-2": [
+    {
+      "product_id": "app.js-3",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-7",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-3": [
+    {
+      "product_id": "app.js-2",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-7",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-7": [
+    {
+      "product_id": "app.js-2",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-3",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-6": [
+    {
+      "product_id": "app.js-10",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-11",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-10": [
+    {
+      "product_id": "app.js-6",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-11",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-11": [
+    {
+      "product_id": "app.js-6",
+      "confidence": 0.7
+    },
+    {
+      "product_id": "app.js-10",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-9": [
+    {
+      "product_id": "app.js-12",
+      "confidence": 0.7
+    }
+  ],
+  "app.js-12": [
+    {
+      "product_id": "app.js-9",
+      "confidence": 0.7
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiribot — Owner Dashboard</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #0a0a0f; color: #e0e7ff; }
+    nav {
+      background: #13131a; border-bottom: 1px solid #2a2a3d;
+      padding: 0 32px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-weight: 700; color: #818cf8; font-size: 18px; }
+    .nav-right { display: flex; gap: 16px; align-items: center; font-size: 13px; }
+    .nav-right span { color: #6b7280; }
+    .nav-right a { color: #6b7280; text-decoration: none; }
+    .nav-right a:hover { color: #a5b4fc; }
+
+    main { max-width: 1100px; margin: 32px auto; padding: 0 24px; }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; color: #e0e7ff; }
+    .subtitle { color: #6b7280; font-size: 14px; margin-bottom: 28px; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .stat-card { background: #13131a; border: 1px solid #2a2a3d; border-radius: 12px; padding: 20px; }
+    .stat-value { font-size: 32px; font-weight: 700; color: #818cf8; }
+    .stat-label { font-size: 13px; color: #6b7280; margin-top: 4px; }
+
+    table { width: 100%; background: #13131a; border: 1px solid #2a2a3d; border-radius: 12px; border-collapse: collapse; overflow: hidden; }
+    th { text-align: left; padding: 14px 16px; font-size: 12px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: .05em; background: #0d0d14; border-bottom: 1px solid #2a2a3d; }
+    td { padding: 14px 16px; font-size: 14px; border-bottom: 1px solid #1e1e2d; vertical-align: middle; color: #c7d2fe; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #16162a; }
+
+    .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+    .badge-pending   { background: #2d2500; color: #fbbf24; }
+    .badge-active    { background: #052e16; color: #4ade80; }
+    .badge-rejected  { background: #2d0f0f; color: #f87171; }
+    .badge-suspended { background: #1e1e2d; color: #9ca3af; }
+
+    .action-btn {
+      padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
+      cursor: pointer; border: none; text-decoration: none;
+    }
+    .btn-approve { background: #052e16; color: #4ade80; }
+    .btn-reject  { background: #2d0f0f; color: #f87171; }
+    .btn-suspend { background: #1e1e2d; color: #9ca3af; }
+    .btn-view    { background: #1e1040; color: #a5b4fc; }
+
+    .empty { text-align: center; padding: 40px; color: #4b5563; font-size: 14px; }
+    .filter-bar { display: flex; gap: 10px; margin-bottom: 16px; }
+    .filter-btn { padding: 7px 16px; border-radius: 8px; border: 1.5px solid #2a2a3d; background: #13131a; font-size: 13px; cursor: pointer; color: #9ca3af; }
+    .filter-btn.active { border-color: #6366f1; background: #1e1040; color: #a5b4fc; }
+  </style>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">Quiribot ⚙ Owner</span>
+  <div class="nav-right">
+    <span>{{ total }} businesses</span>
+    <a href="/owner/logout">Sign out</a>
+  </div>
+</nav>
+
+<main>
+  <h1>Business Applications</h1>
+  <p class="subtitle">Approve, reject, or manage merchant accounts.</p>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-value">{{ pending_count }}</div>
+      <div class="stat-label">Pending review</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ active_count }}</div>
+      <div class="stat-label">Active merchants</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{{ total }}</div>
+      <div class="stat-label">Total registered</div>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <a href="?status=all"       class="filter-btn {% if status == 'all' %}active{% endif %}">All</a>
+    <a href="?status=pending"   class="filter-btn {% if status == 'pending' %}active{% endif %}">Pending</a>
+    <a href="?status=active"    class="filter-btn {% if status == 'active' %}active{% endif %}">Active</a>
+    <a href="?status=rejected"  class="filter-btn {% if status == 'rejected' %}active{% endif %}">Rejected</a>
+    <a href="?status=suspended" class="filter-btn {% if status == 'suspended' %}active{% endif %}">Suspended</a>
+  </div>
+
+  {% if businesses %}
+  <table>
+    <thead>
+      <tr>
+        <th>Business</th>
+        <th>Platform</th>
+        <th>Email</th>
+        <th>Applied</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in businesses %}
+      <tr>
+        <td><a href="/owner/business/{{ b.id }}" style="color:#6366f1;text-decoration:none;font-weight:600;">{{ b.name }}</a><br><span style="font-size:12px;color:#9ca3af;">{{ b.website_url }}</span></td>
+        <td>{{ b.platform or '—' }}</td>
+        <td>{{ b.email }}</td>
+        <td>{{ b.created_at[:10] }}</td>
+        <td><span class="badge badge-{{ b.status }}">{{ b.status }}</span></td>
+        <td style="display:flex;gap:6px;flex-wrap:wrap;">
+          {% if b.status == 'pending' %}
+            <form method="POST" action="/owner/business/{{ b.id }}/approve" style="display:inline;"><button type="submit" class="action-btn btn-approve">Approve</button></form>
+            <form method="POST" action="/owner/business/{{ b.id }}/reject"  style="display:inline;"><button type="submit" class="action-btn btn-reject">Reject</button></form>
+          {% elif b.status == 'active' %}
+            <form method="POST" action="/owner/business/{{ b.id }}/suspend" style="display:inline;"><button type="submit" class="action-btn btn-suspend">Suspend</button></form>
+          {% elif b.status == 'suspended' %}
+            <form method="POST" action="/owner/business/{{ b.id }}/approve" style="display:inline;"><button type="submit" class="action-btn btn-approve">Reinstate</button></form>
+          {% endif %}
+          <a href="/owner/business/{{ b.id }}" class="action-btn btn-view">View</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="empty">No businesses found for this filter.</div>
+  {% endif %}
+</main>
+</body>
+</html>

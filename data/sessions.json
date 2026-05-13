@@ -1,0 +1,2059 @@
+{
+  "9f25ccc3-aec8-407d-9855-f81020ee23ea": {
+    "viewed_product_ids": [
+      "11",
+      "15",
+      "9",
+      "13",
+      "16"
+    ],
+    "preferred_categories": [
+      "electronics",
+      "women's clothing"
+    ],
+    "preferred_brands": [],
+    "last_ranked_products": [
+      {
+        "product_id": "11",
+        "rank": 1,
+        "metadata": {
+          "product_id": "11",
+          "name": "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
+          "price": 109.0,
+          "category": "electronics",
+          "brand": "Unbranded",
+          "rating": 4.8,
+          "stock_quantity": 319,
+          "description": "3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
+          "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.10919559001922607,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.4876782360076904
+        }
+      },
+      {
+        "product_id": "15",
+        "rank": 2,
+        "metadata": {
+          "product_id": "15",
+          "name": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
+          "price": 56.99,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 2.6,
+          "stock_quantity": 235,
+          "description": "Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+          "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.18877603113651276,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.52,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.4535104124546051
+        }
+      },
+      {
+        "product_id": "9",
+        "rank": 3,
+        "metadata": {
+          "product_id": "9",
+          "name": "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
+          "price": 64.0,
+          "category": "electronics",
+          "brand": "Unbranded",
+          "rating": 3.3,
+          "stock_quantity": 203,
+          "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user\u2019s hardware configuration and operating system",
+          "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.10301072895526886,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.6599999999999999,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.4402042915821075
+        }
+      },
+      {
+        "product_id": "13",
+        "rank": 4,
+        "metadata": {
+          "product_id": "13",
+          "name": "Acer SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
+          "price": 599.0,
+          "category": "electronics",
+          "brand": "Unbranded",
+          "rating": 2.9,
+          "stock_quantity": 250,
+          "description": "21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz",
+          "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.13059450685977936,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.58,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.4392378027439117
+        }
+      },
+      {
+        "product_id": "16",
+        "rank": 5,
+        "metadata": {
+          "product_id": "16",
+          "name": "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
+          "price": 29.95,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 2.9,
+          "stock_quantity": 340,
+          "description": "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
+          "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.10073778033256531,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.58,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.4272951121330261
+        }
+      }
+    ],
+    "interaction_count": 1,
+    "created_at": "2026-05-09T13:42:42.284989"
+  },
+  "a9f24ff4-612c-45c6-ae0b-b10b1620c42d": {
+    "viewed_product_ids": [
+      "16",
+      "20",
+      "18",
+      "19",
+      "17",
+      "2"
+    ],
+    "preferred_categories": [
+      "women's clothing",
+      "men's clothing"
+    ],
+    "preferred_brands": [],
+    "last_ranked_products": [
+      {
+        "product_id": "20",
+        "rank": 1,
+        "metadata": {
+          "product_id": "20",
+          "name": "DANVOUY Womens T Shirt Casual Cotton Short",
+          "price": 12.99,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 3.6,
+          "stock_quantity": 145,
+          "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
+          "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.5495442748069763,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.72,
+          "personalization_score": 1.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.7778177099227906
+        }
+      },
+      {
+        "product_id": "18",
+        "rank": 2,
+        "metadata": {
+          "product_id": "18",
+          "name": "MBJ Women's Solid Short Sleeve Boat Neck V ",
+          "price": 9.85,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 4.7,
+          "stock_quantity": 130,
+          "description": "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
+          "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.3298739790916443,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 1.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.7229495916366578
+        }
+      },
+      {
+        "product_id": "19",
+        "rank": 3,
+        "metadata": {
+          "product_id": "19",
+          "name": "Opna Women's Short Sleeve Moisture",
+          "price": 7.95,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 4.5,
+          "stock_quantity": 146,
+          "description": "100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort",
+          "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.33299463987350464,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9,
+          "personalization_score": 1.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.7181978559494019
+        }
+      },
+      {
+        "product_id": "17",
+        "rank": 4,
+        "metadata": {
+          "product_id": "17",
+          "name": "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
+          "price": 39.99,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 3.8,
+          "stock_quantity": 679,
+          "description": "Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
+          "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.31924378871917725,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.76,
+          "personalization_score": 1.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.691697515487671
+        }
+      },
+      {
+        "product_id": "2",
+        "rank": 5,
+        "metadata": {
+          "product_id": "2",
+          "name": "Mens Casual Premium Slim Fit T-Shirts ",
+          "price": 22.3,
+          "category": "men's clothing",
+          "brand": "Unbranded",
+          "rating": 4.1,
+          "stock_quantity": 259,
+          "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.6661084294319153,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.82,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.6894433717727662
+        }
+      }
+    ],
+    "interaction_count": 2,
+    "created_at": "2026-05-09T16:01:02.143097"
+  },
+  "0c82b756-174b-44b0-9def-67c988acf1b0": {
+    "viewed_product_ids": [
+      "2",
+      "20",
+      "3",
+      "18",
+      "19",
+      "1",
+      "16",
+      "15",
+      "11",
+      "13",
+      "10",
+      "12",
+      "9"
+    ],
+    "preferred_categories": [
+      "men's clothing",
+      "women's clothing",
+      "electronics"
+    ],
+    "preferred_brands": [],
+    "last_ranked_products": [
+      {
+        "product_id": "11",
+        "rank": 1,
+        "metadata": {
+          "product_id": "11",
+          "name": "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5",
+          "price": 109.0,
+          "category": "electronics",
+          "brand": "Unbranded",
+          "rating": 4.8,
+          "stock_quantity": 319,
+          "description": "3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
+          "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.5359299182891846,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 1.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.808371967315674
+        }
+      },
+      {
+        "product_id": "10",
+        "rank": 2,
+        "metadata": {
+          "product_id": "10",
+          "name": "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
+          "price": 109.0,
+          "category": "electronics",
+          "brand": "Unbranded",
+          "rating": 2.9,
+          "stock_quantity": 470,
+          "description": "Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5\u201d hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)",
+          "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.6042330861091614,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.58,
+          "personalization_score": 1.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.7786932344436646
+        }
+      },
+      {
+        "product_id": "12",
+        "rank": 3,
+        "metadata": {
+          "product_id": "12",
+          "name": "WD 4TB Gaming Drive Works with Playstation 4 Portable External Hard Drive",
+          "price": 114.0,
+          "category": "electronics",
+          "brand": "Unbranded",
+          "rating": 4.8,
+          "stock_quantity": 400,
+          "description": "Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty",
+          "image": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.2883877754211426,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 1.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.7093551101684571
+        }
+      },
+      {
+        "product_id": "9",
+        "rank": 4,
+        "metadata": {
+          "product_id": "9",
+          "name": "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
+          "price": 64.0,
+          "category": "electronics",
+          "brand": "Unbranded",
+          "rating": 3.3,
+          "stock_quantity": 203,
+          "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user\u2019s hardware configuration and operating system",
+          "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.2903366982936859,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.6599999999999999,
+          "personalization_score": 1.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.6651346793174744
+        }
+      },
+      {
+        "product_id": "18",
+        "rank": 5,
+        "metadata": {
+          "product_id": "18",
+          "name": "MBJ Women's Solid Short Sleeve Boat Neck V ",
+          "price": 9.85,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 4.7,
+          "stock_quantity": 130,
+          "description": "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
+          "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.15441545844078064,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 1.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.6527661833763123
+        }
+      }
+    ],
+    "interaction_count": 3,
+    "created_at": "2026-05-09T17:39:49.636863"
+  },
+  "0c433e8f-6769-42d3-9422-bffa3ccdd466": {
+    "viewed_product_ids": [
+      "3",
+      "17",
+      "16",
+      "15",
+      "2"
+    ],
+    "preferred_categories": [
+      "men's clothing",
+      "women's clothing"
+    ],
+    "preferred_brands": [],
+    "last_ranked_products": [
+      {
+        "product_id": "3",
+        "rank": 1,
+        "metadata": {
+          "product_id": "3",
+          "name": "Mens Cotton Jacket",
+          "price": 55.99,
+          "category": "men's clothing",
+          "brand": "Unbranded",
+          "rating": 4.7,
+          "stock_quantity": 500,
+          "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
+          "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.6352813243865967,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.6951125297546388
+        }
+      },
+      {
+        "product_id": "17",
+        "rank": 2,
+        "metadata": {
+          "product_id": "17",
+          "name": "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
+          "price": 39.99,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 3.8,
+          "stock_quantity": 679,
+          "description": "Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
+          "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.5228844285011292,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.76,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.6231537714004517
+        }
+      },
+      {
+        "product_id": "16",
+        "rank": 3,
+        "metadata": {
+          "product_id": "16",
+          "name": "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
+          "price": 29.95,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 2.9,
+          "stock_quantity": 340,
+          "description": "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
+          "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.5616240501403809,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.58,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.6116496200561524
+        }
+      },
+      {
+        "product_id": "15",
+        "rank": 4,
+        "metadata": {
+          "product_id": "15",
+          "name": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
+          "price": 56.99,
+          "category": "women's clothing",
+          "brand": "Unbranded",
+          "rating": 2.6,
+          "stock_quantity": 235,
+          "description": "Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+          "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.5588530898094177,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.52,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.6015412359237671
+        }
+      },
+      {
+        "product_id": "2",
+        "rank": 5,
+        "metadata": {
+          "product_id": "2",
+          "name": "Mens Casual Premium Slim Fit T-Shirts ",
+          "price": 22.3,
+          "category": "men's clothing",
+          "brand": "Unbranded",
+          "rating": 4.1,
+          "stock_quantity": 259,
+          "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
+          "in_stock": true,
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "default"
+        },
+        "scoring": {
+          "relevance_score": 0.4269735813140869,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.82,
+          "personalization_score": 0.0,
+          "stock_priority_score": 1.0,
+          "final_score": 0.5937894325256348
+        }
+      }
+    ],
+    "interaction_count": 1,
+    "created_at": "2026-05-10T11:38:10.965445"
+  },
+  "qb-jjjlhmmgf": {
+    "viewed_product_ids": [],
+    "preferred_categories": [],
+    "preferred_brands": [],
+    "last_ranked_products": [],
+    "interaction_count": 0,
+    "created_at": "2026-05-13T16:39:35.889062"
+  },
+  "qb-b2b9dj2wb": {
+    "viewed_product_ids": [
+      "app.js-5",
+      "app.js-4",
+      "app.js-8",
+      "app.js-1",
+      "app.js-16",
+      "app.js-14",
+      "app.js-13"
+    ],
+    "preferred_categories": [
+      "laptop"
+    ],
+    "preferred_brands": [
+      "HP"
+    ],
+    "last_ranked_products": [
+      {
+        "product_id": "app.js-5",
+        "rank": 1,
+        "metadata": {
+          "product_id": "app.js-5",
+          "name": "HP EliteBook x360 1030 G2 | 13.3\" 1080p | i5 7th Gen 7300U | 8GB RAM 512GB SSD",
+          "price": 68000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.4,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook x360 1030 G2 is a sleek and versatile 2-in-1 business laptop built for professionals who value flexibility. The 360\u00b0 hinge design allows it to transform into a tablet, tent, or stand mode in seconds.\n\nPowered by the Intel Core i5-7300U with 8GB RAM and a large 512GB SSD, it offers solid performance for document editing, email, web browsing, and video calls. The 13.3\" FHD IPS touchscreen is bright and responsive.\n\nAn affordable entry into the premium EliteBook 2-in-1 experience \u2014 fully tested and ready to use.\nProcessor: Intel Core i5-7300U | Generation: 7th Gen | RAM: 8GB DDR3 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 57Wh Li-ion | Weight: 1.40 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i5, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-13-at-3.05.37-AM-400x278.jpeg",
+          "in_stock": true,
+          "sku": "LZ-005",
+          "url": "http://localhost:3000/?product_id=5",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.5548660159111023,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8800000000000001,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.758946406364441
+        }
+      },
+      {
+        "product_id": "app.js-4",
+        "rank": 2,
+        "metadata": {
+          "product_id": "app.js-4",
+          "name": "HP EliteBook 830 G7 | i5 10th Gen 10310U | 13\" 1080p Display | 8GB RAM 256GB SSD",
+          "price": 73000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.5,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook 830 G7 is one of the most portable yet powerful business ultrabooks in HP's lineup. Weighing just 1.25 kg, it's engineered for professionals who travel frequently without wanting to sacrifice performance.\n\nThe Intel Core i5-10310U vPro processor with 8GB DDR4 RAM handles enterprise workloads efficiently, while the 256GB NVMe SSD provides fast storage. The slim 13.3\" FHD IPS display is crisp and legible even in bright environments.\n\nThis pre-owned unit is in excellent condition and represents exceptional value for a premium ultrabook.\nProcessor: Intel Core i5-10310U | Generation: 10th Gen | RAM: 8GB DDR4 | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Anti-Glare | OS: Windows 11 Pro | Battery: 53Wh Li-ion | Weight: 1.25 kg | Condition: Pre-Owned | Tags: EliteBook, 13 inch, i5, Ultrabook, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/07/WhatsApp-Image-2024-12-14-at-05.01.51_adf86389-e1734181491750-394x300.jpg",
+          "in_stock": true,
+          "sku": "LZ-004",
+          "url": "http://localhost:3000/?product_id=4",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.5185991525650024,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.747439661026001
+        }
+      },
+      {
+        "product_id": "app.js-1",
+        "rank": 3,
+        "metadata": {
+          "product_id": "app.js-1",
+          "name": "HP EliteBook X360 1030 G7 | 13.3\" 1080p Display | i7 10th Gen 10610U | 32GB RAM 512GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1030 G7 is HP's premium ultra-slim business 2-in-1 convertible. Powered by the Intel Core i7-10610U vPro processor, it handles demanding workloads with ease.\n\nThe 13.3\" Full HD IPS touchscreen with a 360\u00b0 hinge lets you switch between laptop, tablet, tent, and stand modes effortlessly. With 32GB DDR4 RAM and a 512GB NVMe SSD, multitasking is seamless and boot times are near-instant.\n\nBuilt to MIL-STD-810H military durability standards, this unit has been fully tested and inspected. It arrives in excellent pre-owned condition \u2014 ideal for executives, consultants, and power users.\nProcessor: Intel Core i7-10610U | Generation: 10th Gen | RAM: 32GB DDR4 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 1.32 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i7, Touch, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/WhatsApp-Image-2025-05-02-at-10.28.00-PM-700x542.jpeg",
+          "in_stock": true,
+          "sku": "LZ-001",
+          "url": "http://localhost:3000/?product_id=1",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.49879589676856995,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.745518358707428
+        }
+      },
+      {
+        "product_id": "app.js-13",
+        "rank": 4,
+        "metadata": {
+          "product_id": "app.js-13",
+          "name": "HP EliteBook 850 G7 | i5 10th Gen 10610U CPU | 15 inch 1080p Display | 16GB Ram 256GB SSD | Pre-Owned Laptop",
+          "price": 97000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.4,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook 850 G7 brings EliteBook-grade build quality and security to a larger 15.6\" screen. The Intel Core i5-10610U vPro processor delivers reliable performance for enterprise workloads while keeping power consumption low.\n\n16GB DDR4 RAM and a 256GB NVMe SSD provide a snappy everyday experience. The anti-glare FHD IPS screen is comfortable for extended work sessions in varied lighting conditions.\n\nA solid, well-built business laptop available at a fraction of its original cost.\nProcessor: Intel Core i5-10610U | Generation: 10th Gen | RAM: 16GB DDR4 | Storage: 256GB NVMe SSD | Display: 15.6\" FHD 1080p IPS Anti-Glare | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 1.78 kg | Condition: Pre-Owned | Tags: EliteBook, 15 inch, i5, 10th Gen, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/WhatsApp-Image-2025-05-02-at-10.34.54-PM-400x295.jpeg",
+          "in_stock": true,
+          "sku": "LZ-013",
+          "url": "http://localhost:3000/?product_id=13",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.5143080949783325,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8800000000000001,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.7427232379913331
+        }
+      },
+      {
+        "product_id": "app.js-8",
+        "rank": 5,
+        "metadata": {
+          "product_id": "app.js-8",
+          "name": "HP EliteBook 650 G9 | 15\" 1080P | i5 12th Gen | 16GB RAM 256GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.5,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook 650 G9 brings the premium EliteBook experience to a larger 15.6\" form factor. The Intel Core i5-1245U 12th Gen processor with its hybrid efficiency architecture delivers excellent performance per watt.\n\nWith 16GB DDR4 RAM and a 256GB NVMe SSD, this machine breezes through office productivity, video conferencing, and light content creation. The FHD IPS anti-glare screen is easy on the eyes during long sessions.\n\nPre-owned and fully tested \u2014 a step up from the ProBook range for professionals who want EliteBook build quality.\nProcessor: Intel Core i5-1245U | Generation: 12th Gen | RAM: 16GB DDR4 | Storage: 256GB NVMe SSD | Display: 15.6\" FHD 1080p IPS Anti-Glare | OS: Windows 11 Pro | Battery: 51Wh Li-ion | Weight: 1.78 kg | Condition: Pre-Owned | Tags: EliteBook, 15 inch, i5, 12th Gen, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-5.21.57-AM-2-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-008",
+          "url": "http://localhost:3000/?product_id=8",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.5036876201629639,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.7414750480651856
+        }
+      }
+    ],
+    "interaction_count": 6,
+    "created_at": "2026-05-13T17:05:59.461603"
+  },
+  "qb-ybv5rqe2s": {
+    "viewed_product_ids": [
+      "app.js-5",
+      "app.js-4",
+      "app.js-12",
+      "app.js-9",
+      "app.js-1"
+    ],
+    "preferred_categories": [
+      "laptop",
+      "premium"
+    ],
+    "preferred_brands": [
+      "HP"
+    ],
+    "last_ranked_products": [
+      {
+        "product_id": "app.js-5",
+        "rank": 1,
+        "metadata": {
+          "product_id": "app.js-5",
+          "name": "HP EliteBook x360 1030 G2 | 13.3\" 1080p | i5 7th Gen 7300U | 8GB RAM 512GB SSD",
+          "price": 68000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.4,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook x360 1030 G2 is a sleek and versatile 2-in-1 business laptop built for professionals who value flexibility. The 360\u00b0 hinge design allows it to transform into a tablet, tent, or stand mode in seconds.\n\nPowered by the Intel Core i5-7300U with 8GB RAM and a large 512GB SSD, it offers solid performance for document editing, email, web browsing, and video calls. The 13.3\" FHD IPS touchscreen is bright and responsive.\n\nAn affordable entry into the premium EliteBook 2-in-1 experience \u2014 fully tested and ready to use.\nProcessor: Intel Core i5-7300U | Generation: 7th Gen | RAM: 8GB DDR3 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 57Wh Li-ion | Weight: 1.40 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i5, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-13-at-3.05.37-AM-400x278.jpeg",
+          "in_stock": true,
+          "sku": "LZ-005",
+          "url": "http://localhost:3000/?product_id=5",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.542584240436554,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8800000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.6040336961746217
+        }
+      },
+      {
+        "product_id": "app.js-4",
+        "rank": 2,
+        "metadata": {
+          "product_id": "app.js-4",
+          "name": "HP EliteBook 830 G7 | i5 10th Gen 10310U | 13\" 1080p Display | 8GB RAM 256GB SSD",
+          "price": 73000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.5,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook 830 G7 is one of the most portable yet powerful business ultrabooks in HP's lineup. Weighing just 1.25 kg, it's engineered for professionals who travel frequently without wanting to sacrifice performance.\n\nThe Intel Core i5-10310U vPro processor with 8GB DDR4 RAM handles enterprise workloads efficiently, while the 256GB NVMe SSD provides fast storage. The slim 13.3\" FHD IPS display is crisp and legible even in bright environments.\n\nThis pre-owned unit is in excellent condition and represents exceptional value for a premium ultrabook.\nProcessor: Intel Core i5-10310U | Generation: 10th Gen | RAM: 8GB DDR4 | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Anti-Glare | OS: Windows 11 Pro | Battery: 53Wh Li-ion | Weight: 1.25 kg | Condition: Pre-Owned | Tags: EliteBook, 13 inch, i5, Ultrabook, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/07/WhatsApp-Image-2024-12-14-at-05.01.51_adf86389-e1734181491750-394x300.jpg",
+          "in_stock": true,
+          "sku": "LZ-004",
+          "url": "http://localhost:3000/?product_id=4",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.5131306052207947,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5952522420883178
+        }
+      },
+      {
+        "product_id": "app.js-12",
+        "rank": 3,
+        "metadata": {
+          "product_id": "app.js-12",
+          "name": "HP Elite x360 Dragonfly G2 | 13\" 1080p | i7 11th Gen 1185G7 | 32GB RAM 256GB SSD",
+          "price": 150000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.6,
+          "stock_quantity": 10,
+          "description": "The HP Elite Dragonfly G2 is HP's most prestigious and ultra-portable 2-in-1 \u2014 weighing under 1 kg, it's the lightest business laptop in HP's entire portfolio. Despite its featherweight build, it houses a powerful Intel Core i7-1185G7 with Intel Iris Xe graphics.\n\nWith a massive 32GB LPDDR4x soldered RAM, this machine handles heavy multitasking, virtual machines, and data-heavy applications without hesitation. The 13.3\" FHD touchscreen with 360\u00b0 hinge makes it a joy to use in any scenario.\n\nAn extraordinary pre-owned find \u2014 the Dragonfly rarely appears at this price point.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 0.99 kg | Condition: Pre-Owned | Tags: Dragonfly, 2-in-1, 13 inch, i7, Ultra-portable, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-02-at-6.02.58-AM-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-012",
+          "url": "http://localhost:3000/?product_id=12",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.5011917352676392,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9199999999999999,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5934766941070557
+        }
+      },
+      {
+        "product_id": "app.js-9",
+        "rank": 4,
+        "metadata": {
+          "product_id": "app.js-9",
+          "name": "HP Spectre X360 | 16\" 2K Display 2-in-1 | Intel Ultra Core 7 155H | 16GB DDR5 1TB Gen4 SSD",
+          "price": 317000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.8,
+          "stock_quantity": 10,
+          "description": "The HP Spectre x360 16 is HP's most premium consumer laptop \u2014 a stunning 2-in-1 convertible featuring an Intel Core Ultra 7 155H processor and a breathtaking 2.8K OLED touchscreen display.\n\nWith 16GB LPDDR5x RAM and a 1TB Gen4 NVMe SSD, this machine delivers flagship-tier performance for creative professionals, content creators, and power users. The OLED panel delivers vivid colours, deep blacks, and 100% DCI-P3 colour accuracy.\n\nBrand new and sealed in box \u2014 this is the pinnacle of laptop engineering in 2025.\nProcessor: Intel Core Ultra 7 155H | Generation: Meteor Lake (Core Ultra) | RAM: 16GB LPDDR5x | Storage: 1TB Gen4 NVMe SSD | Display: 16\" 2.8K 2880\u00d71800 OLED Touch 2-in-1 | OS: Windows 11 Home | Battery: 83Wh Li-ion | Weight: 2.19 kg | Condition: New | Tags: Spectre, OLED, 2-in-1, 16 inch, 2K, Ultra 7, New, Flagship",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/1520a4ab-c5a4-4e94-9dcb-c257a2b419b3-400x295.jpg",
+          "in_stock": true,
+          "sku": "LZ-009",
+          "url": "http://localhost:3000/?product_id=9",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4790436625480652,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5906174650192261
+        }
+      },
+      {
+        "product_id": "app.js-1",
+        "rank": 5,
+        "metadata": {
+          "product_id": "app.js-1",
+          "name": "HP EliteBook X360 1030 G7 | 13.3\" 1080p Display | i7 10th Gen 10610U | 32GB RAM 512GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1030 G7 is HP's premium ultra-slim business 2-in-1 convertible. Powered by the Intel Core i7-10610U vPro processor, it handles demanding workloads with ease.\n\nThe 13.3\" Full HD IPS touchscreen with a 360\u00b0 hinge lets you switch between laptop, tablet, tent, and stand modes effortlessly. With 32GB DDR4 RAM and a 512GB NVMe SSD, multitasking is seamless and boot times are near-instant.\n\nBuilt to MIL-STD-810H military durability standards, this unit has been fully tested and inspected. It arrives in excellent pre-owned condition \u2014 ideal for executives, consultants, and power users.\nProcessor: Intel Core i7-10610U | Generation: 10th Gen | RAM: 32GB DDR4 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 1.32 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i7, Touch, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/WhatsApp-Image-2025-05-02-at-10.28.00-PM-700x542.jpeg",
+          "in_stock": true,
+          "sku": "LZ-001",
+          "url": "http://localhost:3000/?product_id=1",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.48524102568626404,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5900964102745057
+        }
+      }
+    ],
+    "interaction_count": 1,
+    "created_at": "2026-05-13T17:21:22.531128"
+  },
+  "qb-jjf8i1983": {
+    "viewed_product_ids": [
+      "app.js-5",
+      "app.js-12",
+      "app.js-1",
+      "app.js-9",
+      "app.js-8"
+    ],
+    "preferred_categories": [
+      "laptop",
+      "premium"
+    ],
+    "preferred_brands": [
+      "HP"
+    ],
+    "last_ranked_products": [
+      {
+        "product_id": "app.js-5",
+        "rank": 1,
+        "metadata": {
+          "product_id": "app.js-5",
+          "name": "HP EliteBook x360 1030 G2 | 13.3\" 1080p | i5 7th Gen 7300U | 8GB RAM 512GB SSD",
+          "price": 68000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.4,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook x360 1030 G2 is a sleek and versatile 2-in-1 business laptop built for professionals who value flexibility. The 360\u00b0 hinge design allows it to transform into a tablet, tent, or stand mode in seconds.\n\nPowered by the Intel Core i5-7300U with 8GB RAM and a large 512GB SSD, it offers solid performance for document editing, email, web browsing, and video calls. The 13.3\" FHD IPS touchscreen is bright and responsive.\n\nAn affordable entry into the premium EliteBook 2-in-1 experience \u2014 fully tested and ready to use.\nProcessor: Intel Core i5-7300U | Generation: 7th Gen | RAM: 8GB DDR3 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 57Wh Li-ion | Weight: 1.40 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i5, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-13-at-3.05.37-AM-400x278.jpeg",
+          "in_stock": true,
+          "sku": "LZ-005",
+          "url": "http://localhost:3000/?product_id=5",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.5058610439300537,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8800000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5893444175720215
+        }
+      },
+      {
+        "product_id": "app.js-12",
+        "rank": 2,
+        "metadata": {
+          "product_id": "app.js-12",
+          "name": "HP Elite x360 Dragonfly G2 | 13\" 1080p | i7 11th Gen 1185G7 | 32GB RAM 256GB SSD",
+          "price": 150000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.6,
+          "stock_quantity": 10,
+          "description": "The HP Elite Dragonfly G2 is HP's most prestigious and ultra-portable 2-in-1 \u2014 weighing under 1 kg, it's the lightest business laptop in HP's entire portfolio. Despite its featherweight build, it houses a powerful Intel Core i7-1185G7 with Intel Iris Xe graphics.\n\nWith a massive 32GB LPDDR4x soldered RAM, this machine handles heavy multitasking, virtual machines, and data-heavy applications without hesitation. The 13.3\" FHD touchscreen with 360\u00b0 hinge makes it a joy to use in any scenario.\n\nAn extraordinary pre-owned find \u2014 the Dragonfly rarely appears at this price point.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 0.99 kg | Condition: Pre-Owned | Tags: Dragonfly, 2-in-1, 13 inch, i7, Ultra-portable, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-02-at-6.02.58-AM-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-012",
+          "url": "http://localhost:3000/?product_id=12",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4890480041503906,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9199999999999999,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5886192016601562
+        }
+      },
+      {
+        "product_id": "app.js-1",
+        "rank": 3,
+        "metadata": {
+          "product_id": "app.js-1",
+          "name": "HP EliteBook X360 1030 G7 | 13.3\" 1080p Display | i7 10th Gen 10610U | 32GB RAM 512GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1030 G7 is HP's premium ultra-slim business 2-in-1 convertible. Powered by the Intel Core i7-10610U vPro processor, it handles demanding workloads with ease.\n\nThe 13.3\" Full HD IPS touchscreen with a 360\u00b0 hinge lets you switch between laptop, tablet, tent, and stand modes effortlessly. With 32GB DDR4 RAM and a 512GB NVMe SSD, multitasking is seamless and boot times are near-instant.\n\nBuilt to MIL-STD-810H military durability standards, this unit has been fully tested and inspected. It arrives in excellent pre-owned condition \u2014 ideal for executives, consultants, and power users.\nProcessor: Intel Core i7-10610U | Generation: 10th Gen | RAM: 32GB DDR4 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 1.32 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i7, Touch, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/WhatsApp-Image-2025-05-02-at-10.28.00-PM-700x542.jpeg",
+          "in_stock": true,
+          "sku": "LZ-001",
+          "url": "http://localhost:3000/?product_id=1",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4757567048072815,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5863026819229126
+        }
+      },
+      {
+        "product_id": "app.js-9",
+        "rank": 4,
+        "metadata": {
+          "product_id": "app.js-9",
+          "name": "HP Spectre X360 | 16\" 2K Display 2-in-1 | Intel Ultra Core 7 155H | 16GB DDR5 1TB Gen4 SSD",
+          "price": 317000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.8,
+          "stock_quantity": 10,
+          "description": "The HP Spectre x360 16 is HP's most premium consumer laptop \u2014 a stunning 2-in-1 convertible featuring an Intel Core Ultra 7 155H processor and a breathtaking 2.8K OLED touchscreen display.\n\nWith 16GB LPDDR5x RAM and a 1TB Gen4 NVMe SSD, this machine delivers flagship-tier performance for creative professionals, content creators, and power users. The OLED panel delivers vivid colours, deep blacks, and 100% DCI-P3 colour accuracy.\n\nBrand new and sealed in box \u2014 this is the pinnacle of laptop engineering in 2025.\nProcessor: Intel Core Ultra 7 155H | Generation: Meteor Lake (Core Ultra) | RAM: 16GB LPDDR5x | Storage: 1TB Gen4 NVMe SSD | Display: 16\" 2.8K 2880\u00d71800 OLED Touch 2-in-1 | OS: Windows 11 Home | Battery: 83Wh Li-ion | Weight: 2.19 kg | Condition: New | Tags: Spectre, OLED, 2-in-1, 16 inch, 2K, Ultra 7, New, Flagship",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/1520a4ab-c5a4-4e94-9dcb-c257a2b419b3-400x295.jpg",
+          "in_stock": true,
+          "sku": "LZ-009",
+          "url": "http://localhost:3000/?product_id=9",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.466835618019104,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5857342472076417
+        }
+      },
+      {
+        "product_id": "app.js-8",
+        "rank": 5,
+        "metadata": {
+          "product_id": "app.js-8",
+          "name": "HP EliteBook 650 G9 | 15\" 1080P | i5 12th Gen | 16GB RAM 256GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.5,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook 650 G9 brings the premium EliteBook experience to a larger 15.6\" form factor. The Intel Core i5-1245U 12th Gen processor with its hybrid efficiency architecture delivers excellent performance per watt.\n\nWith 16GB DDR4 RAM and a 256GB NVMe SSD, this machine breezes through office productivity, video conferencing, and light content creation. The FHD IPS anti-glare screen is easy on the eyes during long sessions.\n\nPre-owned and fully tested \u2014 a step up from the ProBook range for professionals who want EliteBook build quality.\nProcessor: Intel Core i5-1245U | Generation: 12th Gen | RAM: 16GB DDR4 | Storage: 256GB NVMe SSD | Display: 15.6\" FHD 1080p IPS Anti-Glare | OS: Windows 11 Pro | Battery: 51Wh Li-ion | Weight: 1.78 kg | Condition: Pre-Owned | Tags: EliteBook, 15 inch, i5, 12th Gen, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-5.21.57-AM-2-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-008",
+          "url": "http://localhost:3000/?product_id=8",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.48208585381507874,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5828343415260315
+        }
+      }
+    ],
+    "interaction_count": 1,
+    "created_at": "2026-05-13T17:39:53.724141"
+  },
+  "qb-05l21fof8": {
+    "viewed_product_ids": [
+      "app.js-12",
+      "app.js-5",
+      "app.js-1",
+      "app.js-9",
+      "app.js-4",
+      "app.js-14"
+    ],
+    "preferred_categories": [
+      "premium",
+      "laptop"
+    ],
+    "preferred_brands": [
+      "HP"
+    ],
+    "last_ranked_products": [
+      {
+        "product_id": "app.js-9",
+        "rank": 1,
+        "metadata": {
+          "product_id": "app.js-9",
+          "name": "HP Spectre X360 | 16\" 2K Display 2-in-1 | Intel Ultra Core 7 155H | 16GB DDR5 1TB Gen4 SSD",
+          "price": 317000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.8,
+          "stock_quantity": 10,
+          "description": "The HP Spectre x360 16 is HP's most premium consumer laptop \u2014 a stunning 2-in-1 convertible featuring an Intel Core Ultra 7 155H processor and a breathtaking 2.8K OLED touchscreen display.\n\nWith 16GB LPDDR5x RAM and a 1TB Gen4 NVMe SSD, this machine delivers flagship-tier performance for creative professionals, content creators, and power users. The OLED panel delivers vivid colours, deep blacks, and 100% DCI-P3 colour accuracy.\n\nBrand new and sealed in box \u2014 this is the pinnacle of laptop engineering in 2025.\nProcessor: Intel Core Ultra 7 155H | Generation: Meteor Lake (Core Ultra) | RAM: 16GB LPDDR5x | Storage: 1TB Gen4 NVMe SSD | Display: 16\" 2.8K 2880\u00d71800 OLED Touch 2-in-1 | OS: Windows 11 Home | Battery: 83Wh Li-ion | Weight: 2.19 kg | Condition: New | Tags: Spectre, OLED, 2-in-1, 16 inch, 2K, Ultra 7, New, Flagship",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/1520a4ab-c5a4-4e94-9dcb-c257a2b419b3-400x295.jpg",
+          "in_stock": true,
+          "sku": "LZ-009",
+          "url": "http://localhost:3000/?product_id=9",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4110994040966034,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.7134397616386414
+        }
+      },
+      {
+        "product_id": "app.js-14",
+        "rank": 2,
+        "metadata": {
+          "product_id": "app.js-14",
+          "name": "HP EliteBook X360 1040 G8 | 14 inch 1080p Display | i7 11th Gen 1185G7 CPU | 32GB Ram 512GB SSD | Pre-Owned Laptop",
+          "price": 143000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1040 G8 is a class-leading 14\" business 2-in-1 convertible. With the Intel Core i7-1185G7 \u2014 one of Intel's fastest 11th Gen mobile chips \u2014 it handles everything from spreadsheets to video editing and light 3D work.\n\n32GB LPDDR4x RAM ensures you can keep dozens of tabs, virtual machines, and productivity apps open simultaneously. The 512GB NVMe SSD provides both capacity and blazing speed. The 14\" FHD IPS touchscreen with 360\u00b0 hinge makes it a true all-rounder.\n\nAn outstanding pre-owned premium 2-in-1 at a very competitive price.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 512GB NVMe SSD | Display: 14\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 51Wh Li-ion | Weight: 1.36 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 14 inch, i7, Touch, 11th Gen, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/image00001-1-2-scaled-e1713359837545-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-014",
+          "url": "http://localhost:3000/?product_id=14",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.39353328943252563,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.7034133157730103
+        }
+      },
+      {
+        "product_id": "app.js-4",
+        "rank": 3,
+        "metadata": {
+          "product_id": "app.js-4",
+          "name": "HP EliteBook 830 G7 | i5 10th Gen 10310U | 13\" 1080p Display | 8GB RAM 256GB SSD",
+          "price": 73000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.5,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook 830 G7 is one of the most portable yet powerful business ultrabooks in HP's lineup. Weighing just 1.25 kg, it's engineered for professionals who travel frequently without wanting to sacrifice performance.\n\nThe Intel Core i5-10310U vPro processor with 8GB DDR4 RAM handles enterprise workloads efficiently, while the 256GB NVMe SSD provides fast storage. The slim 13.3\" FHD IPS display is crisp and legible even in bright environments.\n\nThis pre-owned unit is in excellent condition and represents exceptional value for a premium ultrabook.\nProcessor: Intel Core i5-10310U | Generation: 10th Gen | RAM: 8GB DDR4 | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Anti-Glare | OS: Windows 11 Pro | Battery: 53Wh Li-ion | Weight: 1.25 kg | Condition: Pre-Owned | Tags: EliteBook, 13 inch, i5, Ultrabook, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/07/WhatsApp-Image-2024-12-14-at-05.01.51_adf86389-e1734181491750-394x300.jpg",
+          "in_stock": true,
+          "sku": "LZ-004",
+          "url": "http://localhost:3000/?product_id=4",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.40775999426841736,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.703103997707367
+        }
+      },
+      {
+        "product_id": "app.js-12",
+        "rank": 4,
+        "metadata": {
+          "product_id": "app.js-12",
+          "name": "HP Elite x360 Dragonfly G2 | 13\" 1080p | i7 11th Gen 1185G7 | 32GB RAM 256GB SSD",
+          "price": 150000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.6,
+          "stock_quantity": 10,
+          "description": "The HP Elite Dragonfly G2 is HP's most prestigious and ultra-portable 2-in-1 \u2014 weighing under 1 kg, it's the lightest business laptop in HP's entire portfolio. Despite its featherweight build, it houses a powerful Intel Core i7-1185G7 with Intel Iris Xe graphics.\n\nWith a massive 32GB LPDDR4x soldered RAM, this machine handles heavy multitasking, virtual machines, and data-heavy applications without hesitation. The 13.3\" FHD touchscreen with 360\u00b0 hinge makes it a joy to use in any scenario.\n\nAn extraordinary pre-owned find \u2014 the Dragonfly rarely appears at this price point.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 0.99 kg | Condition: Pre-Owned | Tags: Dragonfly, 2-in-1, 13 inch, i7, Ultra-portable, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-02-at-6.02.58-AM-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-012",
+          "url": "http://localhost:3000/?product_id=12",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.39576953649520874,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9199999999999999,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.7013078145980836
+        }
+      },
+      {
+        "product_id": "app.js-5",
+        "rank": 5,
+        "metadata": {
+          "product_id": "app.js-5",
+          "name": "HP EliteBook x360 1030 G2 | 13.3\" 1080p | i5 7th Gen 7300U | 8GB RAM 512GB SSD",
+          "price": 68000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.4,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook x360 1030 G2 is a sleek and versatile 2-in-1 business laptop built for professionals who value flexibility. The 360\u00b0 hinge design allows it to transform into a tablet, tent, or stand mode in seconds.\n\nPowered by the Intel Core i5-7300U with 8GB RAM and a large 512GB SSD, it offers solid performance for document editing, email, web browsing, and video calls. The 13.3\" FHD IPS touchscreen is bright and responsive.\n\nAn affordable entry into the premium EliteBook 2-in-1 experience \u2014 fully tested and ready to use.\nProcessor: Intel Core i5-7300U | Generation: 7th Gen | RAM: 8GB DDR3 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 57Wh Li-ion | Weight: 1.40 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i5, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-13-at-3.05.37-AM-400x278.jpeg",
+          "in_stock": true,
+          "sku": "LZ-005",
+          "url": "http://localhost:3000/?product_id=5",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.40990617871284485,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8800000000000001,
+          "personalization_score": 1.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.700962471485138
+        }
+      }
+    ],
+    "interaction_count": 2,
+    "created_at": "2026-05-13T17:48:38.997402"
+  },
+  "qb-mbuf208ck": {
+    "viewed_product_ids": [
+      "app.js-9",
+      "app.js-10",
+      "app.js-11"
+    ],
+    "preferred_categories": [
+      "premium",
+      "workstation"
+    ],
+    "preferred_brands": [
+      "HP"
+    ],
+    "last_ranked_products": [
+      {
+        "product_id": "app.js-9",
+        "rank": 1,
+        "metadata": {
+          "product_id": "app.js-9",
+          "name": "HP Spectre X360 | 16\" 2K Display 2-in-1 | Intel Ultra Core 7 155H | 16GB DDR5 1TB Gen4 SSD",
+          "price": 317000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.8,
+          "stock_quantity": 10,
+          "description": "The HP Spectre x360 16 is HP's most premium consumer laptop \u2014 a stunning 2-in-1 convertible featuring an Intel Core Ultra 7 155H processor and a breathtaking 2.8K OLED touchscreen display.\n\nWith 16GB LPDDR5x RAM and a 1TB Gen4 NVMe SSD, this machine delivers flagship-tier performance for creative professionals, content creators, and power users. The OLED panel delivers vivid colours, deep blacks, and 100% DCI-P3 colour accuracy.\n\nBrand new and sealed in box \u2014 this is the pinnacle of laptop engineering in 2025.\nProcessor: Intel Core Ultra 7 155H | Generation: Meteor Lake (Core Ultra) | RAM: 16GB LPDDR5x | Storage: 1TB Gen4 NVMe SSD | Display: 16\" 2.8K 2880\u00d71800 OLED Touch 2-in-1 | OS: Windows 11 Home | Battery: 83Wh Li-ion | Weight: 2.19 kg | Condition: New | Tags: Spectre, OLED, 2-in-1, 16 inch, 2K, Ultra 7, New, Flagship",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/1520a4ab-c5a4-4e94-9dcb-c257a2b419b3-400x295.jpg",
+          "in_stock": true,
+          "sku": "LZ-009",
+          "url": "http://localhost:3000/?product_id=9",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.13752365112304688,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.45400946044921875
+        }
+      },
+      {
+        "product_id": "app.js-10",
+        "rank": 2,
+        "metadata": {
+          "product_id": "app.js-10",
+          "name": "HP ZBook Power 15 G8 | 15\" | i7 11th Gen 11850H | 16GB 512GB | 4GB NVIDIA Quadro T1200",
+          "price": 175000.0,
+          "category": "workstation",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP ZBook Power 15 G8 is a full-power mobile workstation built for engineers, architects, and 3D designers. The Intel Core i7-11850H 8-core processor combined with 4GB NVIDIA RTX A2000 (Quadro T1200) GPU handles CAD, 3D rendering, and simulation with ease.\n\n16GB DDR4 ECC RAM ensures reliability for mission-critical workloads, while the 512GB NVMe SSD keeps data loading fast. The ISV-certified GPU drivers ensure compatibility with professional software like AutoCAD, SolidWorks, and Adobe Creative Suite.\n\nA powerful pre-owned workstation at a fraction of the new price.\nProcessor: Intel Core i7-11850H | Generation: 11th Gen | RAM: 16GB DDR4 ECC | Storage: 512GB NVMe SSD | Display: 15.6\" FHD 1080p IPS Anti-Glare | OS: Windows 11 Pro | Battery: 83Wh Li-ion | Weight: 2.03 kg | Condition: Pre-Owned | Tags: ZBook, Workstation, 15 inch, i7, NVIDIA, Quadro, GPU, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-03-at-5.05.54-PM-400x289.jpeg",
+          "in_stock": true,
+          "sku": "LZ-010",
+          "url": "http://localhost:3000/?product_id=10",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.12094801664352417,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.4443792066574097
+        }
+      },
+      {
+        "product_id": "app.js-11",
+        "rank": 3,
+        "metadata": {
+          "product_id": "app.js-11",
+          "name": "HP ZBook 15 G5 | i7 8th Gen 8850H | 15\" 1080P | 4GB Nvidia Quadro P1000 | 16GB RAM 256GB SSD",
+          "price": 113000.0,
+          "category": "workstation",
+          "brand": "HP",
+          "rating": 4.2,
+          "stock_quantity": 10,
+          "description": "The HP ZBook 15 G5 is a proven 15.6\" mobile workstation powered by the Intel Core i7-8850H 6-core processor and backed by a professional-grade 4GB NVIDIA Quadro P1000 GPU.\n\nThis machine is designed for engineers, video editors, and architects who need certified GPU drivers and reliable performance. The HP DreamColor display delivers wide colour gamut reproduction perfect for colour-sensitive creative work. 16GB ECC RAM and 256GB NVMe SSD complete the package.\n\nPre-owned and fully tested \u2014 a workhorse workstation at a very accessible price.\nProcessor: Intel Core i7-8850H | Generation: 8th Gen | RAM: 16GB DDR4 ECC | Storage: 256GB NVMe SSD | Display: 15.6\" FHD 1080p IPS DreamColor | OS: Windows 11 Pro | Battery: 90Wh Li-ion | Weight: 2.21 kg | Condition: Pre-Owned | Tags: ZBook, Workstation, 15 inch, i7, Quadro, DreamColor, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/06/IMG_20230625_162724_288-e1770029283418-400x297.jpg",
+          "in_stock": true,
+          "sku": "LZ-011",
+          "url": "http://localhost:3000/?product_id=11",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.1350066363811493,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.43500265455245973
+        }
+      }
+    ],
+    "interaction_count": 1,
+    "created_at": "2026-05-13T18:05:14.876948"
+  },
+  "qb-rwe5jyowq": {
+    "viewed_product_ids": [
+      "app.js-12",
+      "app.js-5",
+      "app.js-1",
+      "app.js-9",
+      "app.js-14"
+    ],
+    "preferred_categories": [
+      "premium",
+      "laptop"
+    ],
+    "preferred_brands": [
+      "HP"
+    ],
+    "last_ranked_products": [
+      {
+        "product_id": "app.js-12",
+        "rank": 1,
+        "metadata": {
+          "product_id": "app.js-12",
+          "name": "HP Elite x360 Dragonfly G2 | 13\" 1080p | i7 11th Gen 1185G7 | 32GB RAM 256GB SSD",
+          "price": 150000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.6,
+          "stock_quantity": 10,
+          "description": "The HP Elite Dragonfly G2 is HP's most prestigious and ultra-portable 2-in-1 \u2014 weighing under 1 kg, it's the lightest business laptop in HP's entire portfolio. Despite its featherweight build, it houses a powerful Intel Core i7-1185G7 with Intel Iris Xe graphics.\n\nWith a massive 32GB LPDDR4x soldered RAM, this machine handles heavy multitasking, virtual machines, and data-heavy applications without hesitation. The 13.3\" FHD touchscreen with 360\u00b0 hinge makes it a joy to use in any scenario.\n\nAn extraordinary pre-owned find \u2014 the Dragonfly rarely appears at this price point.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 0.99 kg | Condition: Pre-Owned | Tags: Dragonfly, 2-in-1, 13 inch, i7, Ultra-portable, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-02-at-6.02.58-AM-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-012",
+          "url": "http://localhost:3000/?product_id=12",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4748607277870178,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9199999999999999,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5829442911148072
+        }
+      },
+      {
+        "product_id": "app.js-5",
+        "rank": 2,
+        "metadata": {
+          "product_id": "app.js-5",
+          "name": "HP EliteBook x360 1030 G2 | 13.3\" 1080p | i5 7th Gen 7300U | 8GB RAM 512GB SSD",
+          "price": 68000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.4,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook x360 1030 G2 is a sleek and versatile 2-in-1 business laptop built for professionals who value flexibility. The 360\u00b0 hinge design allows it to transform into a tablet, tent, or stand mode in seconds.\n\nPowered by the Intel Core i5-7300U with 8GB RAM and a large 512GB SSD, it offers solid performance for document editing, email, web browsing, and video calls. The 13.3\" FHD IPS touchscreen is bright and responsive.\n\nAn affordable entry into the premium EliteBook 2-in-1 experience \u2014 fully tested and ready to use.\nProcessor: Intel Core i5-7300U | Generation: 7th Gen | RAM: 8GB DDR3 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 57Wh Li-ion | Weight: 1.40 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i5, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-13-at-3.05.37-AM-400x278.jpeg",
+          "in_stock": true,
+          "sku": "LZ-005",
+          "url": "http://localhost:3000/?product_id=5",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4880180358886719,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8800000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5822072143554687
+        }
+      },
+      {
+        "product_id": "app.js-1",
+        "rank": 3,
+        "metadata": {
+          "product_id": "app.js-1",
+          "name": "HP EliteBook X360 1030 G7 | 13.3\" 1080p Display | i7 10th Gen 10610U | 32GB RAM 512GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1030 G7 is HP's premium ultra-slim business 2-in-1 convertible. Powered by the Intel Core i7-10610U vPro processor, it handles demanding workloads with ease.\n\nThe 13.3\" Full HD IPS touchscreen with a 360\u00b0 hinge lets you switch between laptop, tablet, tent, and stand modes effortlessly. With 32GB DDR4 RAM and a 512GB NVMe SSD, multitasking is seamless and boot times are near-instant.\n\nBuilt to MIL-STD-810H military durability standards, this unit has been fully tested and inspected. It arrives in excellent pre-owned condition \u2014 ideal for executives, consultants, and power users.\nProcessor: Intel Core i7-10610U | Generation: 10th Gen | RAM: 32GB DDR4 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 1.32 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i7, Touch, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/WhatsApp-Image-2025-05-02-at-10.28.00-PM-700x542.jpeg",
+          "in_stock": true,
+          "sku": "LZ-001",
+          "url": "http://localhost:3000/?product_id=1",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.45064300298690796,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5762572011947632
+        }
+      },
+      {
+        "product_id": "app.js-9",
+        "rank": 4,
+        "metadata": {
+          "product_id": "app.js-9",
+          "name": "HP Spectre X360 | 16\" 2K Display 2-in-1 | Intel Ultra Core 7 155H | 16GB DDR5 1TB Gen4 SSD",
+          "price": 317000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.8,
+          "stock_quantity": 10,
+          "description": "The HP Spectre x360 16 is HP's most premium consumer laptop \u2014 a stunning 2-in-1 convertible featuring an Intel Core Ultra 7 155H processor and a breathtaking 2.8K OLED touchscreen display.\n\nWith 16GB LPDDR5x RAM and a 1TB Gen4 NVMe SSD, this machine delivers flagship-tier performance for creative professionals, content creators, and power users. The OLED panel delivers vivid colours, deep blacks, and 100% DCI-P3 colour accuracy.\n\nBrand new and sealed in box \u2014 this is the pinnacle of laptop engineering in 2025.\nProcessor: Intel Core Ultra 7 155H | Generation: Meteor Lake (Core Ultra) | RAM: 16GB LPDDR5x | Storage: 1TB Gen4 NVMe SSD | Display: 16\" 2.8K 2880\u00d71800 OLED Touch 2-in-1 | OS: Windows 11 Home | Battery: 83Wh Li-ion | Weight: 2.19 kg | Condition: New | Tags: Spectre, OLED, 2-in-1, 16 inch, 2K, Ultra 7, New, Flagship",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/1520a4ab-c5a4-4e94-9dcb-c257a2b419b3-400x295.jpg",
+          "in_stock": true,
+          "sku": "LZ-009",
+          "url": "http://localhost:3000/?product_id=9",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4331982135772705,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5722792854309082
+        }
+      },
+      {
+        "product_id": "app.js-14",
+        "rank": 5,
+        "metadata": {
+          "product_id": "app.js-14",
+          "name": "HP EliteBook X360 1040 G8 | 14 inch 1080p Display | i7 11th Gen 1185G7 CPU | 32GB Ram 512GB SSD | Pre-Owned Laptop",
+          "price": 143000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1040 G8 is a class-leading 14\" business 2-in-1 convertible. With the Intel Core i7-1185G7 \u2014 one of Intel's fastest 11th Gen mobile chips \u2014 it handles everything from spreadsheets to video editing and light 3D work.\n\n32GB LPDDR4x RAM ensures you can keep dozens of tabs, virtual machines, and productivity apps open simultaneously. The 512GB NVMe SSD provides both capacity and blazing speed. The 14\" FHD IPS touchscreen with 360\u00b0 hinge makes it a true all-rounder.\n\nAn outstanding pre-owned premium 2-in-1 at a very competitive price.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 512GB NVMe SSD | Display: 14\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 51Wh Li-ion | Weight: 1.36 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 14 inch, i7, Touch, 11th Gen, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/image00001-1-2-scaled-e1713359837545-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-014",
+          "url": "http://localhost:3000/?product_id=14",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4365909695625305,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5706363878250122
+        }
+      }
+    ],
+    "interaction_count": 1,
+    "created_at": "2026-05-13T18:12:25.198501"
+  },
+  "qb-79kidpgmc": {
+    "viewed_product_ids": [
+      "app.js-12",
+      "app.js-5",
+      "app.js-1",
+      "app.js-9",
+      "app.js-14"
+    ],
+    "preferred_categories": [
+      "premium",
+      "laptop"
+    ],
+    "preferred_brands": [
+      "HP"
+    ],
+    "last_ranked_products": [
+      {
+        "product_id": "app.js-12",
+        "rank": 1,
+        "metadata": {
+          "product_id": "app.js-12",
+          "name": "HP Elite x360 Dragonfly G2 | 13\" 1080p | i7 11th Gen 1185G7 | 32GB RAM 256GB SSD",
+          "price": 150000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.6,
+          "stock_quantity": 10,
+          "description": "The HP Elite Dragonfly G2 is HP's most prestigious and ultra-portable 2-in-1 \u2014 weighing under 1 kg, it's the lightest business laptop in HP's entire portfolio. Despite its featherweight build, it houses a powerful Intel Core i7-1185G7 with Intel Iris Xe graphics.\n\nWith a massive 32GB LPDDR4x soldered RAM, this machine handles heavy multitasking, virtual machines, and data-heavy applications without hesitation. The 13.3\" FHD touchscreen with 360\u00b0 hinge makes it a joy to use in any scenario.\n\nAn extraordinary pre-owned find \u2014 the Dragonfly rarely appears at this price point.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 0.99 kg | Condition: Pre-Owned | Tags: Dragonfly, 2-in-1, 13 inch, i7, Ultra-portable, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-02-at-6.02.58-AM-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-012",
+          "url": "http://localhost:3000/?product_id=12",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4748607277870178,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9199999999999999,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5829442911148072
+        }
+      },
+      {
+        "product_id": "app.js-5",
+        "rank": 2,
+        "metadata": {
+          "product_id": "app.js-5",
+          "name": "HP EliteBook x360 1030 G2 | 13.3\" 1080p | i5 7th Gen 7300U | 8GB RAM 512GB SSD",
+          "price": 68000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.4,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook x360 1030 G2 is a sleek and versatile 2-in-1 business laptop built for professionals who value flexibility. The 360\u00b0 hinge design allows it to transform into a tablet, tent, or stand mode in seconds.\n\nPowered by the Intel Core i5-7300U with 8GB RAM and a large 512GB SSD, it offers solid performance for document editing, email, web browsing, and video calls. The 13.3\" FHD IPS touchscreen is bright and responsive.\n\nAn affordable entry into the premium EliteBook 2-in-1 experience \u2014 fully tested and ready to use.\nProcessor: Intel Core i5-7300U | Generation: 7th Gen | RAM: 8GB DDR3 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 57Wh Li-ion | Weight: 1.40 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i5, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-13-at-3.05.37-AM-400x278.jpeg",
+          "in_stock": true,
+          "sku": "LZ-005",
+          "url": "http://localhost:3000/?product_id=5",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4880180358886719,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8800000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5822072143554687
+        }
+      },
+      {
+        "product_id": "app.js-1",
+        "rank": 3,
+        "metadata": {
+          "product_id": "app.js-1",
+          "name": "HP EliteBook X360 1030 G7 | 13.3\" 1080p Display | i7 10th Gen 10610U | 32GB RAM 512GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1030 G7 is HP's premium ultra-slim business 2-in-1 convertible. Powered by the Intel Core i7-10610U vPro processor, it handles demanding workloads with ease.\n\nThe 13.3\" Full HD IPS touchscreen with a 360\u00b0 hinge lets you switch between laptop, tablet, tent, and stand modes effortlessly. With 32GB DDR4 RAM and a 512GB NVMe SSD, multitasking is seamless and boot times are near-instant.\n\nBuilt to MIL-STD-810H military durability standards, this unit has been fully tested and inspected. It arrives in excellent pre-owned condition \u2014 ideal for executives, consultants, and power users.\nProcessor: Intel Core i7-10610U | Generation: 10th Gen | RAM: 32GB DDR4 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 1.32 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i7, Touch, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/WhatsApp-Image-2025-05-02-at-10.28.00-PM-700x542.jpeg",
+          "in_stock": true,
+          "sku": "LZ-001",
+          "url": "http://localhost:3000/?product_id=1",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.45064300298690796,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5762572011947632
+        }
+      },
+      {
+        "product_id": "app.js-9",
+        "rank": 4,
+        "metadata": {
+          "product_id": "app.js-9",
+          "name": "HP Spectre X360 | 16\" 2K Display 2-in-1 | Intel Ultra Core 7 155H | 16GB DDR5 1TB Gen4 SSD",
+          "price": 317000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.8,
+          "stock_quantity": 10,
+          "description": "The HP Spectre x360 16 is HP's most premium consumer laptop \u2014 a stunning 2-in-1 convertible featuring an Intel Core Ultra 7 155H processor and a breathtaking 2.8K OLED touchscreen display.\n\nWith 16GB LPDDR5x RAM and a 1TB Gen4 NVMe SSD, this machine delivers flagship-tier performance for creative professionals, content creators, and power users. The OLED panel delivers vivid colours, deep blacks, and 100% DCI-P3 colour accuracy.\n\nBrand new and sealed in box \u2014 this is the pinnacle of laptop engineering in 2025.\nProcessor: Intel Core Ultra 7 155H | Generation: Meteor Lake (Core Ultra) | RAM: 16GB LPDDR5x | Storage: 1TB Gen4 NVMe SSD | Display: 16\" 2.8K 2880\u00d71800 OLED Touch 2-in-1 | OS: Windows 11 Home | Battery: 83Wh Li-ion | Weight: 2.19 kg | Condition: New | Tags: Spectre, OLED, 2-in-1, 16 inch, 2K, Ultra 7, New, Flagship",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/1520a4ab-c5a4-4e94-9dcb-c257a2b419b3-400x295.jpg",
+          "in_stock": true,
+          "sku": "LZ-009",
+          "url": "http://localhost:3000/?product_id=9",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4331982135772705,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5722792854309082
+        }
+      },
+      {
+        "product_id": "app.js-14",
+        "rank": 5,
+        "metadata": {
+          "product_id": "app.js-14",
+          "name": "HP EliteBook X360 1040 G8 | 14 inch 1080p Display | i7 11th Gen 1185G7 CPU | 32GB Ram 512GB SSD | Pre-Owned Laptop",
+          "price": 143000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1040 G8 is a class-leading 14\" business 2-in-1 convertible. With the Intel Core i7-1185G7 \u2014 one of Intel's fastest 11th Gen mobile chips \u2014 it handles everything from spreadsheets to video editing and light 3D work.\n\n32GB LPDDR4x RAM ensures you can keep dozens of tabs, virtual machines, and productivity apps open simultaneously. The 512GB NVMe SSD provides both capacity and blazing speed. The 14\" FHD IPS touchscreen with 360\u00b0 hinge makes it a true all-rounder.\n\nAn outstanding pre-owned premium 2-in-1 at a very competitive price.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 512GB NVMe SSD | Display: 14\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 51Wh Li-ion | Weight: 1.36 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 14 inch, i7, Touch, 11th Gen, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/image00001-1-2-scaled-e1713359837545-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-014",
+          "url": "http://localhost:3000/?product_id=14",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4365909695625305,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5706363878250122
+        }
+      }
+    ],
+    "interaction_count": 1,
+    "created_at": "2026-05-13T18:40:51.982050"
+  },
+  "qb-2lkiq0dqi": {
+    "viewed_product_ids": [
+      "app.js-5",
+      "app.js-12",
+      "app.js-1",
+      "app.js-8",
+      "app.js-9"
+    ],
+    "preferred_categories": [
+      "laptop",
+      "premium"
+    ],
+    "preferred_brands": [
+      "HP"
+    ],
+    "last_ranked_products": [
+      {
+        "product_id": "app.js-5",
+        "rank": 1,
+        "metadata": {
+          "product_id": "app.js-5",
+          "name": "HP EliteBook x360 1030 G2 | 13.3\" 1080p | i5 7th Gen 7300U | 8GB RAM 512GB SSD",
+          "price": 68000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.4,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook x360 1030 G2 is a sleek and versatile 2-in-1 business laptop built for professionals who value flexibility. The 360\u00b0 hinge design allows it to transform into a tablet, tent, or stand mode in seconds.\n\nPowered by the Intel Core i5-7300U with 8GB RAM and a large 512GB SSD, it offers solid performance for document editing, email, web browsing, and video calls. The 13.3\" FHD IPS touchscreen is bright and responsive.\n\nAn affordable entry into the premium EliteBook 2-in-1 experience \u2014 fully tested and ready to use.\nProcessor: Intel Core i5-7300U | Generation: 7th Gen | RAM: 8GB DDR3 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 57Wh Li-ion | Weight: 1.40 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i5, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-13-at-3.05.37-AM-400x278.jpeg",
+          "in_stock": true,
+          "sku": "LZ-005",
+          "url": "http://localhost:3000/?product_id=5",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.5235900282859802,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8800000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5964360113143922
+        }
+      },
+      {
+        "product_id": "app.js-12",
+        "rank": 2,
+        "metadata": {
+          "product_id": "app.js-12",
+          "name": "HP Elite x360 Dragonfly G2 | 13\" 1080p | i7 11th Gen 1185G7 | 32GB RAM 256GB SSD",
+          "price": 150000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.6,
+          "stock_quantity": 10,
+          "description": "The HP Elite Dragonfly G2 is HP's most prestigious and ultra-portable 2-in-1 \u2014 weighing under 1 kg, it's the lightest business laptop in HP's entire portfolio. Despite its featherweight build, it houses a powerful Intel Core i7-1185G7 with Intel Iris Xe graphics.\n\nWith a massive 32GB LPDDR4x soldered RAM, this machine handles heavy multitasking, virtual machines, and data-heavy applications without hesitation. The 13.3\" FHD touchscreen with 360\u00b0 hinge makes it a joy to use in any scenario.\n\nAn extraordinary pre-owned find \u2014 the Dragonfly rarely appears at this price point.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 0.99 kg | Condition: Pre-Owned | Tags: Dragonfly, 2-in-1, 13 inch, i7, Ultra-portable, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-02-at-6.02.58-AM-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-012",
+          "url": "http://localhost:3000/?product_id=12",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.5071000456809998,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9199999999999999,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5958400182724
+        }
+      },
+      {
+        "product_id": "app.js-1",
+        "rank": 3,
+        "metadata": {
+          "product_id": "app.js-1",
+          "name": "HP EliteBook X360 1030 G7 | 13.3\" 1080p Display | i7 10th Gen 10610U | 32GB RAM 512GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1030 G7 is HP's premium ultra-slim business 2-in-1 convertible. Powered by the Intel Core i7-10610U vPro processor, it handles demanding workloads with ease.\n\nThe 13.3\" Full HD IPS touchscreen with a 360\u00b0 hinge lets you switch between laptop, tablet, tent, and stand modes effortlessly. With 32GB DDR4 RAM and a 512GB NVMe SSD, multitasking is seamless and boot times are near-instant.\n\nBuilt to MIL-STD-810H military durability standards, this unit has been fully tested and inspected. It arrives in excellent pre-owned condition \u2014 ideal for executives, consultants, and power users.\nProcessor: Intel Core i7-10610U | Generation: 10th Gen | RAM: 32GB DDR4 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 1.32 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i7, Touch, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/WhatsApp-Image-2025-05-02-at-10.28.00-PM-700x542.jpeg",
+          "in_stock": true,
+          "sku": "LZ-001",
+          "url": "http://localhost:3000/?product_id=1",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4851471781730652,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5900588712692261
+        }
+      },
+      {
+        "product_id": "app.js-8",
+        "rank": 4,
+        "metadata": {
+          "product_id": "app.js-8",
+          "name": "HP EliteBook 650 G9 | 15\" 1080P | i5 12th Gen | 16GB RAM 256GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.5,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook 650 G9 brings the premium EliteBook experience to a larger 15.6\" form factor. The Intel Core i5-1245U 12th Gen processor with its hybrid efficiency architecture delivers excellent performance per watt.\n\nWith 16GB DDR4 RAM and a 256GB NVMe SSD, this machine breezes through office productivity, video conferencing, and light content creation. The FHD IPS anti-glare screen is easy on the eyes during long sessions.\n\nPre-owned and fully tested \u2014 a step up from the ProBook range for professionals who want EliteBook build quality.\nProcessor: Intel Core i5-1245U | Generation: 12th Gen | RAM: 16GB DDR4 | Storage: 256GB NVMe SSD | Display: 15.6\" FHD 1080p IPS Anti-Glare | OS: Windows 11 Pro | Battery: 51Wh Li-ion | Weight: 1.78 kg | Condition: Pre-Owned | Tags: EliteBook, 15 inch, i5, 12th Gen, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-5.21.57-AM-2-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-008",
+          "url": "http://localhost:3000/?product_id=8",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.4967978000640869,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5887191200256348
+        }
+      },
+      {
+        "product_id": "app.js-9",
+        "rank": 5,
+        "metadata": {
+          "product_id": "app.js-9",
+          "name": "HP Spectre X360 | 16\" 2K Display 2-in-1 | Intel Ultra Core 7 155H | 16GB DDR5 1TB Gen4 SSD",
+          "price": 317000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.8,
+          "stock_quantity": 10,
+          "description": "The HP Spectre x360 16 is HP's most premium consumer laptop \u2014 a stunning 2-in-1 convertible featuring an Intel Core Ultra 7 155H processor and a breathtaking 2.8K OLED touchscreen display.\n\nWith 16GB LPDDR5x RAM and a 1TB Gen4 NVMe SSD, this machine delivers flagship-tier performance for creative professionals, content creators, and power users. The OLED panel delivers vivid colours, deep blacks, and 100% DCI-P3 colour accuracy.\n\nBrand new and sealed in box \u2014 this is the pinnacle of laptop engineering in 2025.\nProcessor: Intel Core Ultra 7 155H | Generation: Meteor Lake (Core Ultra) | RAM: 16GB LPDDR5x | Storage: 1TB Gen4 NVMe SSD | Display: 16\" 2.8K 2880\u00d71800 OLED Touch 2-in-1 | OS: Windows 11 Home | Battery: 83Wh Li-ion | Weight: 2.19 kg | Condition: New | Tags: Spectre, OLED, 2-in-1, 16 inch, 2K, Ultra 7, New, Flagship",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/1520a4ab-c5a4-4e94-9dcb-c257a2b419b3-400x295.jpg",
+          "in_stock": true,
+          "sku": "LZ-009",
+          "url": "http://localhost:3000/?product_id=9",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "86b6cff4-d13b-4a32-8270-1b595c401ebe"
+        },
+        "scoring": {
+          "relevance_score": 0.46903765201568604,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5866150608062745
+        }
+      }
+    ],
+    "interaction_count": 1,
+    "created_at": "2026-05-13T19:22:13.055715"
+  },
+  "qb-8o4kd0cj7": {
+    "viewed_product_ids": [
+      "app.js-5",
+      "app.js-12",
+      "app.js-1",
+      "app.js-8",
+      "app.js-9"
+    ],
+    "preferred_categories": [
+      "laptop",
+      "premium"
+    ],
+    "preferred_brands": [
+      "HP"
+    ],
+    "last_ranked_products": [
+      {
+        "product_id": "app.js-5",
+        "rank": 1,
+        "metadata": {
+          "product_id": "app.js-5",
+          "name": "HP EliteBook x360 1030 G2 | 13.3\" 1080p | i5 7th Gen 7300U | 8GB RAM 512GB SSD",
+          "price": 68000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.4,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook x360 1030 G2 is a sleek and versatile 2-in-1 business laptop built for professionals who value flexibility. The 360\u00b0 hinge design allows it to transform into a tablet, tent, or stand mode in seconds.\n\nPowered by the Intel Core i5-7300U with 8GB RAM and a large 512GB SSD, it offers solid performance for document editing, email, web browsing, and video calls. The 13.3\" FHD IPS touchscreen is bright and responsive.\n\nAn affordable entry into the premium EliteBook 2-in-1 experience \u2014 fully tested and ready to use.\nProcessor: Intel Core i5-7300U | Generation: 7th Gen | RAM: 8GB DDR3 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 57Wh Li-ion | Weight: 1.40 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i5, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-13-at-3.05.37-AM-400x278.jpeg",
+          "in_stock": true,
+          "sku": "LZ-005",
+          "url": "http://localhost:3000/?product_id=5",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "883458ef-9e1c-4b5c-9d3f-2bdf73edfc25"
+        },
+        "scoring": {
+          "relevance_score": 0.5278623104095459,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.8800000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5981449241638184
+        }
+      },
+      {
+        "product_id": "app.js-12",
+        "rank": 2,
+        "metadata": {
+          "product_id": "app.js-12",
+          "name": "HP Elite x360 Dragonfly G2 | 13\" 1080p | i7 11th Gen 1185G7 | 32GB RAM 256GB SSD",
+          "price": 150000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.6,
+          "stock_quantity": 10,
+          "description": "The HP Elite Dragonfly G2 is HP's most prestigious and ultra-portable 2-in-1 \u2014 weighing under 1 kg, it's the lightest business laptop in HP's entire portfolio. Despite its featherweight build, it houses a powerful Intel Core i7-1185G7 with Intel Iris Xe graphics.\n\nWith a massive 32GB LPDDR4x soldered RAM, this machine handles heavy multitasking, virtual machines, and data-heavy applications without hesitation. The 13.3\" FHD touchscreen with 360\u00b0 hinge makes it a joy to use in any scenario.\n\nAn extraordinary pre-owned find \u2014 the Dragonfly rarely appears at this price point.\nProcessor: Intel Core i7-1185G7 | Generation: 11th Gen | RAM: 32GB LPDDR4x | Storage: 256GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 0.99 kg | Condition: Pre-Owned | Tags: Dragonfly, 2-in-1, 13 inch, i7, Ultra-portable, Touch, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-02-at-6.02.58-AM-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-012",
+          "url": "http://localhost:3000/?product_id=12",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "883458ef-9e1c-4b5c-9d3f-2bdf73edfc25"
+        },
+        "scoring": {
+          "relevance_score": 0.5097349286079407,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9199999999999999,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5968939714431762
+        }
+      },
+      {
+        "product_id": "app.js-1",
+        "rank": 3,
+        "metadata": {
+          "product_id": "app.js-1",
+          "name": "HP EliteBook X360 1030 G7 | 13.3\" 1080p Display | i7 10th Gen 10610U | 32GB RAM 512GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.7,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook X360 1030 G7 is HP's premium ultra-slim business 2-in-1 convertible. Powered by the Intel Core i7-10610U vPro processor, it handles demanding workloads with ease.\n\nThe 13.3\" Full HD IPS touchscreen with a 360\u00b0 hinge lets you switch between laptop, tablet, tent, and stand modes effortlessly. With 32GB DDR4 RAM and a 512GB NVMe SSD, multitasking is seamless and boot times are near-instant.\n\nBuilt to MIL-STD-810H military durability standards, this unit has been fully tested and inspected. It arrives in excellent pre-owned condition \u2014 ideal for executives, consultants, and power users.\nProcessor: Intel Core i7-10610U | Generation: 10th Gen | RAM: 32GB DDR4 | Storage: 512GB NVMe SSD | Display: 13.3\" FHD 1080p IPS Touch 2-in-1 | OS: Windows 11 Pro | Battery: 56Wh Li-ion | Weight: 1.32 kg | Condition: Pre-Owned | Tags: EliteBook, 2-in-1, 13 inch, i7, Touch, vPro, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/02/WhatsApp-Image-2025-05-02-at-10.28.00-PM-700x542.jpeg",
+          "in_stock": true,
+          "sku": "LZ-001",
+          "url": "http://localhost:3000/?product_id=1",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "883458ef-9e1c-4b5c-9d3f-2bdf73edfc25"
+        },
+        "scoring": {
+          "relevance_score": 0.48705142736434937,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9400000000000001,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5908205709457398
+        }
+      },
+      {
+        "product_id": "app.js-8",
+        "rank": 4,
+        "metadata": {
+          "product_id": "app.js-8",
+          "name": "HP EliteBook 650 G9 | 15\" 1080P | i5 12th Gen | 16GB RAM 256GB SSD",
+          "price": 123000.0,
+          "category": "laptop",
+          "brand": "HP",
+          "rating": 4.5,
+          "stock_quantity": 10,
+          "description": "The HP EliteBook 650 G9 brings the premium EliteBook experience to a larger 15.6\" form factor. The Intel Core i5-1245U 12th Gen processor with its hybrid efficiency architecture delivers excellent performance per watt.\n\nWith 16GB DDR4 RAM and a 256GB NVMe SSD, this machine breezes through office productivity, video conferencing, and light content creation. The FHD IPS anti-glare screen is easy on the eyes during long sessions.\n\nPre-owned and fully tested \u2014 a step up from the ProBook range for professionals who want EliteBook build quality.\nProcessor: Intel Core i5-1245U | Generation: 12th Gen | RAM: 16GB DDR4 | Storage: 256GB NVMe SSD | Display: 15.6\" FHD 1080p IPS Anti-Glare | OS: Windows 11 Pro | Battery: 51Wh Li-ion | Weight: 1.78 kg | Condition: Pre-Owned | Tags: EliteBook, 15 inch, i5, 12th Gen, Pre-Owned",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-5.21.57-AM-2-400x300.jpeg",
+          "in_stock": true,
+          "sku": "LZ-008",
+          "url": "http://localhost:3000/?product_id=8",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "883458ef-9e1c-4b5c-9d3f-2bdf73edfc25"
+        },
+        "scoring": {
+          "relevance_score": 0.49977707862854004,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.9,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.589910831451416
+        }
+      },
+      {
+        "product_id": "app.js-9",
+        "rank": 5,
+        "metadata": {
+          "product_id": "app.js-9",
+          "name": "HP Spectre X360 | 16\" 2K Display 2-in-1 | Intel Ultra Core 7 155H | 16GB DDR5 1TB Gen4 SSD",
+          "price": 317000.0,
+          "category": "premium",
+          "brand": "HP",
+          "rating": 4.8,
+          "stock_quantity": 10,
+          "description": "The HP Spectre x360 16 is HP's most premium consumer laptop \u2014 a stunning 2-in-1 convertible featuring an Intel Core Ultra 7 155H processor and a breathtaking 2.8K OLED touchscreen display.\n\nWith 16GB LPDDR5x RAM and a 1TB Gen4 NVMe SSD, this machine delivers flagship-tier performance for creative professionals, content creators, and power users. The OLED panel delivers vivid colours, deep blacks, and 100% DCI-P3 colour accuracy.\n\nBrand new and sealed in box \u2014 this is the pinnacle of laptop engineering in 2025.\nProcessor: Intel Core Ultra 7 155H | Generation: Meteor Lake (Core Ultra) | RAM: 16GB LPDDR5x | Storage: 1TB Gen4 NVMe SSD | Display: 16\" 2.8K 2880\u00d71800 OLED Touch 2-in-1 | OS: Windows 11 Home | Battery: 83Wh Li-ion | Weight: 2.19 kg | Condition: New | Tags: Spectre, OLED, 2-in-1, 16 inch, 2K, Ultra 7, New, Flagship",
+          "image": "https://hf-store.pk/wp-content/uploads/2024/09/1520a4ab-c5a4-4e94-9dcb-c257a2b419b3-400x295.jpg",
+          "in_stock": true,
+          "sku": "LZ-009",
+          "url": "http://localhost:3000/?product_id=9",
+          "source_type": "description",
+          "timestamp": "2024-01-01T00:00:00",
+          "tenant_id": "883458ef-9e1c-4b5c-9d3f-2bdf73edfc25"
+        },
+        "scoring": {
+          "relevance_score": 0.468284547328949,
+          "constraint_match_score": 1.0,
+          "rating_score": 0.96,
+          "personalization_score": 0.0,
+          "stock_priority_score": 0.1,
+          "final_score": 0.5863138189315796
+        }
+      }
+    ],
+    "interaction_count": 1,
+    "created_at": "2026-05-13T20:23:47.839617"
+  }
+}
